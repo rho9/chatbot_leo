@@ -1,0 +1,10 @@
+################
+## Dictionary ##
+################
+
+
+synon: yes yeah
+# what about
+#from nltk.corpus import wordnet
+#syns = wordnet.synsets("dog")
+#print(syns)
