@@ -23,3 +23,4 @@ Context:
   Which one is better? I would discard the last two techniques because what are used to choose what to answer are intents and not whole sentences. Therefore, I would test the first two techniques
 * Recognize more than one intent in one utterance (if present)? [later]
 * Manage more intents simultaneously? [later]
+* Typo? [later]
