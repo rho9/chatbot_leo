@@ -1,4 +1,5 @@
 import string
+import keys_manager as km
 
 
 # infer words from user input
@@ -12,11 +13,4 @@ def tokenize(user_input):
                 word_no_pun = word.replace(elem, "")
                 words.remove(word)
                 words.append(word_no_pun)  # note: words are no longer in order
-
-
-# return the most important key for the words given as input
-def find_key(words):
-    print("heaviest key")
-    # find if there are keys and choose the one with the highest value
-    # keys and sentences: dictionary structure
-    # TODO: search the word in key synset, order key, take the heaviest key
+    km.find_answer(words)
