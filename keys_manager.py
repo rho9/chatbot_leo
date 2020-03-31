@@ -1,24 +1,23 @@
 from nltk.corpus import wordnet as wn
 import random
+from data import keys_dictionary as kd
 
 
-keys_dictionary = {
-    "test": [2, "test1", "test2", "test3", "test4"],
-    "weather": [1, "w1", "w2", "w3", "w4", "w5"]
-}
-
-
+# find the key with biggest weight in the input
+# and choose randomly one of  its value as answer
+# if none is present, choose among default answers
 def find_answer(words):
     best_values = []
     for word in words:
-        for key in keys_dictionary.keys():
+        for key in kd.keys_dictionary.keys():
             for syn in wn.synsets(key):
                 if word in syn.name():
-                    key_values = keys_dictionary[key]
+                    key_values = kd.keys_dictionary[key]
                     key_weight = key_values[0]
                     if best_values == [] or key_weight > best_values[0]:
                         best_values = key_values
-    if best_values == []:
-        print("I don't know what to say")
+    if not best_values:
+        none_values = kd.keys_dictionary["none"]
+        print(none_values[random.randint(1, (len(none_values)-1))])
     else:
         print(best_values[random.randint(1, (len(best_values)-1))])
