@@ -3,10 +3,10 @@ import random
 from data import keys_dictionary as kd
 
 
-# find the key with biggest weight in the input
-# and choose randomly one of  its value as answer
-# if none is present, choose among default answers
-def find_answer(words):
+# it prints the key with biggest weight in the input
+# and chooses randomly one of its value as answer
+# if none is present, it chooses among default answers
+def print_answer(words):
     best_values = []
     for word in words:
         for key in kd.keys_dictionary.keys():
@@ -21,3 +21,19 @@ def find_answer(words):
         print(none_values[random.randint(1, (len(none_values)-1))])
     else:
         print(best_values[random.randint(1, (len(best_values)-1))])
+
+
+# given a key, it prints a value randomly
+def print_question(key):
+    values = kd.keys_dictionary[key]
+    print(values[random.randint(1, (len(values)-1))])
+
+
+# given a list of words, it finds the list of keys present in it
+def find_keys(words):
+    keys_list = []
+    print("words in km", words)
+    for word in words:
+        if word in kd.keys_dictionary.keys():
+            keys_list.append(word)
+    return keys_list

@@ -1,5 +1,4 @@
 import string
-import keys_manager as km
 
 
 # infer words from user input
@@ -13,4 +12,4 @@ def tokenize(user_input):
                 word_no_pun = word.replace(elem, "")
                 words.remove(word)
                 words.append(word_no_pun)  # note: words are no longer in order
-    km.find_answer(words)
+    return words
