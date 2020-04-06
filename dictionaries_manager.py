@@ -1,6 +1,6 @@
 from nltk.corpus import wordnet as wn
 import random
-from data import keys_dictionary as kd
+from data import dictionaries as dic
 
 
 # it prints the key with biggest weight in the input
@@ -9,15 +9,15 @@ from data import keys_dictionary as kd
 def print_answer(words):
     best_values = []
     for word in words:
-        for key in kd.keys_dictionary.keys():
+        for key in dic.keys_dictionary.keys():
             for syn in wn.synsets(key):
                 if word in syn.name():
-                    key_values = kd.keys_dictionary[key]
+                    key_values = dic.keys_dictionary[key]
                     key_weight = key_values[0]
                     if best_values == [] or key_weight > best_values[0]:
                         best_values = key_values
     if not best_values:
-        none_values = kd.keys_dictionary["none"]
+        none_values = dic.keys_dictionary["none"]
         print(none_values[random.randint(1, (len(none_values)-1))])
     else:
         print(best_values[random.randint(1, (len(best_values)-1))])
@@ -25,7 +25,7 @@ def print_answer(words):
 
 # given a key, it prints a value randomly
 def print_question(key):
-    values = kd.keys_dictionary[key]
+    values = dic.keys_dictionary[key]
     print(values[random.randint(1, (len(values)-1))])
 
 
@@ -34,6 +34,6 @@ def find_keys(words):
     keys_list = []
     print("words in km", words)
     for word in words:
-        if word in kd.keys_dictionary.keys():
+        if word in dic.keys_dictionary.keys():
             keys_list.append(word)
     return keys_list

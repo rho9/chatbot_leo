@@ -1,4 +1,4 @@
-import keys_manager as km
+import dictionaries_manager as km
 import input_manager as im
 
 
@@ -7,10 +7,11 @@ def s1_manager():
     print(intro_s1_file.read())
     intro_s1_file.close()
     answer = input(km.print_question("s1_initial_question"))
-    # analyze answer: the user should say something negative,
-    # therefore we find keys (work, university, family,..) and we
-    # put everything in bad list
     words = im.tokenize(answer)
-    bad_list = km.find_keys(words)
-    print("bad list: ", bad_list)
+    concerns_list = km.find_keys(words)
+    print("bad list: ", concerns_list)
+    # we need situations examples for each element in the concern list
+    # -> ask in different ways to give them for the first, the second..ect
+    # create a dictionary for situations and write as keys the most commons. Put in a list
+    # tha one of the patient and answer with what is in the values
 
