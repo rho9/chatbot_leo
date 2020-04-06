@@ -6,7 +6,7 @@ def s1_manager():
     intro_s1_file = open('data/intro_session_one', "r")
     print(intro_s1_file.read())
     intro_s1_file.close()
-    answer = input(km.print_question("s1_initial_question"))
+    answer = input(km.find_question("s1_initial_question"))
     words = im.tokenize(answer)
     concerns_list = km.find_keys(words)
     print("bad list: ", concerns_list)
