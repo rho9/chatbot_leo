@@ -1,4 +1,4 @@
-import dictionaries_manager as km
+import dictionaries_manager as dm
 import input_manager as im
 
 
@@ -6,9 +6,9 @@ def s1_manager():
     intro_s1_file = open('data/intro_session_one', "r")
     print(intro_s1_file.read())
     intro_s1_file.close()
-    answer = input(km.find_question("s1_initial_question"))
+    answer = input(dm.find_question("s1_initial_question"))
     words = im.tokenize(answer)
-    concerns_list = km.find_keys(words)
+    concerns_list = dm.find_concerns(words)
     print("bad list: ", concerns_list)
     # we need situations examples for each element in the concern list
     # -> ask in different ways to give them for the first, the second..ect

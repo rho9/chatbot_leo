@@ -1,8 +1,11 @@
-keys_dictionary = {
+questions_dictionary = {
     "s1_initial_question": [0,
                             "Are there any situations that you completely avoid?",
                             "What are the things that you just will not do because of your social anxiety?"
-                            ],
+                            ]
+}
+
+concerns_dictionary = {
     "work": [2,
              "Work. Nothing new"
              ],
