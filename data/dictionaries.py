@@ -16,3 +16,7 @@ concerns_dictionary = {
              "Can you give an example?"
              ]
 }
+
+situations_dictionary = {
+    "sound_stupid": ["What would be so bad about that if you did say something stupid?"]
+}
