@@ -23,4 +23,6 @@ def find_situations(concerns_list):
         print(dm.ask_about_concerns(concern))
         # now we have to find out how to extrapolate situations keys from sentences
         # we can use regular expression. E.g.: afraid of SOUND * (boring, stupid, ...)
+        answer = input()
+        
     return ["a", "list"]
