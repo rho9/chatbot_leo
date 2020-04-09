@@ -6,7 +6,7 @@ from data import dictionaries as dic
 # it finds the key with biggest weight in the input
 # and chooses randomly one of its value as answer
 # if none is present, it chooses among default answers
-# NOT USED
+# NOT USED AND NOT WORKING: WEIGHT HAS BEEN REMOVED
 def find_answer(words):
     best_values = []
     for word in words:
@@ -19,15 +19,15 @@ def find_answer(words):
                         best_values = key_values
     if not best_values:
         none_values = dic.concerns_dictionary["none"]
-        return none_values[random.randint(1, (len(none_values)-1))]
+        return none_values[random.randint(0, (len(none_values)-1))]
     else:
-        return best_values[random.randint(1, (len(best_values)-1))]
+        return best_values[random.randint(0, (len(best_values)-1))]
 
 
 # given a key, it find a value randomly among standard questions
 def find_question(key):
     values = dic.questions_dictionary[key]
-    return values[random.randint(1, (len(values)-1))]
+    return values[random.randint(0, (len(values)-1))]
 
 
 # given a list of words, it finds the list of concerns present in it

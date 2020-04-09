@@ -1,22 +1,18 @@
 questions_dictionary = {
-    "s1_initial_question": [0,
-                            "Are there any situations that you completely avoid?",
+    "s1_initial_question": ["Are there any situations that you completely avoid?",
                             "What are the things that you just will not do because of your social anxiety?"
                             ]
 }
 
 concerns_dictionary = {
-    "work": [2,
-             "Work. Nothing new"
+    "work": ["You said that you have some problems at work. Can you be more specific and give a typical situation?",
+             "Let's talk about your work concerns. Do you have problems with your colleagues? Can you give an example?"
              ],
-    "family": [2,
-               "Family. Nothing new"
+    "family": ["Can you give an example of your family problems?"
                ],
-    "university": [2,
-                   "University. Nothing new"
+    "university": ["What are the situations that worried you when you are in your University?"
                    ],
-    "none": [0,
-             "Can you be more specific?",
+    "none": ["Can you be more specific?",
              "Can you give an example?"
              ]
 }
