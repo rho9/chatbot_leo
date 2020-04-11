@@ -25,16 +25,16 @@ def find_answer(words):
         return best_values[random.randint(0, (len(best_values)-1))]
 
 
-# given a key and a dictionary, it find a value randomly among standard questions
+# given a key, it returns randomly one of its value
 def find_value(key):
     values = dic.dictionary[key]
     return values[random.randint(0, (len(values)-1))]
 
 
-# given a sentence, it finds the list of concerns present in it
-def find_keys(answer):
+# given a sentence, it finds the list of keys present in it
+def find_keys(sentence):
     keys_list = []
     for key in dic.dictionary:
-        if key in answer:
+        if key in sentence:
             keys_list.append(key)
     return keys_list
