@@ -1,6 +1,6 @@
 from nltk.corpus import wordnet as wn
 import random
-import input_manager as im
+import strings_manager as sm
 from data import dictionaries as dic
 
 
@@ -32,12 +32,12 @@ def find_value(key, dictionary):
 
 
 # given a key, it calls find_answer with the key and the dictionary about questions
-def find_question(key):
+def ask_questions_dictionary(key):
     return find_value(key, dic.questions_dictionary)
 
 
 # given a key, it calls find_answer with the key and the dictionary about concerns
-def ask_about_concerns(key):
+def ask_concerns_dictionary(key):
     return find_value(key, dic.concerns_dictionary)
 
 
@@ -46,24 +46,12 @@ def ask_situations_dictionary(key):
 
 
 # given a sentence, it finds the list of concerns present in it
-def find_concerns(answer):
+def find_keys(answer, dictionary):
     keys_list = []
-    words = im.tokenize(answer)
-    print("words in find_concerns: ", words)
-    for word in words:
-        if word in dic.concerns_dictionary.keys():
-            keys_list.append(word)
+    for key in dictionary:
+        if key in answer:
+            keys_list.append(key)
     if not keys_list:
         print(find_value("none", dic.concerns_dictionary))
-        return find_concerns(input())
+        return find_keys(input())
     return keys_list
-
-def find_situations(answer):
-    key_list = []
-    for key in dic.situations_dictionary.keys():
-        if key in answer:
-            key_list.append(key)
-    if not key_list:
-        print(find_value("none", dic.concerns_dictionary))
-        find_situations(input())
-    return key_list

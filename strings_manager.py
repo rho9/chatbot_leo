@@ -13,3 +13,7 @@ def tokenize(user_input):
                 words.remove(word)
                 words.append(word_no_pun)  # note: words are no longer in order
     return words
+
+
+def replace_a_star(sentence, replacement):
+    return sentence.replace("*", replacement)

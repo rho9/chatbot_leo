@@ -1,4 +1,4 @@
-import input_manager as im
+import strings_manager as im
 import session_one as s1
 
 def main():
