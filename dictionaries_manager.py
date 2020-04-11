@@ -37,7 +37,4 @@ def find_keys(answer):
     for key in dic.dictionary:
         if key in answer:
             keys_list.append(key)
-    if not keys_list:
-        print(find_value("none"))
-        return find_keys(input())
     return keys_list
