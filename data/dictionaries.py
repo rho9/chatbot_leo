@@ -17,6 +17,8 @@ concerns_dictionary = {
              ]
 }
 
+# weights in case in a sentence more keys are present?
 situations_dictionary = {
-    "sound": ["What would be so bad about if you did say something *?"]
+    "sound": ["What would be so bad about if you did say something *?"],
+    "afraid of looking": ["What do you think are the actions that make you look *?"]
 }
