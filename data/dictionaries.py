@@ -1,10 +1,8 @@
-questions_dictionary = {
+# weights in case in a sentence more keys are present?
+dictionary = {
     "s1_initial_question": ["Are there any situations that you completely avoid?",
                             "What are the things that you just will not do because of your social anxiety?"
-                            ]
-}
-
-concerns_dictionary = {
+                            ],
     "work": ["You said that you have some problems at work. Can you be more specific and give a typical situation?",
              "Let's talk about your work concerns. Do you have problems with your colleagues? Can you give an example?"
              ],
@@ -14,11 +12,7 @@ concerns_dictionary = {
                    ],
     "none": ["Can you be more specific?",
              "Can you give an example?"
-             ]
-}
-
-# weights in case in a sentence more keys are present?
-situations_dictionary = {
-    "sound": ["What would be so bad about if you did say something *?"],
-    "afraid of looking": ["What do you think are the actions that make you look *?"]
+             ],
+    "sound": ["What would be so bad about if you did say something*?"],
+    "afraid of looking": ["What do you think are the actions that make you look*?"]
 }
