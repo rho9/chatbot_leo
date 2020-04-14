@@ -1,5 +1,6 @@
 import dictionaries_manager as dm
 import strings_manager as sm
+from concerns_node import Concerns_node
 
 
 def s1_manager():
@@ -7,31 +8,32 @@ def s1_manager():
     print(intro_s1_file.read())
     intro_s1_file.close()
     answer = input(dm.find_value("s1_initial_question"))
-    concerns_list = elaborate_concerns(answer)
-    situations_list = find_situations(concerns_list)
-    print(situations_list)
+    concerns = elaborate_concerns(answer)
+    situations = find_situations(concerns)
+    print(situations)
 
 
 def elaborate_concerns(answer):
+    # we have to add nodes in concerns_node
     concerns_list = dm.find_keys(answer)
     while not concerns_list:
         answer = input(dm.find_value("none"))
         concerns_list = dm.find_keys(answer)
-    return concerns_list
-
-
-def find_situations(concerns_list):
-    # when more concerns managed remember to keep in memory all the situations for every concerns
+    concerns = []
     for concern in concerns_list:
-        answer = input(dm.find_value(concern))
-        key_list = dm.find_keys(answer)
-        while not key_list:
+        concerns.append(Concerns_node(concern))
+    return concerns
+
+
+def find_situations(concerns):
+    for concern in concerns:
+        answer = input(dm.find_value(concern.get_concern()))
+        keys_list = dm.find_keys(answer)
+        while not keys_list:
             answer = input(dm.find_value("none"))
-            key_list = dm.find_keys(answer)
-        print("key_list in find_situations: ", key_list)
-        # ora prendo la prima, ma poi dovrò analizzare tutte le chiavi trovate
-        print("KEY_LIST[0]: ", key_list[0])
-        replacement = answer.split(key_list[0])[1]
-        print("replacement in find_situaitons:",replacement)
-        sentence = dm.find_value(key_list[0])
+            keys_list = dm.find_keys(answer)
+        concern.add_list(keys_list)
+        # only first situation is managed
+        replacement = answer.split(keys_list[0])[1]
+        sentence = dm.find_value(keys_list[0])
         return sm.replace_a_star(sentence, replacement)
