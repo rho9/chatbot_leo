@@ -1,5 +1,3 @@
-# a structure: id node: concern; element of node: list of situations
-# questo è solo il nodo. Serve la lista
 class Concerns_node:
     def __init__(self, concern):
         self.concern = concern
