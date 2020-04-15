@@ -6,4 +6,5 @@ class Situation:
         self.thoughts = None
         self.physical_sensations = None
         self.safety_behaviour = None
+        self.self_focus = None
         self.self_image = None
