@@ -1,5 +1,5 @@
 import random
-from data import dictionaries as dic
+from data import knowledge_base as dic
 
 
 # given a key, it returns randomly one of its value

@@ -7,7 +7,7 @@ def s1_manager():
     intro_s1_file = open('data/intro_session_one', "r")
     print(intro_s1_file.read())
     intro_s1_file.close()
-    answer = input(dm.find_value("s1_initial_question"))
+    answer = input(dm.find_value("concerns"))
     concerns = elaborate_concerns(answer)
     situations = find_situations(concerns)
     print(situations)
