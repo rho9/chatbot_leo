@@ -53,4 +53,6 @@ dictionary = {
 }
 
 # have we to divide it in concerns, situations, ...?
-keywords = ["work", "family", "university", "sound"]
+keywords = [ "work", "family", "university",  # concerns
+             "sound"]  # situations
+             # thoughts
