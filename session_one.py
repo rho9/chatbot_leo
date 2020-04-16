@@ -1,39 +1,40 @@
-import dictionaries_manager as dm
+import kb_manager as kbm
 import strings_manager as sm
-from concerns_node import Concerns_node
+from concern import Concern
 
 
 def s1_manager():
     intro_s1_file = open('data/intro_session_one', "r")
     print(intro_s1_file.read())
     intro_s1_file.close()
-    answer = input(dm.find_value("concerns"))
-    concerns = elaborate_concerns(answer)
-    situations = find_situations(concerns)
-    print(situations)
+    concerns = find_concerns()
+    concerns = find_situations(concerns)
 
 
-def elaborate_concerns(answer):
-    # we have to add nodes in concerns_node
-    concerns_list = dm.find_keys(answer)
+def find_concerns():
+    answer = input(kbm.find_value("concerns"))
+    concerns_list = kbm.find_keywords(answer)
     while not concerns_list:
-        answer = input(dm.find_value("none"))
-        concerns_list = dm.find_keys(answer)
+        answer = input(kbm.find_value("none"))
+        concerns_list = kbm.find_keywords(answer)
     concerns = []
     for concern in concerns_list:
-        concerns.append(Concerns_node(concern))
+        concerns.append(Concern(concern))
     return concerns
 
 
 def find_situations(concerns):
-    for concern in concerns:
-        answer = input(dm.find_value(concern.get_concern()))
-        keys_list = dm.find_keys(answer)
-        while not keys_list:
-            answer = input(dm.find_value("none"))
-            keys_list = dm.find_keys(answer)
-        concern.add_list(keys_list)
-        # only first situation is managed
-        replacement = answer.split(keys_list[0])[1]
-        sentence = dm.find_value(keys_list[0])
-        return sm.replace_a_star(sentence, replacement)
+    # manage only the first concern
+    uncomplete_question = kbm.find_value("situations")
+    question = sm.replace_a_star(uncomplete_question, concerns[0].get_concern())
+    answer = input(question)
+    situations_list = kbm.find_keywords(answer)
+    while not situations_list:
+        answer = input(kbm.find_value("none"))
+        situations_list = kbm.find_keywords(answer)
+    concerns[0].add_situations(situations_list)
+    return concerns
+    # socratic answers
+    #replacement = answer.split(keys_list[0])[1]
+    #sentence = kbm.find_value(keys_list[0])
+    #return sm.replace_a_star(sentence, replacement)

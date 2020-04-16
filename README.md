@@ -30,4 +30,4 @@ Context:
 * With few sentences, the answer is not immediately. Check what happens with more sentences
 * Other way to find synonyms?
 * Implement a part for the evaluation of the mood (suggested by Schommer)
-* Add a dictionary with saying sentences
+* Add Socratic sentences
