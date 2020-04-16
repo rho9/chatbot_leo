@@ -8,3 +8,9 @@ class Situation:
         self.safety_behaviour = None
         self.self_focus = None
         self.self_image = None
+
+    def set_thoughts(self, thoughts):
+        self.thoughts = thoughts
+
+    def get_thoughts(self):
+        return self.thoughts

@@ -5,9 +5,9 @@ dictionary = {
                  "Is there a context in which you feel inappropriate?",
                  "If you think about your life, what is it that makes you anxious?"
                  ],
-    "situations": ["You said you have some problems with your *. Can you be more specific and give a typical situation?",
-                   "Let's talk about your * concerns. Can you give an example?",
-                   "Can you give an example of your * problems?",
+    "situations": ["You said you have some problems with your *.",
+                   "Let's talk about your * concerns."
+                   # "Can you give an example of your * problems?",
                    # "What are the situations that worried you when you are*?"
                    ],
     #"sound": ["What would be so bad about if you did say something*?"
@@ -16,8 +16,9 @@ dictionary = {
     #                      ],
     "avoided_situations": ["Are there any situations that you completely avoid?",
                            "What are the things that you just won’t do because of your social anxiety?"
-                           ],
-    "not_avoided_situations": ["Can you think of a situation in which you experienced social anxiety, but were able to stay in the situatio?"
+                           ], # not used because not used in the case study
+    "not_avoided_situations": ["Can you think of a situation in which you experienced social anxiety, but were able to stay in the situation?",
+                               "Can you give an example of a typical situation that you managed to endure?"
                                ],
     "thoughts": ["When these situations come up, what kinds of thoughts do you have about them?",
                  "What were you thinking about in the situation?",
