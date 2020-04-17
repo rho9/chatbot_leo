@@ -16,19 +16,19 @@ dictionary = {
     #                      ],
     "avoided_situations": ["Are there any situations that you completely avoid?",
                            "What are the things that you just won’t do because of your social anxiety?"
-                           ], # not used because not used in the case study
+                           ], # not used because not present in the case study
     "not_avoided_situations": ["Can you think of a situation in which you experienced social anxiety, but were able to stay in the situation?",
                                "Can you give an example of a typical situation that you managed to endure?"
                                ],
-    "thoughts": ["When these situations come up, what kinds of thoughts do you have about them?",
-                 "What were you thinking about in the situation?",
+    "thoughts": ["When you *, what kinds of thoughts do you have?",
+                 "What do you think about when you *?",
                  "What was going through your mind?",
                  "In your mind, which was the worst thing that could happen in that situation?"
                  ],
-    "physical_symptoms": ["How did your body feel in the situation?",
+    "physical_symptoms": ["How did your body feel when you *?",
                           "Did you experience any physical symptoms of anxiety?",
                           "Did you notice anything like sweating, blushing, trembling?"
-                          "How about your heart?"
+                          #"How about your heart?"
                           ],
     "safety_behaviours": ["Did you do anything in the situation to try to prevent your feared consequences from occurring?",
                           # (use specific feared consequences from patient’s information)

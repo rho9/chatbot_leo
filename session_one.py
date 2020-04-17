@@ -11,11 +11,9 @@ def s1_manager():
     concerns = find_concerns()
     concerns = find_not_avoided_situations(concerns)
     situations = concerns[0].get_situations()
-    for i in range(len(situations)):
-        print("Situations: ", situations[i].get_situation())
-    thoughts = find_thoughts()
-    situations[0].set_thoughts(thoughts)
-    print(situations[0].get_thoughts())
+    situations = find_thoughts(situations)  # managed only one situation
+    #situations[0].set_thoughts(thoughts)
+    print("thoughts: ", situations[0].get_thoughts())
 
 
 def find_concerns():
@@ -52,8 +50,18 @@ def find_not_avoided_situations(concerns):
     #sentence = kbm.find_value(keys_list[0])
     #return sm.replace_a_star(sentence, replacement)
 
-def find_thoughts():
-    # devi personalizzare la domanda: prendi la situazione che stai analizzando e chiedi quali
-    # sono i pensieri quando ..
-    answer = input(kbm.find_value("thoughts"))
-    return "I've found your thoughts"
+
+def find_thoughts(situations):
+    question = kbm.find_value("thoughts")
+    if "*" in question:
+        answer = input(sm.replace_a_star(question, situations[0].get_situation()))
+    else:
+        answer = input(kbm.find_value("thoughts"))
+        keywords_list = kbm.find_keywords(answer)
+        while not keywords_list:
+            answer = input(kbm.find_value("none"))
+            keywords_list = kbm.find_keywords(answer)
+        for keyword in keywords_list:
+            thougth = sm.complete_keywords(answer, keyword)
+            situations[0].add_thought(thougth)
+        return situations

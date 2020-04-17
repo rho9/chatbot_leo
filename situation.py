@@ -3,7 +3,7 @@ class Situation:
     def __init__(self, situation):
         self.situation = situation
         self.avoided = None
-        self.thoughts = None
+        self.thoughts = []
         self.physical_sensations = None
         self.safety_behaviour = None
         self.self_focus = None
@@ -12,8 +12,8 @@ class Situation:
     def get_situation(self):
         return self.situation
 
-    def set_thoughts(self, thoughts):
-        self.thoughts = thoughts
+    def add_thought(self, thought):
+        self.thoughts.append(thought)
 
     def get_thoughts(self):
         return self.thoughts
