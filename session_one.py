@@ -49,4 +49,6 @@ def find_not_avoided_situations(concerns):
     #return sm.replace_a_star(sentence, replacement)
 
 def find_thoughts():
+    # devi personalizzare la domanda
+    answer = input(kbm.find_value("thoughts"))
     return "I've found your thoughts"

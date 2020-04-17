@@ -23,7 +23,7 @@ dictionary = {
     "thoughts": ["When these situations come up, what kinds of thoughts do you have about them?",
                  "What were you thinking about in the situation?",
                  "What was going through your mind?",
-                 "In your mind, was the worst thing that could happen in that situation?"
+                 "In your mind, which was the worst thing that could happen in that situation?"
                  ],
     "physical_symptoms": ["How did your body feel in the situation?",
                           "Did you experience any physical symptoms of anxiety?",
@@ -52,7 +52,7 @@ dictionary = {
              ]
 }
 
-# have we to divide it in concerns, situations, ...?
+# have I to divide it in concerns, situations, ...?
 keywords = [ "work", "family", "university",  # concerns
-             "sound"]  # situations
-             # thoughts
+             "sound",  # situations
+             "worried"]  # thoughts
