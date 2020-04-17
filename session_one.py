@@ -11,7 +11,8 @@ def s1_manager():
     concerns = find_concerns()
     concerns = find_not_avoided_situations(concerns)
     situations = concerns[0].get_situations()
-    print("First situation: ", situations[0].get_situation())
+    for i in range(len(situations)):
+        print("Situations: ", situations[i].get_situation())
     thoughts = find_thoughts()
     situations[0].set_thoughts(thoughts)
     print(situations[0].get_thoughts())
@@ -29,7 +30,6 @@ def find_concerns():
     return concerns
 
 
-# NON BASTA: ora salvi solo la chiave, ma devi salvare anche la personalizzazione (sound + qualcosa)
 def find_not_avoided_situations(concerns):
     # manage only the first concern
     intro_nas_file = open('data/intro_not_avoided_situations.txt', "r")
@@ -42,7 +42,7 @@ def find_not_avoided_situations(concerns):
     while not keywords_list:
         answer = input(kbm.find_value("none"))
         keywords_list = kbm.find_keywords(answer)
-    situations_list = []
+    print("keywords_list: ", keywords_list)
     for keyword in keywords_list:
         situation = sm.complete_keywords(answer, keyword)
         concerns[0].add_situation(Situation(situation))
