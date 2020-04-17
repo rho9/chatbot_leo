@@ -12,7 +12,6 @@ def s1_manager():
     concerns = find_not_avoided_situations(concerns)
     situations = concerns[0].get_situations()
     situations = find_thoughts(situations)  # managed only one situation
-    #situations[0].set_thoughts(thoughts)
     print("thoughts: ", situations[0].get_thoughts())
 
 
@@ -56,12 +55,12 @@ def find_thoughts(situations):
     if "*" in question:
         answer = input(sm.replace_a_star(question, situations[0].get_situation()))
     else:
-        answer = input(kbm.find_value("thoughts"))
+        answer = input(question)
+    keywords_list = kbm.find_keywords(answer)
+    while not keywords_list:
+        answer = input(kbm.find_value("none"))
         keywords_list = kbm.find_keywords(answer)
-        while not keywords_list:
-            answer = input(kbm.find_value("none"))
-            keywords_list = kbm.find_keywords(answer)
-        for keyword in keywords_list:
-            thougth = sm.complete_keywords(answer, keyword)
-            situations[0].add_thought(thougth)
-        return situations
+    for keyword in keywords_list:
+        thought = sm.complete_keywords(answer, keyword)
+        situations[0].add_thought(thought)
+    return situations
