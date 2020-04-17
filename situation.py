@@ -9,6 +9,9 @@ class Situation:
         self.self_focus = None
         self.self_image = None
 
+    def get_situation(self):
+        return self.situation
+
     def set_thoughts(self, thoughts):
         self.thoughts = thoughts
 

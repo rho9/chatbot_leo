@@ -17,3 +17,10 @@ def tokenize(user_input):
 
 def replace_a_star(sentence, replacement):
     return sentence.replace("*", replacement)
+
+
+def complete_keywords(sentence, keyword):
+    # soft implementation: it simply takes the string next to the keyword
+    to_add = sentence.split(keyword)[1]
+    modified = keyword + str(to_add)
+    return modified

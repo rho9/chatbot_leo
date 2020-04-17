@@ -11,6 +11,7 @@ def s1_manager():
     concerns = find_concerns()
     concerns = find_not_avoided_situations(concerns)
     situations = concerns[0].get_situations()
+    print("First situation: ", situations[0].get_situation())
     thoughts = find_thoughts()
     situations[0].set_thoughts(thoughts)
     print(situations[0].get_thoughts())
@@ -28,19 +29,22 @@ def find_concerns():
     return concerns
 
 
+# NON BASTA: ora salvi solo la chiave, ma devi salvare anche la personalizzazione (sound + qualcosa)
 def find_not_avoided_situations(concerns):
     # manage only the first concern
     intro_nas_file = open('data/intro_not_avoided_situations.txt', "r")
     print(intro_nas_file.read())
     intro_nas_file.close()
-    uncomplete_question = kbm.find_value("situations")
-    print(sm.replace_a_star(uncomplete_question, concerns[0].get_concern()))
+    uncompleted_question = kbm.find_value("situations")
+    print(sm.replace_a_star(uncompleted_question, concerns[0].get_concern()))
     answer = input(kbm.find_value("not_avoided_situations"))
-    situations_list = kbm.find_keywords(answer)
-    while not situations_list:
+    keywords_list = kbm.find_keywords(answer)
+    while not keywords_list:
         answer = input(kbm.find_value("none"))
-        situations_list = kbm.find_keywords(answer)
-    for situation in situations_list:
+        keywords_list = kbm.find_keywords(answer)
+    situations_list = []
+    for keyword in keywords_list:
+        situation = sm.complete_keywords(answer, keyword)
         concerns[0].add_situation(Situation(situation))
     return concerns
     # socratic answers
