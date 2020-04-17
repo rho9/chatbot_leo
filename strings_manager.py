@@ -20,7 +20,7 @@ def replace_a_star(sentence, replacement):
 
 
 def complete_keywords(sentence, keyword):
-    # soft implementation: it simply takes the string next to the keyword
-    to_add = sentence.split(keyword)[1]
-    modified = keyword + str(to_add)
+    # soft implementation: it simply takes the string next to the keyword until it finds a dot
+    to_add = (sentence.split(keyword)[1]).split(".")[0]
+    modified = keyword + to_add
     return modified

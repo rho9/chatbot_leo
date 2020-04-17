@@ -54,5 +54,5 @@ dictionary = {
 
 # have I to divide it in concerns, situations, ...?
 keywords = [ "work", "family", "university",  # concerns
-             "sound", "afraid of",  # situations
+             "have to",  # situations
              "worried"]  # thoughts
