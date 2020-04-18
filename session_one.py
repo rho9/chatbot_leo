@@ -12,7 +12,7 @@ def s1_manager():
     concerns = find_not_avoided_situations(concerns)
     situations = concerns[0].get_situations()
     situations = find_thoughts(situations)  # managed only one situation
-    print("thoughts: ", situations[0].get_thoughts())
+    situations = find_physical(situations)
 
 
 def find_concerns():
@@ -64,3 +64,7 @@ def find_thoughts(situations):
         thought = sm.complete_keywords(answer, keyword)
         situations[0].add_thought(thought)
     return situations
+
+
+def find_physical(siuations):
+    return "I found your physical symptoms"
