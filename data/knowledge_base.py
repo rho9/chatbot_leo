@@ -25,9 +25,9 @@ dictionary = {
                  "What was going through your mind?",
                  "In your mind, which was the worst thing that could happen in that situation?"
                  ],
-    "physical_symptoms": ["How did your body feel when you *?",
-                          "Did you experience any physical symptoms of anxiety?",
-                          "Did you notice anything like sweating, blushing, trembling?"
+    "physical_symptoms": ["How does your body feel when you *?",
+                          "Do you usually experience any physical symptoms of anxiety?",
+                          "Do you notice anything like sweating, blushing, trembling?"
                           #"How about your heart?"
                           ],
     "safety_behaviours": ["Did you do anything in the situation to try to prevent your feared consequences from occurring?",
@@ -53,6 +53,8 @@ dictionary = {
 }
 
 # have I to divide it in concerns, situations, ...?
-keywords = [ "work", "family", "university",  # concerns
-             "have to",  # situations
-             "worried"]  # thoughts
+keywords = ["work", "family", "university",  # concerns
+            "have to",  # situations
+            "worried",  # thoughts
+            "sweating", "blushing", "going red", "trembling", "shaking"  # physical_symptoms
+            ]
