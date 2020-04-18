@@ -11,8 +11,9 @@ def s1_manager():
     concerns = find_concerns()
     concerns = find_not_avoided_situations(concerns)
     situations = concerns[0].get_situations()
-    situations = find_thoughts(situations)  # managed only one situation
-    situations = find_physical(situations)
+    situations = find_reaction(situations, "thoughts")  # managed only one situation
+    situations = find_reaction(situations, "physical_symptoms")
+    # e se facessimo un loop in find_reaction?
 
 
 def find_concerns():
@@ -50,8 +51,8 @@ def find_not_avoided_situations(concerns):
     #return sm.replace_a_star(sentence, replacement)
 
 
-def find_thoughts(situations):
-    question = kbm.find_value("thoughts")
+def find_reaction(situations, reaction):
+    question = kbm.find_value(reaction)
     if "*" in question:
         answer = input(sm.replace_a_star(question, situations[0].get_situation()))
     else:
@@ -60,11 +61,13 @@ def find_thoughts(situations):
     while not keywords_list:
         answer = input(kbm.find_value("none"))
         keywords_list = kbm.find_keywords(answer)
-    for keyword in keywords_list:
-        thought = sm.complete_keywords(answer, keyword)
-        situations[0].add_thought(thought)
+    # switch on reaction
+    if reaction == "thoughts":
+        for keyword in keywords_list:
+            thought = sm.complete_keywords(answer, keyword)
+            situations[0].add_thought(thought)
+    elif reaction == "physical_symptoms":
+        for keyword in keywords_list:
+            phy_sym = sm.complete_keywords(answer, keyword)
+            situations[0].add_physical_symptom(phy_sym)
     return situations
-
-
-def find_physical(siuations):
-    return "I found your physical symptoms"
