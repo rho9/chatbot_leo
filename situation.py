@@ -27,8 +27,17 @@ class Situation:
     def add_safety_behaviour(self, safe_behav):
         self.safety_behaviour.append(safe_behav)
 
+    def get_safety_behaviours(self):
+        return self.safety_behaviour
+
     def add_self_focus(self, self_focus):
         self.self_focus.append(self_focus)
 
+    def get_self_focus(self):
+        return self.self_focus
+
     def add_self_image(self, self_image):
         self.self_image.append(self_image)
+
+    def get_self_images(self):
+        return self.self_image

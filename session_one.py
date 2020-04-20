@@ -16,8 +16,13 @@ def s1_manager():
     situations = find_reaction(situations, "safety_behaviours")
     situations = find_reaction(situations, "self_focus")
     situations = find_reaction(situations, "self_image")
-    # e se facessimo un loop in find_reaction? Ma anche semplicemnte modificare situations volta per volta
-    # in find_reaction (sequenziale invece che elif). Tanto ora per la domanda c'è find_question
+    print("Concerns: ", concerns[0].get_concern())
+    print("Situations: ", situations[0].get_situation())
+    print("Thoughts: ", situations[0].get_thoughts())
+    print("physical_symptoms: ", situations[0].get_physical_symptoms())
+    print("safety_behaviours: ", situations[0].get_safety_behaviours())
+    print("self_focus: ", situations[0].get_self_focus())
+    print("self_image: ", situations[0].get_self_images())
 
 
 def find_concerns():
@@ -55,7 +60,8 @@ def find_not_avoided_situations(concerns):
     #return sm.replace_a_star(sentence, replacement)
 
 
-def find_reaction(situations, reaction): # stampa le varie list per controllare
+def find_reaction(situations, reaction):
+    # better: first part in a method + sequential execution without  elif
     answer = input(find_question(situations, reaction))
     keywords_list = kbm.find_keywords(answer)
     while not keywords_list:
@@ -72,7 +78,7 @@ def find_reaction(situations, reaction): # stampa le varie list per controllare
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
-            situations[0].add_physical_symptom(safe_behav)
+            situations[0].add_safety_behaviour(safe_behav)
     elif reaction == "self_focus":
         for keyword in keywords_list:
             self_focus = sm.complete_keywords(answer, keyword)

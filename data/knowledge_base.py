@@ -56,5 +56,8 @@ dictionary = {
 keywords = ["work", "family", "university",  # concerns
             "have to",  # situations
             "worried",  # thoughts
-            "sweating", "blushing", "going red", "trembling", "shaking"  # physical_symptoms
+            "sweating", "blushing", "going red", "trembling", "shaking",  # physical_symptoms
+            "safety_behaviours123",  # safety_behaviours
+            "self_focus123",  # self_focus
+            "self_image123",  # self_image
             ]
