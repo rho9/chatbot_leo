@@ -15,14 +15,7 @@ def s1_manager():
     situations = find_reaction(situations, "physical_symptoms")
     situations = find_reaction(situations, "safety_behaviours")
     situations = find_reaction(situations, "self_focus")
-    situations = find_reaction(situations, "self_image")
-    print("Concerns: ", concerns[0].get_concern())
-    print("Situations: ", situations[0].get_situation())
-    print("Thoughts: ", situations[0].get_thoughts())
-    print("physical_symptoms: ", situations[0].get_physical_symptoms())
-    print("safety_behaviours: ", situations[0].get_safety_behaviours())
-    print("self_focus: ", situations[0].get_self_focus())
-    print("self_image: ", situations[0].get_self_images())
+    # situations = find_reaction(situations, "self_image")
 
 
 def find_concerns():
@@ -61,7 +54,7 @@ def find_not_avoided_situations(concerns):
 
 
 def find_reaction(situations, reaction):
-    # better: first part in a method + sequential execution without  elif
+    # better: first part in a method + sequential execution without elif
     answer = input(find_question(situations, reaction))
     keywords_list = kbm.find_keywords(answer)
     while not keywords_list:

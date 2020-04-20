@@ -37,16 +37,16 @@ dictionary = {
                           "Do you do anything to try to control your symptoms?",
                           "Do you do anything to try to avoid drawing attention to yourself?"
                           ],
-    "self_focus": ["When you were afraid to start * would happen in this situation, what happened to your attention?",
+    "self_focus": ["When you are afraid to start *, what happens to your attention?",
                    "If you focus attention on yourself, what do you notice? Do you become more self-conscious?"
                    ],
-    "self_image": ["As you focused attention on yourself, did you have an image in your mind of how you were coming across to others?",
-                   "As you focused attention on yourself, what did it look like?",
+    # "self_image": ["As you focused attention on yourself, do you have an image in your mind of how you are coming across to others?",
+                   # "As you focused attention on yourself, what did it look like?",
                    # After
-                   "If I closed my eyes and tried to picture the image you have, what would I see?",
-                   "How does having this image affect you?",
-                   "When you completely avoid situations, is your decision affected by an image like this?"
-                   ],
+                   # "If I closed my eyes and tried to picture the image you have, what would I see?",
+                   # "How does having this image affect you?",
+                   # "When you completely avoid situations, is your decision affected by an image like this?"
+                   # ],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]
@@ -57,7 +57,7 @@ keywords = ["work", "family", "university",  # concerns
             "have to",  # situations
             "worried",  # thoughts
             "sweating", "blushing", "going red", "trembling", "shaking",  # physical_symptoms
-            "safety_behaviours123",  # safety_behaviours
-            "self_focus123",  # self_focus
+            "eye contact", "hold tightly",  # safety_behaviours
+            "stop being lucid",  # self_focus
             "self_image123",  # self_image
             ]
