@@ -30,15 +30,15 @@ dictionary = {
                           "Do you notice anything like sweating, blushing, trembling?"
                           #"How about your heart?"
                           ],
-    "safety_behaviours": ["Did you do anything in the situation to try to prevent your feared consequences from occurring?",
+    "safety_behaviours": ["Do you usually do anything in the situation to try to prevent your feared consequences from occurring?",
                           # (use specific feared consequences from patient’s information)
-                          "Did you do anything to try to prevent people from noticing*?",
+                          "Did you do anything to try to prevent people from noticing you *?",
                           "Is there anything you do to try to ensure that you will come across well?",
                           "Do you do anything to try to control your symptoms?",
                           "Do you do anything to try to avoid drawing attention to yourself?"
                           ],
-    "self_focus": ["When you were afraid that* would happen in this situation, what happened to your attention?",
-                   "As you focused attention on yourself, what did you notice? Did you become more self-conscious?"
+    "self_focus": ["When you were afraid to start * would happen in this situation, what happened to your attention?",
+                   "If you focus attention on yourself, what do you notice? Do you become more self-conscious?"
                    ],
     "self_image": ["As you focused attention on yourself, did you have an image in your mind of how you were coming across to others?",
                    "As you focused attention on yourself, what did it look like?",
