@@ -21,7 +21,7 @@ def s1_manager():
 
 
 def find_concerns():
-    answer = input(kbm.find_value("concerns")) # bug: it prints what the user writes
+    answer = input(kbm.find_value("concerns"))
     concerns_list = kbm.find_keywords(answer)
     while not concerns_list:
         answer = input(kbm.find_value("none"))
@@ -55,7 +55,7 @@ def find_not_avoided_situations(concerns):
     #return sm.replace_a_star(sentence, replacement)
 
 
-def find_reaction(situations, reaction):
+def find_reaction(situations, reaction): # stampa le varie list per controllare
     answer = input(find_question(situations, reaction))
     keywords_list = kbm.find_keywords(answer)
     while not keywords_list:
@@ -88,8 +88,8 @@ def find_question(situations, reaction):
     question = kbm.find_value(reaction)
     if "*" in question:
         if reaction == "thoughts" or reaction == "physical_symptoms":
-            question = input(sm.replace_a_star(question, situations[0].get_situation()))
+            question = sm.replace_a_star(question, situations[0].get_situation())
         elif reaction == "safety_behaviours" or reaction == "self_focus":
-            question = input(sm.replace_a_star(question, situations[0].get_physical_symptoms()[0]))
+            question = sm.replace_a_star(question, situations[0].get_physical_symptoms()[0])
             # it takes the first one. Better random?
     return question
