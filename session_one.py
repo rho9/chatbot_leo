@@ -14,11 +14,14 @@ def s1_manager():
     situations = find_reaction(situations, "thoughts")  # managed only one situation
     situations = find_reaction(situations, "physical_symptoms")
     situations = find_reaction(situations, "safety_behaviours")
-    # e se facessimo un loop in find_reaction?
+    situations = find_reaction(situations, "self_focus")
+    situations = find_reaction(situations, "self_image")
+    # e se facessimo un loop in find_reaction? Ma anche semplicemnte modificare situations volta per volta
+    # in find_reaction (sequenziale invece che elif). Tanto ora per la domanda c'è find_question
 
 
 def find_concerns():
-    answer = input(kbm.find_value("concerns"))
+    answer = input(kbm.find_value("concerns")) # bug: it prints what the user writes
     concerns_list = kbm.find_keywords(answer)
     while not concerns_list:
         answer = input(kbm.find_value("none"))
@@ -66,6 +69,18 @@ def find_reaction(situations, reaction):
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)
             situations[0].add_physical_symptom(phy_sym)
+    elif reaction == "safety_behaviours":
+        for keyword in keywords_list:
+            safe_behav = sm.complete_keywords(answer, keyword)
+            situations[0].add_physical_symptom(safe_behav)
+    elif reaction == "self_focus":
+        for keyword in keywords_list:
+            self_focus = sm.complete_keywords(answer, keyword)
+            situations[0].add_self_focus(self_focus)
+    elif reaction == "self_image":
+        for keyword in keywords_list:
+            self_image = sm.complete_keywords(answer, keyword)
+            situations[0].add_self_image(self_image)
     return situations
 
 
