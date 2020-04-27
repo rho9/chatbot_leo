@@ -31,3 +31,4 @@ Context:
 * Other way to find synonyms?
 * Implement a part for the evaluation of the mood (suggested by Schommer)
 * Add Socratic sentences
+* Learn and use proper names
