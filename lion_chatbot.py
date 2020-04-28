@@ -1,5 +1,6 @@
 import strings_manager as im
 import session_one as s1
+import emotions_manager as em
 
 def main():
     introduction()
