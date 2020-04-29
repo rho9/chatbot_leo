@@ -1,3 +1,4 @@
+# used to create emotions.txt
 def to_lower(start_file, final_file):
     start = open(start_file, "r")
     final = open(final_file, "a")
@@ -6,6 +7,8 @@ def to_lower(start_file, final_file):
     start.close()
     final.close()
 
+
+# used to create emotions.txt
 def to_alphabetical_order(start_file, final_file):
     start = open(start_file, "r")
     final = open(final_file, "a")
@@ -18,3 +21,4 @@ def to_alphabetical_order(start_file, final_file):
         final.write(word)
     start.close()
     final.close()
+

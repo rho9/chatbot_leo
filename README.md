@@ -32,3 +32,4 @@ Context:
 * Implement a part for the evaluation of the mood (suggested by Schommer)
 * Add Socratic sentences
 * Learn and use proper names
+* Give space to question and implement how to answer
