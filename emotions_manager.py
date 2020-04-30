@@ -1,5 +1,6 @@
 from data import knowledge_base as knm
 
+
 # used to create emotions files
 def to_lower(start_file, final_file):
     start = open(start_file, "r")

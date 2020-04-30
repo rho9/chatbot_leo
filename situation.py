@@ -18,8 +18,8 @@ class Situation:
     def get_thoughts(self):
         return self.thoughts
 
-    def add_physical_symptom(self, phy_sym):
-        self.physical_symptoms.append(phy_sym)
+    def add_physical_symptom(self, phy_sym, rate):
+        self.physical_symptoms.append((phy_sym, rate))
 
     def get_physical_symptoms(self):
         return self.physical_symptoms

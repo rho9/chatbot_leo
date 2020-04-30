@@ -13,8 +13,10 @@ def s1_manager():
     situations = concerns[0].get_situations()
     situations = find_reaction(situations, "thoughts")  # managed only one situation
     situations = find_reaction(situations, "physical_symptoms")
-    situations = find_reaction(situations, "safety_behaviours")
-    situations = find_reaction(situations, "self_focus")
+
+    #situations = find_reaction(situations, "safety_behaviours")
+    #situations = find_reaction(situations, "self_focus")
+
     # situations = find_reaction(situations, "self_image")
 
 
@@ -65,9 +67,22 @@ def find_reaction(situations, reaction):
             thought = sm.complete_keywords(answer, keyword)
             situations[0].add_thought(thought)
     elif reaction == "physical_symptoms":
+        # ask to rate and add to sit with the rating. It can be a couple instead of a string
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)
-            situations[0].add_physical_symptom(phy_sym)
+            rate_answer = input(find_question_rate(phy_sym))
+            # probably 8.
+            rate = kbm.find_rate(rate_answer)
+            while not rate:
+                print("no rate")
+                rate = 1
+            print("rate: ", rate)
+            # cerco un rates in answer
+            # trovata, salvo la coppia
+            # non trovata, invoco il none rates
+            # mi fermo quado l'ho trovata
+            #a situatioin aggiungo la coppia
+            situations[0].add_physical_symptom(phy_sym, rate)
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
@@ -88,7 +103,14 @@ def find_question(situations, reaction):
     if "*" in question:
         if reaction == "thoughts" or reaction == "physical_symptoms":
             question = sm.replace_a_star(question, situations[0].get_situation())
-        elif reaction == "safety_behaviours" or reaction == "self_focus":
+        elif reaction == "safety_behaviours" or reaction == "self_focus" or reaction == "rating":
             question = sm.replace_a_star(question, situations[0].get_physical_symptoms()[0])
             # it takes the first one. Better random?
+    return question
+
+
+def find_question_rate(problem):
+    question = kbm.find_value("rating")
+    if "*" in question:
+        question = sm.replace_a_star(question, problem)
     return question

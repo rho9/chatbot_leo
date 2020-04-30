@@ -47,6 +47,10 @@ dictionary = {
                    # "How does having this image affect you?",
                    # "When you completely avoid situations, is your decision affected by an image like this?"
                    # ],
+    "rating": ["How much will you be * if 10 is like * uncontrollably and 0 is not * at all?",
+               "Okay and how * out of 10 if 10 is incredibly *?",
+               "How much would you say that you believe that out of 10 if 10 is where you believe it totally and 0 is where you don't believe it at all?"
+               ],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]
@@ -86,3 +90,6 @@ neg_emos = ["affronted", "afraid", "aggravated", "aggressive", "alarmed", "alert
             "shaky", "shocked", "shy", "sour", "spiteful", "startled", "stressed", "suspicious", "tearful", "tense",
             "terrible", "terrorized", "timid", "tired", "ugly", "uneasy", "unnerved", "unsettled", "vengeful",
             "vindictive", "violent", "wary", "watchful", "weak", "worried"]
+
+rates = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "zero", "one", "two", "three", "four", "five", "six",
+         "seven", "eight", "nine", "ten"]
