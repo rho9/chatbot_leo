@@ -51,6 +51,8 @@ dictionary = {
                "Okay and how * out of 10 if 10 is incredibly *?",
                "How much would you say that you believe that out of 10 if 10 is where you believe it totally and 0 is where you don't believe it at all?"
                ],
+    "wrong rating": ["Can you use a number from 0 to 10?",
+                     "I'm having some trouble understanding you...Can you please give a number from zero to ten?"],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]

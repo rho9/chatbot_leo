@@ -74,14 +74,9 @@ def find_reaction(situations, reaction):
             # probably 8.
             rate = kbm.find_rate(rate_answer)
             while not rate:
-                print("no rate")
-                rate = 1
+                rate_answer = input(kbm.find_value("wrong rating"))
+                rate = kbm.find_rate(rate_answer)
             print("rate: ", rate)
-            # cerco un rates in answer
-            # trovata, salvo la coppia
-            # non trovata, invoco il none rates
-            # mi fermo quado l'ho trovata
-            #a situatioin aggiungo la coppia
             situations[0].add_physical_symptom(phy_sym, rate)
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
