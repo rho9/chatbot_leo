@@ -12,8 +12,8 @@ class Situation:
     def get_situation(self):
         return self.situation
 
-    def add_thought(self, thought):
-        self.thoughts.append(thought)
+    def add_thought(self, thought, rate):
+        self.thoughts.append((thought, rate))
 
     def get_thoughts(self):
         return self.thoughts

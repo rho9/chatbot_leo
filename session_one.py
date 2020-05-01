@@ -13,20 +13,17 @@ def s1_manager():
     situations = concerns[0].get_situations()
     situations = find_reaction(situations, "thoughts")  # managed only one situation
     situations = find_reaction(situations, "physical_symptoms")
-    #print("rate from situation: ", situations[0].get_physical_symptoms())
-
-    #situations = find_reaction(situations, "safety_behaviours")
-    #situations = find_reaction(situations, "self_focus")
-
+    situations = find_reaction(situations, "safety_behaviours")
+    situations = find_reaction(situations, "self_focus")
     # situations = find_reaction(situations, "self_image")
 
 
 def find_concerns():
     answer = input(kbm.find_value("concerns"))
-    concerns_list = kbm.find_keywords(answer)
+    concerns_list = kbm.check_for_keywords(answer)
     while not concerns_list:
         answer = input(kbm.find_value("none"))
-        concerns_list = kbm.find_keywords(answer)
+        concerns_list = kbm.check_for_keywords(answer)
     concerns = []
     for concern in concerns_list:
         concerns.append(Concern(concern))
@@ -41,10 +38,10 @@ def find_not_avoided_situations(concerns):
     uncompleted_question = kbm.find_value("situations")
     print(sm.replace_a_star(uncompleted_question, concerns[0].get_concern()))
     answer = input(kbm.find_value("not_avoided_situations"))
-    keywords_list = kbm.find_keywords(answer)
+    keywords_list = kbm.check_for_keywords(answer)
     while not keywords_list:
         answer = input(kbm.find_value("none"))
-        keywords_list = kbm.find_keywords(answer)
+        keywords_list = kbm.check_for_keywords(answer)
     print("keywords_list: ", keywords_list)
     for keyword in keywords_list:
         situation = sm.complete_keywords(answer, keyword)
@@ -59,16 +56,16 @@ def find_not_avoided_situations(concerns):
 def find_reaction(situations, reaction):
     # better: first part in a method + sequential execution without elif
     answer = input(find_question(situations, reaction))
-    keywords_list = kbm.find_keywords(answer)
+    keywords_list = kbm.check_for_keywords(answer)
     while not keywords_list:
         answer = input(kbm.find_value("none"))
-        keywords_list = kbm.find_keywords(answer)
+        keywords_list = kbm.check_for_keywords(answer)
     if reaction == "thoughts":
         for keyword in keywords_list:
             thought = sm.complete_keywords(answer, keyword)
-            situations[0].add_thought(thought)
+            rate = find_rate(thought)
+            situations[0].add_thought(thought, rate)
     elif reaction == "physical_symptoms":
-        # ask to rate and add to sit with the rating. It can be a couple instead of a string
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)
             rate = find_rate(phy_sym)
@@ -93,21 +90,20 @@ def find_question(situations, reaction):
     if "*" in question:
         if reaction == "thoughts" or reaction == "physical_symptoms":
             question = sm.replace_a_star(question, situations[0].get_situation())
-        elif reaction == "safety_behaviours" or reaction == "self_focus" or reaction == "rating":
-            question = sm.replace_a_star(question, situations[0].get_physical_symptoms()[0])
+        elif reaction == "safety_behaviours" or reaction == "self_focus":
+            phys_symp = situations[0].get_physical_symptoms()[0]  # tuple: (physical symptom, rate)
+            question = sm.replace_a_star(question, phys_symp[0])
             # it takes the first one. Better random?
     return question
 
 
-# same firm of a method in kbm. No buono
 def find_rate(problem):
     question = kbm.find_value("rating")
     if "*" in question:
         question = sm.replace_a_star(question, problem)
     rate_answer = input(question)
-    rate = kbm.find_rate(rate_answer)
+    rate = kbm.check_for_rate(rate_answer)
     while not rate:
         rate_answer = input(kbm.find_value("wrong rating"))
-        rate = kbm.find_rate(rate_answer)
-    print("rate: ", rate)
+        rate = kbm.check_for_rate(rate_answer)
     return rate

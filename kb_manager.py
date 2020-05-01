@@ -9,7 +9,7 @@ def find_value(key):
 
 
 # given a sentence, it finds the keys present in it
-def find_keywords(sentence):
+def check_for_keywords(sentence):
     keywords_list = []
     for keyword in kb.keywords:
         if keyword in sentence:
@@ -18,10 +18,10 @@ def find_keywords(sentence):
 
 
 # given a sentence, it finds the rate present in it
-def find_rate(sentence):
+def check_for_rate(sentence):
     final_rate = None
     for rate in kb.rates:
         if rate in sentence:
             final_rate = rate
-            break
+            break  # in this way if the user writes 9 out of 10 I save 9
     return final_rate
