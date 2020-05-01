@@ -13,6 +13,7 @@ def s1_manager():
     situations = concerns[0].get_situations()
     situations = find_reaction(situations, "thoughts")  # managed only one situation
     situations = find_reaction(situations, "physical_symptoms")
+    #print("rate from situation: ", situations[0].get_physical_symptoms())
 
     #situations = find_reaction(situations, "safety_behaviours")
     #situations = find_reaction(situations, "self_focus")
@@ -70,13 +71,7 @@ def find_reaction(situations, reaction):
         # ask to rate and add to sit with the rating. It can be a couple instead of a string
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)
-            rate_answer = input(find_question_rate(phy_sym))
-            # probably 8.
-            rate = kbm.find_rate(rate_answer)
-            while not rate:
-                rate_answer = input(kbm.find_value("wrong rating"))
-                rate = kbm.find_rate(rate_answer)
-            print("rate: ", rate)
+            rate = find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
@@ -104,8 +99,15 @@ def find_question(situations, reaction):
     return question
 
 
-def find_question_rate(problem):
+# same firm of a method in kbm. No buono
+def find_rate(problem):
     question = kbm.find_value("rating")
     if "*" in question:
         question = sm.replace_a_star(question, problem)
-    return question
+    rate_answer = input(question)
+    rate = kbm.find_rate(rate_answer)
+    while not rate:
+        rate_answer = input(kbm.find_value("wrong rating"))
+        rate = kbm.find_rate(rate_answer)
+    print("rate: ", rate)
+    return rate
