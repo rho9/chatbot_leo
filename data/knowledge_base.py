@@ -2,43 +2,38 @@
 dictionary = {
     "concerns": [# "Are there any situations that you completely avoid?",
                  # "What are the things that you just will not do because of your social anxiety?",
-                 "Is there a context in which you feel inappropriate?",
-                 "If you think about your life, what is it that makes you anxious?"
+                 "Is there a context in which you feel inappropriate?\n",
+                 "If you think about your life, what is it that makes you anxious?\n"
                  ],
-    "situations": ["You said you have some problems with your *.",
-                   "Let's talk about your * concerns."
+    "situations": ["You said you have some problems with your *.\n",
+                   "Let's talk about your * concerns.\n"
                    # "Can you give an example of your * problems?",
                    # "What are the situations that worried you when you are*?"
                    ],
-    #"sound": ["What would be so bad about if you did say something*?"
-    #          ],
-    #"afraid of looking": ["What do you think are the actions that make you look*?"
-    #                      ],
-    "avoided_situations": ["Are there any situations that you completely avoid?",
-                           "What are the things that you just won’t do because of your social anxiety?"
+    "avoided_situations": ["Are there any situations that you completely avoid?\n",
+                           "What are the things that you just won’t do because of your social anxiety?\n"
                            ], # not used because not present in the case study
-    "not_avoided_situations": ["Can you think of a situation in which you experienced social anxiety, but were able to stay in the situation?",
-                               "Can you give an example of a typical situation that you managed to endure?"
+    "not_avoided_situations": ["Can you think of a situation in which you experienced social anxiety, but were able to stay in the situation?\n",
+                               "Can you give an example of a typical situation that you managed to endure?\n"
                                ],
-    "thoughts": ["When you *, what kinds of thoughts do you have?",
-                 "What do you think about when you *?",
-                 "What was going through your mind?",
-                 "In your mind, which was the worst thing that could happen in that situation?"
+    "thoughts": ["When you *, what kinds of thoughts do you have?\n",
+                 "What do you think about when you *?\n",
+                 "What was going through your mind?\n",
+                 "In your mind, which was the worst thing that could happen in that situation?\n"
                  ],
-    "physical_symptoms": ["How does your body feel when you *?",
-                          "Do you usually experience any physical symptoms of anxiety?",
-                          "Do you notice anything like sweating, blushing, trembling?"
+    "physical_symptoms": ["How does your body feel when you *?\n",
+                          "Do you usually experience any physical symptoms of anxiety?\n",
+                          "Do you notice anything like sweating, blushing, trembling?\n"
                           #"How about your heart?"
                           ],
-    "safety_behaviours": [#"Do you usually do anything in the situation to try to prevent your feared consequences from occurring?",
-                          # (use specific feared consequences from patient’s information)
-                          "Did you do anything to try to prevent people from noticing you *?"#,
-                          #"Is there anything you do to try to ensure that you will come across well?",
-                          #"Do you do anything to try to control your symptoms?",
-                          #"Do you do anything to try to avoid drawing attention to yourself?"
+    "safety_behaviours": ["Do you usually do anything in the situation to try to prevent your feared consequences from occurring?\n",
+                          "Did you do anything to try to prevent people from noticing you *?\n",
+                          "Is there anything you do to try to ensure that you will come across well?\n",
+                          "Do you do anything to try to control your symptoms?\n",
+                          "Do you do anything to try to avoid drawing attention to yourself?\n"
                           ],
-    "self_focus": ["When you are afraid to start *, what happens to your attention?",
-                   "If you focus attention on yourself, what do you notice? Do you become more self-conscious?"
+    "self_focus": ["When you are afraid to start *, what happens to your attention?\n",
+                   "If you focus attention on yourself, what do you notice? Do you become more self-conscious?\n"
                    ],
     # "self_image": ["As you focused attention on yourself, do you have an image in your mind of how you are coming across to others?",
                    # "As you focused attention on yourself, what did it look like?",
@@ -47,14 +42,14 @@ dictionary = {
                    # "How does having this image affect you?",
                    # "When you completely avoid situations, is your decision affected by an image like this?"
                    # ],
-    "rating": ["How much will you be * if 10 is like * uncontrollably and 0 is not * at all?",
-               "Okay and how * out of 10 if 10 is incredibly *?",
-               "How much would you say that you believe that out of 10 if 10 is where you believe it totally and 0 is where you don't believe it at all?"
+    "rating": ["How much will you be * if 10 is like * uncontrollably and 0 is not * at all?\n",
+               "Okay and how * out of 10 if 10 is incredibly *?\n",
+               "How much would you say that you believe that out of 10 if 10 is where you believe it totally and 0 is where you don't believe it at all?\n"
                ],
-    "wrong rating": ["Can you use a number from 0 to 10?",
-                     "I'm having some trouble understanding you...Can you please give a number from zero to ten?"],
-    "none": ["Can you be more specific?",
-             "Can you give an example?"
+    "wrong rating": ["Can you use a number from 0 to 10?\n",
+                     "I'm having some trouble understanding you...Can you please give a number from zero to ten?\n"],
+    "none": ["Can you be more specific?\n",
+             "Can you give an example?\n"
              ]
 }
 
