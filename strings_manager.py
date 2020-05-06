@@ -30,14 +30,25 @@ def complete_keywords(sentence, keyword):
     return modified
 
 
-def my_print(speech, flag):
+def my_print_file(file, flag):
     if flag == "slow":
-        lines = speech.readlines()  # problem: it works with file, but sometimes I have strings
+        lines = file.readlines()
         for line in lines:
             for char in line:
                 sys.stdout.write(char)
                 sys.stdout.flush()
-                time.sleep(0.07)
-            print(speech.read())
+                time.sleep(0.01)
+        print("\n")
     else:
-        print(speech.read())
+        print(file.read() + "\n")
+
+
+def my_print_string(sentence, flag):
+    if flag == "slow":
+        for char in sentence:
+            sys.stdout.write(char)
+            sys.stdout.flush()
+            time.sleep(0.07)
+        print()
+    else:
+        print(sentence + "\n")

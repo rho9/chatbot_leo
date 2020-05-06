@@ -10,7 +10,7 @@ def main():
 
 def introduction():
     intro_file = open('data/introduction.txt', "r")
-    sm.my_print(intro_file, FLAG)
+    sm.my_print_file(intro_file, FLAG)
     intro_file.close()
     s1.s1_manager()
 

@@ -7,7 +7,7 @@ FLAG = "fast"
 
 def s1_manager():
     intro_s1_file = open('data/intro_session_one', "r")
-    sm.my_print(intro_s1_file, FLAG)
+    sm.my_print_file(intro_s1_file, FLAG)
     intro_s1_file.close()
     concerns = find_concerns()
     concerns = find_not_avoided_situations(concerns)
@@ -26,6 +26,7 @@ def s1_manager():
 
 
 def find_concerns():
+    sm.my_print_string(kbm.find_value("concerns"), FLAG)
     answer = input(kbm.find_value("concerns"))
     concerns_list = kbm.check_for_keywords(answer)
     while not concerns_list:
