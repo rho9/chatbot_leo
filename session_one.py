@@ -2,11 +2,12 @@ import kb_manager as kbm
 import strings_manager as sm
 from concern import Concern
 from situation import Situation
+FLAG = "fast"
 
 
 def s1_manager():
     intro_s1_file = open('data/intro_session_one', "r")
-    print(intro_s1_file.read())
+    sm.my_print(intro_s1_file, FLAG)
     intro_s1_file.close()
     concerns = find_concerns()
     concerns = find_not_avoided_situations(concerns)
