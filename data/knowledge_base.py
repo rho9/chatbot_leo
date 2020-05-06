@@ -5,8 +5,8 @@ dictionary = {
                  "Is there a context in which you feel inappropriate?\n",
                  "If you think about your life, what is it that makes you anxious?\n"
                  ],
-    "situations": ["You said you have some problems with your *.\n",
-                   "Let's talk about your * concerns.\n"
+    "situations": ["You said you have some problems with your *. ",
+                   "Let's then talk about your * concerns. "
                    # "Can you give an example of your * problems?",
                    # "What are the situations that worried you when you are*?"
                    ],
@@ -18,7 +18,7 @@ dictionary = {
                                ],
     "thoughts": ["When you *, what kinds of thoughts do you have?\n",
                  "What do you think about when you *?\n",
-                 "What was going through your mind?\n",
+                 #"What was going through your mind?\n",
                  "In your mind, which was the worst thing that could happen in that situation?\n"
                  ],
     "physical_symptoms": ["How does your body feel when you *?\n",
@@ -90,3 +90,4 @@ neg_emos = ["affronted", "afraid", "aggravated", "aggressive", "alarmed", "alert
 
 rates = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "zero", "one", "two", "three", "four", "five", "six",
          "seven", "eight", "nine", "ten"]
+# REMEMBER: YOU MUST DOWN SIZE WHAT THE USER WRIGHT BEFORE INTERROGATE THE KB

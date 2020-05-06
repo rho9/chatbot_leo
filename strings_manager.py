@@ -1,4 +1,6 @@
 import string
+import time
+import sys
 
 
 # infer words from user input
@@ -26,3 +28,16 @@ def complete_keywords(sentence, keyword):
     to_add = to_add.split(".")[0]
     modified = keyword + to_add
     return modified
+
+
+def my_print(speech, flag):
+    if flag == "slow":
+        lines = speech.readlines()  # problem: it works with file, but sometimes I have strings
+        for line in lines:
+            for char in line:
+                sys.stdout.write(char)
+                sys.stdout.flush()
+                time.sleep(0.07)
+            print(speech.read())
+    else:
+        print(speech.read())
