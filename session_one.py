@@ -2,7 +2,7 @@ import kb_manager as kbm
 import strings_manager as sm
 from concern import Concern
 from situation import Situation
-FLAG = "fast"
+FLAG = "slow"
 
 
 def s1_manager():
@@ -27,10 +27,11 @@ def s1_manager():
 
 def find_concerns():
     sm.my_print_string(kbm.find_value("concerns"), FLAG)
-    answer = input(kbm.find_value("concerns"))
+    answer = input()
     concerns_list = kbm.check_for_keywords(answer)
     while not concerns_list:
-        answer = input(kbm.find_value("none"))
+        sm.my_print_string(kbm.find_value("none"), FLAG)
+        answer = input()
         concerns_list = kbm.check_for_keywords(answer)
     concerns = []
     for concern in concerns_list:
@@ -41,14 +42,17 @@ def find_concerns():
 def find_not_avoided_situations(concerns):
     # manage only the first concern
     intro_nas_file = open('data/intro_not_avoided_situations.txt', "r")
-    print(intro_nas_file.read())
+    sm.my_print_file(intro_nas_file, FLAG)
     intro_nas_file.close()
     uncompleted_question = kbm.find_value("situations")
-    print(sm.replace_a_star(uncompleted_question, concerns[0].get_concern()))
-    answer = input(kbm.find_value("not_avoided_situations"))
+    question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern())
+    sm.my_print_string(question, FLAG)
+    sm.my_print_string(kbm.find_value("not_avoided_situations"), FLAG)
+    answer = input()
     keywords_list = kbm.check_for_keywords(answer)
     while not keywords_list:
-        answer = input(kbm.find_value("none"))
+        sm.my_print_string(kbm.find_value("none"), FLAG)
+        answer = input()
         keywords_list = kbm.check_for_keywords(answer)
     #print("keywords_list: ", keywords_list)
     for keyword in keywords_list:
@@ -63,10 +67,12 @@ def find_not_avoided_situations(concerns):
 
 def find_reaction(situations, reaction):
     # better: first part in a method + sequential execution without elif
-    answer = input(find_question(situations, reaction))
+    sm.my_print_string(find_question(situations, reaction), FLAG)
+    answer = input()
     keywords_list = kbm.check_for_keywords(answer)
     while not keywords_list:
-        answer = input(kbm.find_value("none"))
+        sm.my_print_string(kbm.find_value("none"), FLAG)
+        answer = input()
         keywords_list = kbm.check_for_keywords(answer)
     if reaction == "thoughts":
         for keyword in keywords_list:
@@ -109,9 +115,12 @@ def find_rate(problem):
     question = kbm.find_value("rating")
     if "*" in question:
         question = sm.replace_a_star(question, problem)
-    rate_answer = input(question)
+        sm.my_print_string(question, FLAG)
+    rate_answer = input()
     rate = kbm.check_for_rate(rate_answer)
     while not rate:
-        rate_answer = input(kbm.find_value("wrong rating"))
+        output = kbm.find_value("wrong rating")
+        sm.my_print_string(output, FLAG)
+        rate_answer = input()
         rate = kbm.check_for_rate(rate_answer)
     return rate

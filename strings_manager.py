@@ -40,7 +40,7 @@ def my_print_file(file, flag):
                 time.sleep(0.01)
         print("\n")
     else:
-        print(file.read() + "\n")
+        print(file.read())
 
 
 def my_print_string(sentence, flag):
@@ -48,7 +48,7 @@ def my_print_string(sentence, flag):
         for char in sentence:
             sys.stdout.write(char)
             sys.stdout.flush()
-            time.sleep(0.07)
+            time.sleep(0.09)
         print()
     else:
-        print(sentence + "\n")
+        print(sentence)
