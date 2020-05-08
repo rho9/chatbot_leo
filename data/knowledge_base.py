@@ -23,8 +23,8 @@ dictionary = {
                  ],
     "physical_symptoms": ["How does your body feel when you *?",
                           "Do you usually experience any physical symptoms of anxiety?",
-                          "Do you notice anything like sweating, blushing, trembling?"
-                          #"How about your heart?"
+                          "Do you notice anything like sweating, blushing, trembling?",
+                          "Can you describe yourself? How do you think you look when you're in these situations?"
                           ],
     "safety_behaviours": ["Do you usually do anything in the situation to try to prevent your feared consequences from occurring?",
                           "Did you do anything to try to prevent people from noticing you *?",
@@ -47,7 +47,12 @@ dictionary = {
                "How much would you say that you believe that out of 10 if 10 is where you believe it totally and 0 is where you don't believe it at all?"
                ],
     "wrong rating": ["Can you use a number from 0 to 10?",
-                     "I'm having some trouble understanding you...Can you please give a number from zero to ten?"],
+                     "I'm having some trouble understanding you...Can you please give a number from zero to ten?"
+                     ],
+    "ask_for_more_ph_sym": ["How about your heart?",
+                            "Are there any other things that you usually do?",
+                            "Is there anything else that you do to manage these problems?"
+                            ],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]
