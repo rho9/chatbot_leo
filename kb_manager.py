@@ -21,7 +21,7 @@ def check_for_keywords(sentence):
 def check_for_rate(sentence):
     final_rate = None
     for rate in kb.rates:
-        if rate in sentence:
+        if rate in sentence.lower():
             final_rate = rate
-            break  # in this way if the user writes 9 out of 10 I save 9
+            break  # in this way if the user writes 9 out of 10, I save 9
     return final_rate

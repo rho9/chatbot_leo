@@ -25,6 +25,7 @@ dictionary = {
                           "Do you usually experience any physical symptoms of anxiety?",
                           "Do you notice anything like sweating, blushing, trembling?",
                           "Can you describe yourself? How do you think you look when you're in these situations?"
+                          # "How about your heart?"
                           ],
     "safety_behaviours": ["Do you usually do anything in the situation to try to prevent your feared consequences from occurring?",
                           "Did you do anything to try to prevent people from noticing you *?",
@@ -49,9 +50,10 @@ dictionary = {
     "wrong rating": ["Can you use a number from 0 to 10?",
                      "I'm having some trouble understanding you...Can you please give a number from zero to ten?"
                      ],
-    "ask_for_more_ph_sym": ["How about your heart?",
-                            "Are there any other things that you usually do?",
-                            "Is there anything else that you do to manage these problems?"
+    "ask_for_more_ph_sym": ["Are there any other things that you usually do?",
+                            "Is there anything else that you do to manage these situations?",
+                            "Do you do anything else?",
+                            "Do you do something else besides *?"
                             ],
     "none": ["Can you be more specific?",
              "Can you give an example?"
