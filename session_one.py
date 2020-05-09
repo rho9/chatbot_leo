@@ -81,39 +81,22 @@ def find_reaction(situations, reaction):
             situations[0].add_thought(thought, rate)
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
-            #ora faccio una domanda sola
-            # io ho bisogno di farne di più
-            # per ora pensa solo a questo, poi vediamo come espanderci
-            # un loop finchè non mi dice basta?
-            # un numero random tra 1 e n?
-            # andrei con il basta
-            # userei una nuova entry nel dizionario "ask_more"
-            # ogni volta devi aggiungere alla lista latrimenti non puoi usare cosa ti ha appena detto
-            # nelle domande dopo
             # usare una "do you.." + cosa c'è in kb, ma non nella lista?
             phy_sym = sm.complete_keywords(answer, keyword)
-            print("gnap0")
             rate = find_rate(phy_sym)
-            print("ganp1")
             situations[0].add_physical_symptom(phy_sym, rate)
             # ask for more physical symptoms
-            while True:
-                sm.my_print_string(find_question(situations, "ask_for_more_ph_sym"), FLAG)
+            while "no" not in answer:
+                question = find_question(situations, "ask_for_more_ph_sym")
+                sm.my_print_string(question, FLAG)
                 answer = input()
-                if "no" in answer:
-                    print("I found no")
-                    break
                 keywords_list = kbm.check_for_keywords(answer)
                 for keyword in keywords_list:
-                    print("I keep going on")
                     phy_sym = sm.complete_keywords(answer, keyword)
                     rate = find_rate(phy_sym)
                     situations[0].add_physical_symptom(phy_sym, rate)
-            # prendo un valore a caso da kbm.find_value
-            # faccio la domanda
-            # prendo la risposta
-            # è un no -> esco dal while
-            # altrimetni la inserisco nella giusta lista di situation
+                    # se la domanda ha *, dobbiamo sostituirlo con l'ultimo phys_sym di situations
+                    # replace_a_star(sentence, replacement):
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
@@ -134,6 +117,10 @@ def find_question(situations, reaction):
     if "*" in question:
         if reaction == "thoughts" or reaction == "physical_symptoms":
             question = sm.replace_a_star(question, situations[0].get_situation())
+        if reaction == "ask_for_more_ph_sym":
+            index_last_phys_sym = len(situations[0].get_physical_symptoms()) - 1
+            phys_symp = situations[0].get_physical_symptoms()[index_last_phys_sym]  # tuple: (physical symptom, rate)
+            question = sm.replace_a_star(question, phys_symp[0])
         elif reaction == "safety_behaviours" or reaction == "self_focus":
             phys_symp = situations[0].get_physical_symptoms()[0]  # tuple: (physical symptom, rate)
             question = sm.replace_a_star(question, phys_symp[0])
