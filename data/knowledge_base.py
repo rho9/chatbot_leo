@@ -50,7 +50,7 @@ dictionary = {
     "wrong rating": ["Can you use a number from 0 to 10?",
                      "I'm having some trouble understanding you...Can you please give a number from zero to ten?"
                      ],
-    "ask_for_more_ph_sym": ["Are there any other things that you usually do?",
+    "more_ph_sym": ["Are there any other things that you usually do?",
                             "Is there anything else that you do to manage these situations?",
                             "Do you do anything else?",
                             "Do you do something else besides *?"

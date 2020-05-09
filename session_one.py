@@ -87,7 +87,7 @@ def find_reaction(situations, reaction):
             situations[0].add_physical_symptom(phy_sym, rate)
             # ask for more physical symptoms
             while "no" not in answer:
-                question = find_question(situations, "ask_for_more_ph_sym")
+                question = find_question(situations, "more_ph_sym")
                 sm.my_print_string(question, FLAG)
                 answer = input()
                 keywords_list = kbm.check_for_keywords(answer)
@@ -117,12 +117,9 @@ def find_question(situations, reaction):
     if "*" in question:
         if reaction == "thoughts" or reaction == "physical_symptoms":
             question = sm.replace_a_star(question, situations[0].get_situation())
-        if reaction == "ask_for_more_ph_sym":
-            index_last_phys_sym = len(situations[0].get_physical_symptoms()) - 1
-            phys_symp = situations[0].get_physical_symptoms()[index_last_phys_sym]  # tuple: (physical symptom, rate)
-            question = sm.replace_a_star(question, phys_symp[0])
-        elif reaction == "safety_behaviours" or reaction == "self_focus":
-            phys_symp = situations[0].get_physical_symptoms()[0]  # tuple: (physical symptom, rate)
+        elif reaction == "safety_behaviours" or reaction == "self_focus" or reaction == "more_ph_sym":
+            index_last_elem = len(situations[0].get_physical_symptoms()) - 1
+            phys_symp = situations[0].get_physical_symptoms()[index_last_elem]  # tuple: (physical symptom, rate)
             question = sm.replace_a_star(question, phys_symp[0])
             # it takes the first one. Better random?
     return question
