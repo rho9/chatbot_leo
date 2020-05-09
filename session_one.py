@@ -138,3 +138,13 @@ def find_rate(problem):
         rate_answer = input()
         rate = kbm.check_for_rate(rate_answer)
     return rate
+
+
+def ask_more():
+    print("to be implemented")
+    # un numero randomico di volte chiamo find_reaction
+    # se la reaction è physical symptoms, allora chiami find_reaction e basta
+    # altrimenti prendi un numero casuale tra 1 e 3 e chiami find_reaction quel numero di volte
+    # ma così chiedi sempre come se fosse la prima volta. SBAGLIATO. il tipo di domanda cambia
+    # se chiamo questo metodo tot volte da find_reaction? quindi qui gestisco la chiamata alle domande
+    # "ask for more". può funzionare
