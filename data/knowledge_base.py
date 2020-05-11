@@ -50,11 +50,11 @@ dictionary = {
     "wrong rating": ["Can you use a number from 0 to 10?",
                      "I'm having some trouble understanding you...Can you please give a number from zero to ten?"
                      ],
-    "more_ph_sym": ["Are there any other things that you usually do?",
-                            "Is there anything else that you do to manage these situations?",
-                            "Do you do anything else?",
-                            "Do you do something else besides *?"
-                            ],
+    "more": [#"Are there any other things that happens?",
+             #"Is there anything else that you do to manage these situations?",
+             #"Do you do anything else?",
+             "Do you do something else besides *?"
+             ],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]
@@ -65,8 +65,8 @@ keywords = ["work", "family", "university",  # concerns
             "have to",  # situations
             "worried",  # thoughts
             "sweating", "blushing", "going red", "trembling", "shaking",  # physical_symptoms
-            "eye contact", "hold tightly",  # safety_behaviours
-            "stop being lucid",  # self_focus
+            "avoid eye contact", "hold tightly", "firm"  # safety_behaviours
+            "stop being lucid", "lose concentration", "can't think"  # self_focus
             "self_image123",  # self_image
             ]
 
