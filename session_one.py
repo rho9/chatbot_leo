@@ -81,22 +81,10 @@ def find_reaction(situations, reaction):
             situations[0].add_thought(thought, rate)
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
-            # usare una "do you.." + cosa c'è in kb, ma non nella lista?
             phy_sym = sm.complete_keywords(answer, keyword)
             rate = find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
-            # ask for more physical symptoms
-            while "no" not in answer:
-                question = find_question(situations, "more_ph_sym")
-                sm.my_print_string(question, FLAG)
-                answer = input()
-                keywords_list = kbm.check_for_keywords(answer)
-                for keyword in keywords_list:
-                    phy_sym = sm.complete_keywords(answer, keyword)
-                    rate = find_rate(phy_sym)
-                    situations[0].add_physical_symptom(phy_sym, rate)
-                    # se la domanda ha *, dobbiamo sostituirlo con l'ultimo phys_sym di situations
-                    # replace_a_star(sentence, replacement):
+            ask_more(situations, answer)  # un numero randomico di volte
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
@@ -125,7 +113,7 @@ def find_question(situations, reaction):
     return question
 
 
-def find_rate(problem):
+def find_rate(problem):  # salvare l'intero così da poter fare il confronto?
     question = kbm.find_value("rating")
     if "*" in question:
         question = sm.replace_a_star(question, problem)
@@ -140,7 +128,7 @@ def find_rate(problem):
     return rate
 
 
-def ask_more():
+def ask_more(situations, answer):
     print("to be implemented")
     # un numero randomico di volte chiamo find_reaction
     # se la reaction è physical symptoms, allora chiami find_reaction e basta
@@ -148,3 +136,19 @@ def ask_more():
     # ma così chiedi sempre come se fosse la prima volta. SBAGLIATO. il tipo di domanda cambia
     # se chiamo questo metodo tot volte da find_reaction? quindi qui gestisco la chiamata alle domande
     # "ask for more". può funzionare
+    # alternare questo metodo ad uno con "do you.." + cosa c'è in kb, ma non nella lista?
+    # chiediamo per più physical symptoms da qua
+    # ask for more physical symptoms
+    while "no" not in answer:
+        question = find_question(situations, "more_ph_sym")
+        sm.my_print_string(question, FLAG)
+        answer = input()
+        keywords_list = kbm.check_for_keywords(answer)
+        while not keywords_list and "no" not in answer:
+            sm.my_print_string(kbm.find_value("none"), FLAG)
+            answer = input()
+            keywords_list = kbm.check_for_keywords(answer)
+        for keyword in keywords_list:
+            phy_sym = sm.complete_keywords(answer, keyword)
+            rate = find_rate(phy_sym)
+            situations[0].add_physical_symptom(phy_sym, rate)
