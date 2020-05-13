@@ -65,8 +65,8 @@ keywords = ["work", "family", "university",  # concerns
             "have to",  # situations
             "worried",  # thoughts
             "sweating", "blushing", "going red", "trembling", "shaking",  # physical_symptoms
-            "avoid eye contact", "hold tightly", "firm"  # safety_behaviours
-            "stop being lucid", "lose concentration", "can't think"  # self_focus
+            "avoid eye contact", "hold tightly", "firm",  # safety_behaviours
+            "stop being lucid", "lose concentration", "can't think",  # self_focus
             "self_image123",  # self_image
             ]
 

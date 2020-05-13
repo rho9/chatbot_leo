@@ -92,7 +92,9 @@ def find_reaction(situations, reaction):
             situations[0].add_safety_behaviour(safe_behav)
             # i = random.randrange(1, 3)
             for i in range(random.randrange(2, 3)):
-                ask_more(situations, answer, "more_safe_behav")  # un numero randomico di volte
+                ask_more(situations, answer, "more_safe_behav")
+                # BUG: quando torno qui answer è quella che avevo in questo metodo,
+                # non il no che avevo scritto in "ask_more" -> richiede la domanda
     elif reaction == "self_focus":
         for keyword in keywords_list:
             self_focus = sm.complete_keywords(answer, keyword)
@@ -147,7 +149,7 @@ def find_rate(problem):  # salvare l'intero così da poter fare il confronto?
 # alternare questo metodo ad uno con "do you.." + cosa c'è in kb, ma non nella lista?
 def ask_more(situations, answer, reaction):
     if reaction == "more_ph_sym":
-        while "no" not in answer:
+        while "no" not in answer:  # method: ask_until? NO. meglio un metodo solo: il primo lo chiami in loop, il seconfo con l'if
             question = find_question(situations, "more", "phy_sym")
             sm.my_print_string(question, FLAG)
             answer = input()
@@ -161,7 +163,7 @@ def ask_more(situations, answer, reaction):
                 rate = find_rate(phy_sym)
                 situations[0].add_physical_symptom(phy_sym, rate)
     # passo dal while all'if e cambio lista in cui aggiungo cosa ho trovato..basta..
-    elif reaction == "more_safe_behav":
+    elif reaction == "more_safe_behav":  # method: ask e basta?
         if "no" not in answer:
             question = find_question(situations, "more", "safe_behav")
             sm.my_print_string(question, FLAG)
