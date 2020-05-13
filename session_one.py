@@ -166,3 +166,12 @@ def ask_more(situations, reaction):
             safe_behav = sm.complete_keywords(answer, keyword)
             situations[0].add_safety_behaviour(safe_behav)
     return answer
+
+
+# it checks if the user has already inserted the reaction
+# if this is true, it ask the user to answer something else
+def check_already_said(answer):
+    if answer:
+        print("Ehy..you already said it")
+    else:
+        print("Okay, let's move on")
