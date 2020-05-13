@@ -60,7 +60,9 @@ dictionary = {
              ]
 }
 
-# have I to divide it in concerns, situations, ...?
+# Have I to divide it in concerns, situations, ...?
+# Is it better to analyze what is after verbs or something like that?
+# In this way you don't have to write a huge dictionary
 keywords = ["work", "family", "university",  # concerns
             "have to",  # situations
             "worried",  # thoughts

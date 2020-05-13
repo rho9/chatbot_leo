@@ -86,7 +86,7 @@ def find_reaction(situations, reaction):
             rate = find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
             while "no" not in answer:
-                answer = ask_more(situations, answer, "more_ph_sym")
+                answer = ask_more(situations, "phy_sym")
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
@@ -94,7 +94,7 @@ def find_reaction(situations, reaction):
             # i = random.randrange(1, 3)
             for i in range(random.randrange(2, 3)):
                 if "no" not in answer:
-                    answer = ask_more(situations, answer, "more_safe_behav")
+                    answer = ask_more(situations, "safe_behav")
                 # BUG: quando torno qui answer è quella che avevo in questo metodo,
                 # non il no che avevo scritto in "ask_more" -> richiede la domanda
     elif reaction == "self_focus":
@@ -149,32 +149,23 @@ def find_rate(problem):  # salvare l'intero così da poter fare il confronto?
 
 # NON DEVI ACCETTARE I DOPPIONI
 # alternare questo metodo ad uno con "do you.." + cosa c'è in kb, ma non nella lista?
-def ask_more(situations, reaction):
-    if reaction == "more_ph_sym": # method: ask_until? NO. meglio un metodo solo: il primo lo chiami in loop, il seconfo con l'if
-        question = find_question(situations, "more", "phy_sym")  # DIVERSO
-        sm.my_print_string(question, FLAG)
+def ask_more(situations, reaction): # CAMBIA REACTION IN WHAT "FIND_QUESTION" WANTS
+    question = find_question(situations, "more", reaction)  # DIVERSO
+    sm.my_print_string(question, FLAG)
+    answer = input()
+    keywords_list = kbm.check_for_keywords(answer)
+    while not keywords_list and "no" not in answer:
+        sm.my_print_string(kbm.find_value("none"), FLAG)
         answer = input()
         keywords_list = kbm.check_for_keywords(answer)
-        while not keywords_list and "no" not in answer:
-            sm.my_print_string(kbm.find_value("none"), FLAG)
-            answer = input()
-            keywords_list = kbm.check_for_keywords(answer)
+    if reaction == "phy_sym": # method: ask_until? NO. meglio un metodo solo: il primo lo chiami in loop, il seconfo con l'if
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)
             rate = find_rate(phy_sym)  # SOTTO NON C'è
             situations[0].add_physical_symptom(phy_sym, rate)  # DIVERSO
-        return answer
     # passo dal while all'if e cambio lista in cui aggiungo cosa ho trovato..basta..
-    elif reaction == "more_safe_behav":  # method: ask e basta?
-        question = find_question(situations, "more", "safe_behav")
-        sm.my_print_string(question, FLAG)
-        answer = input()
-        keywords_list = kbm.check_for_keywords(answer)
-        while not keywords_list and "no" not in answer:
-            sm.my_print_string(kbm.find_value("none"), FLAG)
-            answer = input()
-            keywords_list = kbm.check_for_keywords(answer)
+    elif reaction == "safe_behav":  # method: ask e basta?
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
             situations[0].add_safety_behaviour(safe_behav)
-        return answer
+    return answer
