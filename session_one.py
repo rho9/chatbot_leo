@@ -18,6 +18,10 @@ def s1_manager():
     situations = find_reaction(situations, "safety_behaviours")
     situations = find_reaction(situations, "self_focus")
     # situations = find_reaction(situations, "self_image")
+    print_db(concerns, situations)
+
+
+def print_db(concerns, situations):
     print("Concern: ", concerns[0].get_concern())
     print("Situation: ", situations[0].get_situation())
     print("Thought: ", situations[0].get_thoughts())
@@ -71,7 +75,7 @@ def find_reaction(situations, reaction):
     sm.my_print_string(find_question(situations, reaction, None), FLAG)
     answer = input()
     keywords_list = kbm.check_for_keywords(answer)
-    while not keywords_list: # and no not in answer
+    while not keywords_list:
         sm.my_print_string(kbm.find_value("none"), FLAG)
         answer = input()
         keywords_list = kbm.check_for_keywords(answer)
@@ -91,12 +95,9 @@ def find_reaction(situations, reaction):
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
             situations[0].add_safety_behaviour(safe_behav)
-            # i = random.randrange(1, 3)
-            for i in range(random.randrange(2, 3)):
+            for i in range(random.randrange(1, 3)):
                 if "no" not in answer:
                     answer = ask_more(situations, "safe_behav")
-                # BUG: quando torno qui answer è quella che avevo in questo metodo,
-                # non il no che avevo scritto in "ask_more" -> richiede la domanda
     elif reaction == "self_focus":
         for keyword in keywords_list:
             self_focus = sm.complete_keywords(answer, keyword)
@@ -109,9 +110,6 @@ def find_reaction(situations, reaction):
 
 
 def find_question(situations, key, reaction):
-    # PROBLEMA. Quando arrivo da ask_more() la reaction (la key di domanda) è la stessa,
-    # ma se arrivo dai sintomi devo fare una cosa, se arrivo dai comportamenti un'altra e così via
-    # devo aggiungere un campo in più? differenziare key da reaction?
     question = kbm.find_value(key)
     if "*" in question:
         if key == "thoughts" or key == "physical_symptoms":
@@ -149,8 +147,8 @@ def find_rate(problem):  # salvare l'intero così da poter fare il confronto?
 
 # NON DEVI ACCETTARE I DOPPIONI
 # alternare questo metodo ad uno con "do you.." + cosa c'è in kb, ma non nella lista?
-def ask_more(situations, reaction): # CAMBIA REACTION IN WHAT "FIND_QUESTION" WANTS
-    question = find_question(situations, "more", reaction)  # DIVERSO
+def ask_more(situations, reaction):
+    question = find_question(situations, "more", reaction)
     sm.my_print_string(question, FLAG)
     answer = input()
     keywords_list = kbm.check_for_keywords(answer)
@@ -158,13 +156,12 @@ def ask_more(situations, reaction): # CAMBIA REACTION IN WHAT "FIND_QUESTION" WA
         sm.my_print_string(kbm.find_value("none"), FLAG)
         answer = input()
         keywords_list = kbm.check_for_keywords(answer)
-    if reaction == "phy_sym": # method: ask_until? NO. meglio un metodo solo: il primo lo chiami in loop, il seconfo con l'if
+    if reaction == "phy_sym":
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)
-            rate = find_rate(phy_sym)  # SOTTO NON C'è
-            situations[0].add_physical_symptom(phy_sym, rate)  # DIVERSO
-    # passo dal while all'if e cambio lista in cui aggiungo cosa ho trovato..basta..
-    elif reaction == "safe_behav":  # method: ask e basta?
+            rate = find_rate(phy_sym)
+            situations[0].add_physical_symptom(phy_sym, rate)
+    elif reaction == "safe_behav":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
             situations[0].add_safety_behaviour(safe_behav)
