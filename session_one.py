@@ -86,11 +86,18 @@ def find_reaction(situations, reaction):
             situations[0].add_thought(thought, rate)
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
-            phy_sym = sm.complete_keywords(answer, keyword)
-            rate = find_rate(phy_sym)
-            situations[0].add_physical_symptom(phy_sym, rate)
-            while "no" not in answer:
-                answer = ask_more(situations, "phy_sym")
+            phy_sym = sm.complete_keywords(answer, keyword)  # ma serve?
+            # phy_sym è già in situations[0].get_physical_symptoms()?
+            # no -> vado avanti come se nulla fosse
+            # sì -> lo "ammonisco" e passo alla domanda successiva -> interrompo find_reaction()
+            if phy_sym in situations[0].get_physical_symptoms():
+                break
+            else:
+                #check_already_said(phy_sym, situations[0].get_physical_symptoms())
+                rate = find_rate(phy_sym)
+                situations[0].add_physical_symptom(phy_sym, rate)
+                while "no" not in answer:
+                    answer = ask_more(situations, "phy_sym")
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
@@ -170,8 +177,10 @@ def ask_more(situations, reaction):
 
 # it checks if the user has already inserted the reaction
 # if this is true, it ask the user to answer something else
-def check_already_said(answer):
-    if answer:
+# maybe it's better to create a method that add and adding it checks -> (elem, list)
+def check_already_said(elem, list):
+    while elem in list:
         print("Ehy..you already said it")
-    else:
-        print("Okay, let's move on")
+    print("Okay, I'll add it")
+# non mi piace. meglio aggiungere da sopra ocme prima, ma solo dopo che questo ci ha dato l'ok per farlo
+# (come quando controlli che ci sia almeno una chiave nella ripsota)
