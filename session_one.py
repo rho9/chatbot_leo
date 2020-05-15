@@ -121,10 +121,10 @@ def find_question(situations, key, reaction):
     return question
 
 
-def find_rate(problem):  # salvare l'intero così da poter fare il confronto?
+def find_rate(reaction):  # salvare l'intero così da poter fare il confronto?
     question = kbm.find_value("rating")
     if "*" in question:
-        question = sm.replace_a_star(question, problem)
+        question = sm.replace_a_star(question, reaction)
     sm.my_print_string(question, FLAG)
     rate_answer = input()
     rate = kbm.check_for_rate(rate_answer)
