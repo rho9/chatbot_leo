@@ -24,7 +24,7 @@ def s1_manager():
 def print_db(concerns, situations):
     print("Concern: ", concerns[0].get_concern())
     print("Situation: ", situations[0].get_situation())
-    print("Thought: ", situations[0].get_thoughts())
+    print("Thought: ", situations[0].get_thought_tuples())
     print("Physical symptoms: ", situations[0].get_phy_sym_tuples())
     print("Safety behaviours: ", situations[0].get_safety_behaviours())
     print("Self focus: ", situations[0].get_self_focus())
@@ -95,7 +95,7 @@ def find_reaction(situations, reaction):
             safe_behav = sm.complete_keywords(answer, keyword)
             situations[0].add_safety_behaviour(safe_behav)
             for i in range(random.randrange(1, 3)):
-                if "no" not in answer:
+                if answer and "no" not in answer:
                     answer = ask_more(situations, "safe_behav")
     elif reaction == "self_focus":
         for keyword in keywords_list:
@@ -160,11 +160,17 @@ def ask_more(situations, reaction):
             # if the physical symptom is already in the list,
             # it goes to the next question without saving the physical symptom
             if phy_sym in situations[0].get_physical_symptoms():
+                print("You already said it. Let's move on")
                 return None
             rate = find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
     elif reaction == "safe_behav":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
+            # if the safe behaviour is already in the list,
+            # it goes to the next question without saving the safe behaviour
+            if safe_behav in situations[0].get_safety_behaviours():
+                print("You already said it. Let's move on")
+                return None
             situations[0].add_safety_behaviour(safe_behav)
     return answer
