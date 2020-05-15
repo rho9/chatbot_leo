@@ -25,7 +25,7 @@ def print_db(concerns, situations):
     print("Concern: ", concerns[0].get_concern())
     print("Situation: ", situations[0].get_situation())
     print("Thought: ", situations[0].get_thoughts())
-    print("Physical symptoms: ", situations[0].get_physical_symptoms())
+    print("Physical symptoms: ", situations[0].get_phy_sym_tuples())
     print("Safety behaviours: ", situations[0].get_safety_behaviours())
     print("Self focus: ", situations[0].get_self_focus())
 
@@ -59,7 +59,6 @@ def find_not_avoided_situations(concerns):
         sm.my_print_string(kbm.find_value("none"), FLAG)
         answer = input()
         keywords_list = kbm.check_for_keywords(answer)
-    #print("keywords_list: ", keywords_list)
     for keyword in keywords_list:
         situation = sm.complete_keywords(answer, keyword)
         concerns[0].add_situation(Situation(situation))
@@ -87,17 +86,10 @@ def find_reaction(situations, reaction):
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)  # ma serve?
-            # phy_sym è già in situations[0].get_physical_symptoms()?
-            # no -> vado avanti come se nulla fosse
-            # sì -> lo "ammonisco" e passo alla domanda successiva -> interrompo find_reaction()
-            if phy_sym in situations[0].get_physical_symptoms():
-                break
-            else:
-                #check_already_said(phy_sym, situations[0].get_physical_symptoms())
-                rate = find_rate(phy_sym)
-                situations[0].add_physical_symptom(phy_sym, rate)
-                while "no" not in answer:
-                    answer = ask_more(situations, "phy_sym")
+            rate = find_rate(phy_sym)
+            situations[0].add_physical_symptom(phy_sym, rate)
+            while answer and "no" not in answer:
+                answer = ask_more(situations, "phy_sym")
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
@@ -122,14 +114,14 @@ def find_question(situations, key, reaction):
         if key == "thoughts" or key == "physical_symptoms":
             question = sm.replace_a_star(question, situations[0].get_situation())
         elif key == "safety_behaviours" or key == "self_focus":
-            phys_symp = situations[0].get_physical_symptoms()[0]  # tuple: (physical symptom, rate)
-            question = sm.replace_a_star(question, phys_symp[0])
+            phy_sym_list = situations[0].get_physical_symptoms()
+            question = sm.replace_a_star(question, phy_sym_list[0])
             # it takes the first one. Better random?
         elif key == "more":
             if reaction == "phy_sym":
                 index_last_elem = len(situations[0].get_physical_symptoms()) - 1
-                phys_symp = situations[0].get_physical_symptoms()[index_last_elem]  # tuple: (physical symptom, rate)
-                question = sm.replace_a_star(question, phys_symp[0])
+                phy_sym_list = situations[0].get_physical_symptoms()[index_last_elem]
+                question = sm.replace_a_star(question, phy_sym_list)
             elif reaction == "safe_behav":
                 index_last_elem = len(situations[0].get_safety_behaviours()) - 1
                 safe_behav = situations[0].get_safety_behaviours()[index_last_elem]
@@ -152,7 +144,6 @@ def find_rate(problem):  # salvare l'intero così da poter fare il confronto?
     return rate
 
 
-# NON DEVI ACCETTARE I DOPPIONI
 # alternare questo metodo ad uno con "do you.." + cosa c'è in kb, ma non nella lista?
 def ask_more(situations, reaction):
     question = find_question(situations, "more", reaction)
@@ -166,6 +157,10 @@ def ask_more(situations, reaction):
     if reaction == "phy_sym":
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(answer, keyword)
+            # if the physical symptom is already in the list,
+            # it goes to the next question without saving the physical symptom
+            if phy_sym in situations[0].get_physical_symptoms():
+                return None
             rate = find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
     elif reaction == "safe_behav":
@@ -173,14 +168,3 @@ def ask_more(situations, reaction):
             safe_behav = sm.complete_keywords(answer, keyword)
             situations[0].add_safety_behaviour(safe_behav)
     return answer
-
-
-# it checks if the user has already inserted the reaction
-# if this is true, it ask the user to answer something else
-# maybe it's better to create a method that add and adding it checks -> (elem, list)
-def check_already_said(elem, list):
-    while elem in list:
-        print("Ehy..you already said it")
-    print("Okay, I'll add it")
-# non mi piace. meglio aggiungere da sopra ocme prima, ma solo dopo che questo ci ha dato l'ok per farlo
-# (come quando controlli che ci sia almeno una chiave nella ripsota)

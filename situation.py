@@ -4,7 +4,7 @@ class Situation:
         self.situation = situation
         self.avoided = None
         self.thoughts = []
-        self.physical_symptoms = []
+        self.phy_sym_tuple = []
         self.safety_behaviour = []
         self.self_focus = []
         self.self_image = []
@@ -19,10 +19,16 @@ class Situation:
         return self.thoughts
 
     def add_physical_symptom(self, phy_sym, rate):
-        self.physical_symptoms.append((phy_sym, rate))
+        self.phy_sym_tuple.append((phy_sym, rate))
 
     def get_physical_symptoms(self):
-        return self.physical_symptoms
+        phy_sym_list = []
+        for item in self.phy_sym_tuple:
+            phy_sym_list.append(item[0])
+        return phy_sym_list
+
+    def get_phy_sym_tuples(self):
+        return self.phy_sym_tuple
 
     def add_safety_behaviour(self, safe_behav):
         self.safety_behaviour.append(safe_behav)
