@@ -33,3 +33,5 @@ Context:
 * Add Socratic sentences
 * Learn and use proper names
 * Give space to question and implement how to answer
+
+## Bug

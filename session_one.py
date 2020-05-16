@@ -35,7 +35,7 @@ def print_db(concerns, situations):
 def find_concerns():
     sm.my_print_string(kbm.find_value("concerns"), FLAG)
     answer = input()
-    concerns_list = analyze_answer(answer)
+    new_answer, concerns_list = analyze_answer(answer)
     concerns = []
     for concern in concerns_list:
         concerns.append(Concern(concern))
@@ -54,10 +54,11 @@ def find_not_avoided_situations(concerns):
     sm.my_print_string(question, FLAG)
     sm.my_print_string(kbm.find_value("not_avoided_situations"), FLAG)
     answer = input()
-    keywords_list = analyze_answer(answer)
+    new_answer, keywords_list = analyze_answer(answer)
     for keyword in keywords_list:
-        situation = sm.complete_keywords(answer, keyword)
+        situation = sm.complete_keywords(new_answer, keyword)
         concerns[0].add_situation(Situation(situation))
+    recap()
     return concerns
     # socratic answers
     #replacement = answer.split(keys_list[0])[1]
@@ -69,34 +70,37 @@ def find_reaction(situations, reaction):
     # better: first part in a method + sequential execution without elif
     sm.my_print_string(find_question(situations, reaction, None), FLAG)
     answer = input()
-    keywords_list = analyze_answer(answer)
+    new_answer, keywords_list = analyze_answer(answer)
     if reaction == "thoughts":
         for keyword in keywords_list:
-            thought = sm.complete_keywords(answer, keyword)
+            thought = sm.complete_keywords(new_answer, keyword)
             rate = find_rate(thought)
             situations[0].add_thought(thought, rate)
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
-            phy_sym = sm.complete_keywords(answer, keyword)  # ma serve?
+            phy_sym = sm.complete_keywords(new_answer, keyword)  # ma serve?
             rate = find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
-            while answer and "no" not in answer:
-                answer = ask_more(situations, "phy_sym")
+            while new_answer and "no" not in new_answer:
+                recap()
+                new_answer = ask_more(situations, "phy_sym")
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
-            safe_behav = sm.complete_keywords(answer, keyword)
+            safe_behav = sm.complete_keywords(new_answer, keyword)
             situations[0].add_safety_behaviour(safe_behav)
             for i in range(random.randrange(1, 3)):
-                if answer and "no" not in answer:
-                    answer = ask_more(situations, "safe_behav")
+                if new_answer and "no" not in new_answer:
+                    recap()
+                    new_answer = ask_more(situations, "safe_behav")
     elif reaction == "self_focus":
         for keyword in keywords_list:
-            self_focus = sm.complete_keywords(answer, keyword)
+            self_focus = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_focus(self_focus)
     elif reaction == "self_image":
         for keyword in keywords_list:
-            self_image = sm.complete_keywords(answer, keyword)
+            self_image = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_image(self_image)
+    recap()
     return situations
 
 
@@ -144,7 +148,7 @@ def analyze_answer(answer):
         sm.my_print_string(kbm.find_value("none"), FLAG)
         answer = input()
         keywords = kbm.check_for_keywords(answer)
-    return keywords
+    return answer, keywords
 
 
 # alternare questo metodo ad uno con "do you.." + cosa c'è in kb, ma non nella lista?
@@ -176,4 +180,21 @@ def ask_more(situations, reaction):
                 print("You already said it. Let's move on")
                 return None
             situations[0].add_safety_behaviour(safe_behav)
+    #recap()
     return answer
+
+
+# creo un metodo per ripetere cosa ha detto l'utente prima di fare la domanda
+# decidere:
+# - da chi viene chiamato
+# - il nome
+# - se farlo tutte le volte (mi sembra troppo) o random
+# - se serve creare una chiave nel dizionario
+# - cosa fa
+# - se creare la risposta con più parti: okay/I see/... + hai detto che
+def recap():
+    make_summary = 1  #random.randrange(0, 1)
+    if make_summary == 1:
+        print("Dico qualcosa che hai appena detto tu")
+    else:
+        print("Non dico niente e faccio come al solito")
