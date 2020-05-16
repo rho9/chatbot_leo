@@ -76,6 +76,7 @@ def find_reaction(situations, reaction):
             thought = sm.complete_keywords(new_answer, keyword)
             rate = find_rate(thought)
             situations[0].add_thought(thought, rate)
+            recap()
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(new_answer, keyword)  # ma serve?
@@ -96,11 +97,13 @@ def find_reaction(situations, reaction):
         for keyword in keywords_list:
             self_focus = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_focus(self_focus)
+            recap()
     elif reaction == "self_image":
         for keyword in keywords_list:
             self_image = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_image(self_image)
-    recap()
+            recap()
+    # recap()
     return situations
 
 
@@ -192,6 +195,7 @@ def ask_more(situations, reaction):
 # - se serve creare una chiave nel dizionario
 # - cosa fa
 # - se creare la risposta con più parti: okay/I see/... + hai detto che
+# - dopo "no" puoi ricapitolarli tutti
 def recap():
     make_summary = 1  #random.randrange(0, 1)
     if make_summary == 1:
