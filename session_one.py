@@ -103,7 +103,6 @@ def find_reaction(situations, reaction):
             self_image = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_image(self_image)
             recap()
-    # recap()
     return situations
 
 
@@ -183,22 +182,18 @@ def ask_more(situations, reaction):
                 print("You already said it. Let's move on")
                 return None
             situations[0].add_safety_behaviour(safe_behav)
-    #recap()
     return answer
 
 
 # creo un metodo per ripetere cosa ha detto l'utente prima di fare la domanda
 # decidere:
-# - da chi viene chiamato
-# - il nome
-# - se farlo tutte le volte (mi sembra troppo) o random
 # - se serve creare una chiave nel dizionario
-# - cosa fa
 # - se creare la risposta con più parti: okay/I see/... + hai detto che
 # - dopo "no" puoi ricapitolarli tutti
 def recap():
-    make_summary = 1  #random.randrange(0, 1)
+    make_summary = random.randrange(0, 2)  # 2 is not included
+    print("make_summary: ", make_summary)
     if make_summary == 1:
-        print("Dico qualcosa che hai appena detto tu")
+        print("AAAAAAAAAA Dico qualcosa che hai appena detto tu")
     else:
-        print("Non dico niente e faccio come al solito")
+        print("BBBBBBBBBBBB Non dico niente e faccio come al solito")
