@@ -58,7 +58,7 @@ def find_not_avoided_situations(concerns):
     for keyword in keywords_list:
         situation = sm.complete_keywords(new_answer, keyword)
         concerns[0].add_situation(Situation(situation))
-    recap()
+    recap(situation)
     return concerns
     # socratic answers
     #replacement = answer.split(keys_list[0])[1]
@@ -76,14 +76,14 @@ def find_reaction(situations, reaction):
             thought = sm.complete_keywords(new_answer, keyword)
             rate = find_rate(thought)
             situations[0].add_thought(thought, rate)
-            recap()
+            recap(thought)
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(new_answer, keyword)  # ma serve?
             rate = find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
             while new_answer and "no" not in new_answer:
-                recap()
+                recap(phy_sym)
                 new_answer = ask_more(situations, "phy_sym")
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
@@ -91,18 +91,18 @@ def find_reaction(situations, reaction):
             situations[0].add_safety_behaviour(safe_behav)
             for i in range(random.randrange(1, 3)):
                 if new_answer and "no" not in new_answer:
-                    recap()
+                    recap(safe_behav)
                     new_answer = ask_more(situations, "safe_behav")
     elif reaction == "self_focus":
         for keyword in keywords_list:
             self_focus = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_focus(self_focus)
-            recap()
+            recap(self_focus)
     elif reaction == "self_image":
         for keyword in keywords_list:
             self_image = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_image(self_image)
-            recap()
+            recap(self_image)
     return situations
 
 
@@ -185,15 +185,15 @@ def ask_more(situations, reaction):
     return answer
 
 
-# creo un metodo per ripetere cosa ha detto l'utente prima di fare la domanda
-# decidere:
-# - se serve creare una chiave nel dizionario
-# - se creare la risposta con più parti: okay/I see/... + hai detto che
-# - dopo "no" puoi ricapitolarli tutti
-def recap():
-    make_summary = random.randrange(0, 2)  # 2 is not included
-    print("make_summary: ", make_summary)
+# it makes a recap of what the user has just said
+# NOTE: you must link in a better way what is in reaction and the dictionary value
+def recap(reaction):
+    make_summary = random.randrange(0, 2)  # second number is not included
+    # print("make_summary: ", make_summary)
     if make_summary == 1:
-        print("AAAAAAAAAA Dico qualcosa che hai appena detto tu")
-    else:
-        print("BBBBBBBBBBBB Non dico niente e faccio come al solito")
+        recap = kbm.find_value("recap")
+        recap = sm.replace_a_star(recap, reaction)
+        sm.my_print_string(recap, FLAG)
+    # Should the answer be composed by different parts?
+    # Such as: "okay/I see/..." + "you said that/it sounds like/..."
+    # Recap everything is in the list after a "no"?

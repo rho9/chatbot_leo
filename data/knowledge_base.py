@@ -50,11 +50,15 @@ dictionary = {
     "wrong rating": ["Can you use a number from 0 to 10?",
                      "I'm having some trouble understanding you...Can you please give a number from zero to ten?"
                      ],
-    "more": [#"Are there any other things that happens?",
-             #"Is there anything else that you do to manage these situations?",
-             #"Do you do anything else?",
+    "more": ["Are there any other things that happens?",
+             "Is there anything else that you do to manage these situations?",
+             "Do you do anything else?",
              "Do you do something else besides *?"
              ],
+    "recap": ["Okay, so you said that *",
+              "So it sounds like *. I see...",
+              "Therefore it's like you *"
+              ],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]
