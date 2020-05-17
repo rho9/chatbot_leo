@@ -187,6 +187,7 @@ def ask_more(situations, reaction):
 
 # it makes a recap of what the user has just said
 # NOTE: you must link in a better way what is in reaction and the dictionary value
+# HOW? Like were in the Yoda exercise?
 def recap(reaction):
     make_summary = random.randrange(0, 2)  # second number is not included
     # print("make_summary: ", make_summary)
