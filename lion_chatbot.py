@@ -12,7 +12,9 @@ def introduction():
     intro_file = open('data/introduction.txt', "r")
     sm.my_print_file(intro_file, FLAG)
     intro_file.close()
-    s1.s1_manager()
+    #s1.s1_manager()
+    sen = "Well, for example, when I’m at work I’m really worried about saying something stupid or sounding weird "
+    sm.complete_keywords_pos(sen, "worried")
 
 
 if __name__ == "__main__":

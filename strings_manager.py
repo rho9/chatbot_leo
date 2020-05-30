@@ -1,6 +1,7 @@
 import string
 import time
 import sys
+import nltk
 
 
 # infer words from user input
@@ -28,6 +29,17 @@ def complete_keywords(sentence, keyword):
     to_add = to_add.split(".")[0]
     modified = keyword + to_add
     return modified
+
+
+# is it necessary?
+def complete_keywords_pos(sentence, keyword):
+    # usiamo i tag di nltk invece di usare questo split stupido
+    pos = nltk.pos_tag(sentence.split())
+    # - vedere se esiste un metodo che li associa in qualche modo, qualcosa che crei una struttura
+    # - assegno i tag alle parole
+    # - prendo il verbo legato alla parola chiave
+    # - prendo la parte dopo legata alla parola chiave
+    print(pos)
 
 
 def my_print_file(file, flag):
