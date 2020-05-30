@@ -18,17 +18,9 @@ def s1_manager():
     situations = find_reaction(situations, "safety_behaviours")
     situations = find_reaction(situations, "self_focus")
     # situations = find_reaction(situations, "self_image")
-    print_db(concerns, situations)
-
-
-# print what has been saved from user's answers
-def print_db(concerns, situations):
-    print("Concern: ", concerns[0].get_concern())
-    print("Situation: ", situations[0].get_situation())
-    print("Thought: ", situations[0].get_thought_tuples())
-    print("Physical symptoms: ", situations[0].get_phy_sym_tuples())
-    print("Safety behaviours: ", situations[0].get_safety_behaviours())
-    print("Self focus: ", situations[0].get_self_focus())
+    print("DB from while we are in session one:")
+    kbm.print_db(concerns, situations)
+    return concerns
 
 
 # find what concerns the user according to its answer

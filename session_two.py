@@ -1,5 +1,7 @@
 # during this session the chatbot should make a recap about what has been said underlying
-# the perception (the number given) that the user has.
+# the perception (the number given) that the user has and ask the user if it well understood:
+# if it's correct, then go on
+# if it's not, find out what is wrong and correct it
 # Then the chatbot should suggest to record a video in which the person act like he/she were
 # in one of the situation he/she talk about with the chatabot.
 # Then the chatbot suggest the user to watch at it focusing on the thing that has ben rated
@@ -9,3 +11,8 @@
 # thinks about that
 # if are similar or more? Search in the document, on the internet...?
 
+FLAG = "fast"
+
+
+def s2_manager():
+    print("Welcome in session 2!")

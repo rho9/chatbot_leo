@@ -25,3 +25,13 @@ def check_for_rate(sentence):
             final_rate = rate
             break  # in this way if the user writes 9 out of 10, I save 9
     return final_rate
+
+
+# print what has been saved from user's answers
+def print_db(concerns, situations):
+    print("Concern: ", concerns[0].get_concern())
+    print("Situation: ", situations[0].get_situation())
+    print("Thought: ", situations[0].get_thought_tuples())
+    print("Physical symptoms: ", situations[0].get_phy_sym_tuples())
+    print("Safety behaviours: ", situations[0].get_safety_behaviours())
+    print("Self focus: ", situations[0].get_self_focus())

@@ -1,11 +1,12 @@
 import session_one as s1
 import strings_manager as sm
+import kb_manager as kbm
 FLAG = "fast"
 
 
 def main():
     introduction()
-    s1.s1_manager()
+    concerns = s1.s1_manager()
 
 
 def introduction():
