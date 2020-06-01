@@ -14,5 +14,5 @@
 FLAG = "fast"
 
 
-def s2_manager():
-    print("Welcome in session 2!")
+def s2_manager(concerns):
+    print("Welcome to session 2!")
