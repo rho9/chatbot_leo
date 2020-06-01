@@ -16,3 +16,17 @@ FLAG = "fast"
 
 def s2_manager(concerns):
     print("Welcome to session 2!")
+    recap(concerns)
+
+
+def recap(concerns):
+    # invece di fare il recap tutto in una frase e chiedere se tutto ok,
+    # è meglio suddividerli e chiedere conferma a mano mano
+    # proposta: thought with situation, phy sym alone because they are the most
+    # important ones for session2 and can be many, saf behav and self focus togheter
+    # focusing on self focus
+    situations = concerns[0].get_situations()
+    situation = situations[0].get_situation()
+    thought = situations[0].get_thoughts()[0]
+    thought_rate = situations[0].get_thought_tuples()[0][1]  # [0] first elem of the list; [1] second item of the tuple
+    print("You said that when you", situation, "you are", thought, "and that you think that", thought_rate, "out of 10")
