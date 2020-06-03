@@ -59,6 +59,11 @@ dictionary = {
               "So it sounds like you are *. I see...",
               "Therefore it's like you *"
               ],
+    "confirmation": ["Is it correct?",
+                     "Do I understand correctly?",
+                     "Did I get it right?",
+                     "Did I correctly interpret what you told me?",
+                     "Is that what you meant?"],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]
