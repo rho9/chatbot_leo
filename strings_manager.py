@@ -2,6 +2,7 @@ import string
 import time
 import sys
 import nltk
+import re
 
 
 # infer words from user input
@@ -64,3 +65,9 @@ def my_print_string(sentence, flag):
         print()
     else:
         print(sentence)
+
+
+def is_negative(sentence):
+    regex = "no|isn't|didn't|wrong|un"
+    negative = re.search(regex, sentence)
+    return negative

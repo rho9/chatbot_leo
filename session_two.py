@@ -12,6 +12,7 @@
 # if are similar or more? Search in the document, on the internet...?
 
 import kb_manager as kbm
+import strings_manager as sm
 FLAG = "fast"
 
 
@@ -32,3 +33,9 @@ def recap(concerns):
     thought_rate = situations[0].get_thought_tuples()[0][1]  # [0] first elem of the list; [1] second item of the tuple
     print("You said that when you", situation, "you are", thought, "and that you think that", thought_rate, "out of 10")
     print(kbm.find_value("confirmation"))
+    answer = input()
+    negative = sm.is_negative(answer)
+    if negative:
+        print("let's go to next confirmation")
+    else:
+        print("let's understand which is the problem ")
