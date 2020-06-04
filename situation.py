@@ -33,6 +33,12 @@ class Situation:
             phy_sym_list.append(item[0])
         return phy_sym_list
 
+    def get_phy_sym_rates(self):
+        phy_sym_rates = []
+        for item in self.phy_sym_tuple_list:
+            phy_sym_rates.append(item[1])
+        return phy_sym_rates
+
     def get_phy_sym_tuples(self):
         return self.phy_sym_tuple_list
 

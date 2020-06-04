@@ -107,5 +107,4 @@ neg_emos = ["affronted", "afraid", "aggravated", "aggressive", "alarmed", "alert
             "vindictive", "violent", "wary", "watchful", "weak", "worried"]
 
 rates = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "zero", "one", "two", "three", "four", "five", "six",
-         "seven", "eight", "nine", "ten"]
-# REMEMBER: YOU MUST DOWN SIZE WHAT THE USER WRIGHT BEFORE INTERROGATE THE KB
+         "seven", "eight", "nine", "ten"]  # pos from nltk?

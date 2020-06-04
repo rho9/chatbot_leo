@@ -29,6 +29,7 @@ def create_db():
     situation = concern.get_situations()[0]
     situation.add_thought("worried to sound stupid", "9")
     situation.add_physical_symptom("sweating", "8")
+    situation.add_physical_symptom("going red", "7")
     situation.add_safety_behaviour("avoid eye contact")
     situation.add_self_focus("stop being lucid")
     return concern

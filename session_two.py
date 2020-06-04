@@ -29,13 +29,29 @@ def recap(concerns):
     # focusing on self focus
     situations = concerns[0].get_situations()
     situation = situations[0].get_situation()
+    ### THOUGHTS ###
     thought = situations[0].get_thoughts()[0]
     thought_rate = situations[0].get_thought_tuples()[0][1]  # [0] first elem of the list; [1] second item of the tuple
     print("You said that when you", situation, "you are", thought, "and that you think that", thought_rate, "out of 10")
+    manage_confirmation()
+    ### PHYSICAL SYMPTOMS ###
+    phy_syms = situations[0].get_physical_symptoms()
+    phy_syms_rate = situations[0].get_phy_sym_rates()
+    if len(phy_syms) == 1:
+        print("You also said that you usually start", phy_syms[0], phy_syms_rate[0], "on a scale of 0 to 10")
+    elif len(phy_syms) == 2:
+        print("You also said that you usually start", phy_syms[0], phy_syms_rate[0], "and", phy_syms[1], phy_syms_rate[1], "on a scale of 0 to 10")
+    else:
+        print("To be managed")
+        # I don't like the idea of keep going with a list
+        # Split in pairs?
+        # Ask about only the important ones? (which ones are they?)
+    manage_confirmation()
+
+
+def manage_confirmation():
     print(kbm.find_value("confirmation"))
     answer = input()
     negative = sm.is_negative(answer)
     if negative:
-        print("let's go to next confirmation")
-    else:
-        print("let's understand which is the problem ")
+        print("Solve the problem")
