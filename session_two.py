@@ -29,7 +29,7 @@ def recap(concerns):
     # focusing on self focus
     situations = concerns[0].get_situations()
     situation = situations[0].get_situation()
-    ### THOUGHTS ###
+    ### SITUATION and THOUGHTS ###
     thought = situations[0].get_thoughts()[0]
     thought_rate = situations[0].get_thought_tuples()[0][1]  # [0] first elem of the list; [1] second item of the tuple
     print("You said that when you", situation, "you are", thought, "and that you think that", thought_rate, "out of 10")
@@ -46,6 +46,23 @@ def recap(concerns):
         # I don't like the idea of keep going with a list
         # Split in pairs?
         # Ask about only the important ones? (which ones are they?)
+    manage_confirmation()
+    ### SAFETY BEHAVIOURS and SELF FOCUS ###
+    safe_behavs = situations[0].get_safety_behaviours()
+    self_focuss = situations[0].get_self_focus()
+    # start with one and one
+    # we need all safe behav because they are the ones that will be done in first video and not the second
+    # basta creare una lista con delle virgole ad un and alla fine
+    # metterlo in string manager?
+    safe_behavs_string = safe_behavs[0]
+    if len(safe_behavs) != 1:
+        i = 1
+        while i < len(safe_behavs)-1:  # all elements but the last one
+            safe_behavs_string = safe_behavs_string + ", " + safe_behavs[i]
+            i += 1
+        safe_behavs_string = safe_behavs_string + " and " + safe_behavs[i]
+    print("Finally, when we talked about safety behaviours and self focus, you said that you tend to", safe_behavs_string)
+    print("and you", self_focuss[0])
     manage_confirmation()
 
 
