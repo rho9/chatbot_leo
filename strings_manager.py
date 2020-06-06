@@ -71,3 +71,14 @@ def is_negative(sentence):
     regex = "no|isn't|didn't|wrong|un"
     negative = re.search(regex, sentence)
     return negative
+
+
+def create_string_list(list):
+    string_list = list[0]
+    if len(list) != 1:
+        i = 1
+        while i < len(list)-1:  # all elements but the last one
+            string_list = string_list + ", " + list[i]
+            i += 1
+        string_list = string_list + " and " + list[i]
+    return string_list

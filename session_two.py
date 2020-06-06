@@ -26,7 +26,7 @@ def recap(concerns):
     # è meglio suddividerli e chiedere conferma a mano mano
     # proposta: thought with situation, phy sym alone because they are the most
     # important ones for session2 and can be many, saf behav and self focus togheter
-    # focusing on self focus
+    # focusing on saf behav
     situations = concerns[0].get_situations()
     situation = situations[0].get_situation()
     ### SITUATION and THOUGHTS ###
@@ -50,17 +50,8 @@ def recap(concerns):
     ### SAFETY BEHAVIOURS and SELF FOCUS ###
     safe_behavs = situations[0].get_safety_behaviours()
     self_focuss = situations[0].get_self_focus()
-    # start with one and one
-    # we need all safe behav because they are the ones that will be done in first video and not the second
-    # basta creare una lista con delle virgole ad un and alla fine
     # metterlo in string manager?
-    safe_behavs_string = safe_behavs[0]
-    if len(safe_behavs) != 1:
-        i = 1
-        while i < len(safe_behavs)-1:  # all elements but the last one
-            safe_behavs_string = safe_behavs_string + ", " + safe_behavs[i]
-            i += 1
-        safe_behavs_string = safe_behavs_string + " and " + safe_behavs[i]
+    safe_behavs_string = sm.create_string_list(safe_behavs)
     print("Finally, when we talked about safety behaviours and self focus, you said that you tend to", safe_behavs_string)
     print("and you", self_focuss[0])
     manage_confirmation()
