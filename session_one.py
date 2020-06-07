@@ -66,13 +66,13 @@ def find_reaction(situations, reaction):
     if reaction == "thoughts":
         for keyword in keywords_list:
             thought = sm.complete_keywords(new_answer, keyword)
-            rate = find_rate(thought)
+            rate = kbm.find_rate(thought)
             situations[0].add_thought(thought, rate)
             recap(thought)
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(new_answer, keyword)  # ma serve?
-            rate = find_rate(phy_sym)
+            rate = kbm.find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
             while new_answer and "no" not in new_answer:
                 recap(phy_sym)
@@ -119,21 +119,6 @@ def find_question(situations, key, reaction):
     return question
 
 
-def find_rate(reaction):  # salvare l'intero così da poter fare il confronto?
-    question = kbm.find_value("rating")
-    if "*" in question:
-        question = sm.replace_a_star(question, reaction)
-    sm.my_print_string(question, FLAG)
-    rate_answer = input()
-    rate = kbm.check_for_rate(rate_answer)
-    while not rate:
-        output = kbm.find_value("wrong rating")
-        sm.my_print_string(output, FLAG)
-        rate_answer = input()
-        rate = kbm.check_for_rate(rate_answer)
-    return rate
-
-
 # if the bot doesn't find anything interesting in the user's answer,
 # it ask him/her to be more specific
 def analyze_answer(answer):
@@ -163,7 +148,7 @@ def ask_more(situations, reaction):
             if phy_sym in situations[0].get_physical_symptoms():
                 print("You already said it. Let's move on")
                 return None
-            rate = find_rate(phy_sym)
+            rate = kbm.find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
     elif reaction == "safe_behav":
         for keyword in keywords_list:

@@ -24,6 +24,13 @@ class Situation:
     def get_thought_tuples(self):
         return self.thought_tuple_list
 
+    def change_thought(self, old_thought, new_thought, new_rate):
+        item = 0
+        while self.thought_tuple_list[item][0] != old_thought:
+            item += 1
+        self.thought_tuple_list.pop(item)
+        return Situation.add_thought(self, new_thought, new_rate)  # is it legal?
+
     def add_physical_symptom(self, phy_sym, rate):
         self.phy_sym_tuple_list.append((phy_sym, rate))
 

@@ -9,10 +9,10 @@ FLAG = "fast"
 
 def main():
     introduction()
-    #concerns = s1.s1_manager()
-    concern = create_db()
-    concerns = []
-    concerns.append(concern)
+    concerns = s1.s1_manager()
+    #concern = create_db()
+    #concerns = []
+    #concerns.append(concern)
     s2.s2_manager(concerns)
 
 
@@ -33,6 +33,7 @@ def create_db():
     situation.add_safety_behaviour("avoid eye contact")
     situation.add_self_focus("stop being lucid")
     return concern
+# remember to test session 1
 
 
 if __name__ == "__main__":

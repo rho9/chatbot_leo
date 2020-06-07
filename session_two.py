@@ -33,7 +33,7 @@ def recap(concerns):
     thought = situations[0].get_thoughts()[0]
     thought_rate = situations[0].get_thought_tuples()[0][1]  # [0] first elem of the list; [1] second item of the tuple
     print("You said that when you", situation, "you are", thought, "and that you think that", thought_rate, "out of 10")
-    manage_confirmation()
+    manage_confirmation(situations, "thoughts")
     ### PHYSICAL SYMPTOMS ###
     phy_syms = situations[0].get_physical_symptoms()
     phy_syms_rate = situations[0].get_phy_sym_rates()
@@ -46,7 +46,7 @@ def recap(concerns):
         # I don't like the idea of keep going with a list
         # Split in pairs?
         # Ask about only the important ones? (which ones are they?)
-    manage_confirmation()
+    manage_confirmation(situations, "phy_sym")
     ### SAFETY BEHAVIOURS and SELF FOCUS ###
     safe_behavs = situations[0].get_safety_behaviours()
     self_focuss = situations[0].get_self_focus()
@@ -54,12 +54,35 @@ def recap(concerns):
     safe_behavs_string = sm.create_string_list(safe_behavs)
     print("Finally, when we talked about safety behaviours and self focus, you said that you tend to", safe_behavs_string)
     print("and you", self_focuss[0])
-    manage_confirmation()
+    manage_confirmation(situations, "safe_bhv_self_focus")
+    kbm.print_db(concerns, situations)
 
 
-def manage_confirmation():
+def manage_confirmation(situations, reaction):
     print(kbm.find_value("confirmation"))
     answer = input()
     negative = sm.is_negative(answer)
     if negative:
         print("Solve the problem")
+        # devi sapere cosa gli hai chiesto per sapere qual è l'elenco da modificare
+        # insieme al no potrebbe già esserci la cosa che hai sbagliato e quindi non hai bosogno
+        # di chiederglielo
+        # altrimenti devi chiederglielo
+        # partiamo dal semplice: ti dico una cosa sola e tu mi dici che questa è sbagliata
+        # partiamo dal singolo pensiero
+        keywords = kbm.check_for_keywords(answer)
+        if reaction == "thoughts":
+            if not keywords:
+                # chiedere cosa è sbagliato
+                print("I'm sorry. Can you tell me it again, then?")
+                answer = input()
+                keywords = kbm.check_for_keywords(answer)
+                # per ora ipotizzo che la inserisca correttamente
+            # modificare il db
+            # aggiungere in situazione "sostituisci" che rimuove e aggiunge
+            print("Thought before: ", situations[0].get_thoughts())
+            old_thought = situations[0].get_thoughts()[0]  # for now only the first one
+            new_thought = sm.complete_keywords(answer, keywords[0])  # [0]: for now we take only the first one
+            new_rate = kbm.find_rate(new_thought)  # attenzione: l'utente potrebbe già averlo inserito
+            kbm.update_db(situations, old_thought, new_thought, new_rate)
+            print("Thought after: ", situations[0].get_thoughts())

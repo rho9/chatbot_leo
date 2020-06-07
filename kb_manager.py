@@ -1,5 +1,8 @@
 import random
+import strings_manager as sm
 from data import knowledge_base as kb
+from situation import Situation
+FLAG = "fast"
 
 
 # given a key, it returns randomly one of its value
@@ -25,6 +28,26 @@ def check_for_rate(sentence):
             final_rate = rate
             break  # in this way if the user writes 9 out of 10, I save 9
     return final_rate
+
+
+def find_rate(reaction):  # salvare l'intero così da poter fare il confronto?
+    question = find_value("rating")
+    if "*" in question:
+        question = sm.replace_a_star(question, reaction)
+    sm.my_print_string(question, FLAG)
+    rate_answer = input()
+    rate = check_for_rate(rate_answer)
+    while not rate:
+        output = find_value("wrong rating")
+        sm.my_print_string(output, FLAG)
+        rate_answer = input()
+        rate = check_for_rate(rate_answer)
+    return rate
+
+
+def update_db(situations, old_thought, new_thought, new_rate):
+    # THOUGHTS
+    situations[0].change_thought(old_thought, new_thought, new_rate)
 
 
 # print what has been saved from user's answers
