@@ -106,5 +106,5 @@ neg_emos = ["affronted", "afraid", "aggravated", "aggressive", "alarmed", "alert
             "terrible", "terrorized", "timid", "tired", "ugly", "uneasy", "unnerved", "unsettled", "vengeful",
             "vindictive", "violent", "wary", "watchful", "weak", "worried"]
 
-rates = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "zero", "one", "two", "three", "four", "five", "six",
+rates = ["10", "9", "8","0", "7", "6", "5", "4", "3", "2", "1", "zero", "one", "two", "three", "four", "five", "six",
          "seven", "eight", "nine", "ten"]  # pos from nltk?

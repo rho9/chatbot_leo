@@ -9,10 +9,9 @@ FLAG = "fast"
 
 def main():
     introduction()
-    concerns = s1.s1_manager()
-    #concern = create_db()
-    #concerns = []
-    #concerns.append(concern)
+    # concerns = s1.s1_manager()
+    concern = create_db()
+    concerns = [concern]
     s2.s2_manager(concerns)
 
 
