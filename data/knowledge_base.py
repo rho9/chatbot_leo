@@ -64,6 +64,8 @@ dictionary = {
                      "Did I get it right?",
                      "Did I correctly interpret what you told me?",
                      "Is that what you meant?"],
+    "correction": ["Oh okay...How is it then?",
+                   "I'm sorry. Can you tell me it again, then?"],
     "none": ["Can you be more specific?",
              "Can you give an example?"
              ]

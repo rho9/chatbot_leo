@@ -89,7 +89,10 @@ def find_reaction(situations, reaction):
         for keyword in keywords_list:
             self_focus = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_focus(self_focus)
-            recap(self_focus)
+            for i in range(random.randrange(1, 3)):
+                if new_answer and "no" not in new_answer:
+                    recap(self_focus)
+                    new_answer = ask_more(situations, "self_focus")
     elif reaction == "self_image":
         for keyword in keywords_list:
             self_image = sm.complete_keywords(new_answer, keyword)
