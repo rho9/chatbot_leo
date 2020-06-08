@@ -58,6 +58,7 @@ def find_not_avoided_situations(concerns):
     #return sm.replace_a_star(sentence, replacement)
 
 
+# Note: it doesn't make the recap when it finishes the random calls
 def find_reaction(situations, reaction):
     # better: first part in a method + sequential execution without elif
     sm.my_print_string(find_question(situations, reaction, None), FLAG)
@@ -75,7 +76,7 @@ def find_reaction(situations, reaction):
             rate = kbm.find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
             while new_answer and "no" not in new_answer:
-                recap(phy_sym)
+                recap(new_answer)
                 new_answer = ask_more(situations, "phy_sym")
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
@@ -83,7 +84,7 @@ def find_reaction(situations, reaction):
             situations[0].add_safety_behaviour(safe_behav)
             for i in range(random.randrange(1, 3)):
                 if new_answer and "no" not in new_answer:
-                    recap(safe_behav)
+                    recap(new_answer)
                     new_answer = ask_more(situations, "safe_behav")
     elif reaction == "self_focus":
         for keyword in keywords_list:
@@ -91,7 +92,7 @@ def find_reaction(situations, reaction):
             situations[0].add_self_focus(self_focus)
             for i in range(random.randrange(1, 3)):
                 if new_answer and "no" not in new_answer:
-                    recap(self_focus)
+                    recap(new_answer)
                     new_answer = ask_more(situations, "self_focus")
     elif reaction == "self_image":
         for keyword in keywords_list:
@@ -157,11 +158,20 @@ def ask_more(situations, reaction):
         for keyword in keywords_list:
             safe_behav = sm.complete_keywords(answer, keyword)
             # if the safe behaviour is already in the list,
-            # it goes to the next question without saving the safe behaviour
+            # it goes to the next question without saving it
             if safe_behav in situations[0].get_safety_behaviours():
                 print("You already said it. Let's move on")
                 return None
             situations[0].add_safety_behaviour(safe_behav)
+    elif reaction == "self_focus":
+        for keyword in keywords_list:
+            self_focus = sm.complete_keywords(answer, keyword)
+            # if the self-focus is already in the list,
+            # it goes to the next question without saving it
+            if self_focus in situations[0].get_self_focus():
+                print("You already said it. Let's move on")
+                return None
+            situations[0].add_self_focus(self_focus)
     return answer
 
 

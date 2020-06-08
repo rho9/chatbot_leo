@@ -55,7 +55,7 @@ dictionary = {
              "Do you do anything else?",
              "Do you do something else besides *?"
              ],
-    "recap": ["Okay, so you said that *",
+    "recap": ["Okay, so you said that you *",
               "So it sounds like you are *. I see...",
               "Therefore it's like you *"
               ],
