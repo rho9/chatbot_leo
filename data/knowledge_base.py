@@ -44,9 +44,9 @@ dictionary = {
                    # "When you completely avoid situations, is your decision affected by an image like this?"
                    # ],
     "rating": ["How much will you be * if 10 is like * uncontrollably and 0 is not * at all?",
-               "Okay and how * out of 10 if 10 is incredibly *?",
+               "Okay and how much are you * out of 10 if 10 is incredibly *?",
                "How much would you say that you believe that out of 10 if 10 is where you believe it totally and 0 is where you don't believe it at all?"
-               ],
+               ],  # not good for every case!!
     "wrong rating": ["Can you use a number from 0 to 10?",
                      "I'm having some trouble understanding you...Can you please give a number from zero to ten?"
                      ],
@@ -60,7 +60,7 @@ dictionary = {
               "Therefore it's like you *"
               ],
     "confirmation": ["Is it correct?",
-                     "Do I understand correctly?",
+                     "Did I understand correctly?",
                      "Did I get it right?",
                      "Did I correctly interpret what you told me?",
                      "Is that what you meant?"],
@@ -78,7 +78,7 @@ keywords = ["work", "family", "university",  # concerns
             "have to",  # situations
             "worried",  # thoughts
             "sweating", "blushing", "going red", "trembling", "shaking",  # physical_symptoms
-            "avoid eye contact", "hold tightly", "firm",  # safety_behaviours
+            "avoid eye contact", "hold tight", "firm",  # safety_behaviours
             "stop being lucid", "lose concentration", "can't think",  # self_focus
             "self_image123",  # self_image
             ]
