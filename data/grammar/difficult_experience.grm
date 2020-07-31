@@ -1,0 +1,12 @@
+{topic} =
+	user experiences difficulties, don't want to be in the situation, shouldn't bother
+;
+
+{topic}	[{slot_interjection}] What other kind of {slot_difficulties} have you been {vrb_ing_experiencing}?
+{topic}	[{slot_interjection}] Can you give me an example of a recent {slot_situation} maybe we can {vrb_pres_focus}?
+{topic}	[{slot_interjection}] When you *, what kinds of thoughts do you [{slot_usually}] have?
+{topic}	[{slot_interjection}] What (do you think about when you *| was going through your mind)?
+{topic}	[{slot_interjection}] In your opinion, which is the worst thing that could happen in that situation?
+
+#import sistemi.igrm
+ =

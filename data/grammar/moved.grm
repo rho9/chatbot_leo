@@ -1,0 +1,11 @@
+{topic} =
+	the patient just moved from living with parents
+;
+
+{topic}	[{slot_interjection}..] Is this the first time that you've {vrb_past_move}?
+{topic}	[{slot_interjection}..] Have you {vrb_past_move} before?
+{topic}	[{slot_interjection}..] How did that change things?
+
+
+#import sistemi.igrm
+ =

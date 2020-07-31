@@ -1,0 +1,15 @@
+{topic} =
+	user talked about what he/she usually does // I found (many) keywords about physical symptoms
+;
+
+{topic}	[{slot_interjection}] (Why | How) is this helpful?
+{topic}	[{slot_interjection}] How does it end?
+{topic}	[{slot_interjection}] What do you [{slot_usually}] do about?
+{topic}	[{slot_interjection}] How do you [{slot_usually}] try to conceal that?
+{topic}	[{slot_interjection}] (Do you [{slot_usually}] do anything | Is there anything you do) to try to (prevent your feared consequences from occurring | prevent people from noticing you * | control your symptoms | avoid drawing attention to yourself | ensure that you will come across well)?
+{topic}	[{slot_interjection}] When you are afraid to start *, what happens to your attention?
+{topic}	[{slot_interjection}] If you focus attention on yourself, what do you notice? Do you become more self-conscious?
+
+
+#import sistemi.igrm
+ =
