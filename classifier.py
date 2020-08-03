@@ -24,5 +24,25 @@
 from nltk.stem import PorterStemmer
 
 ps = PorterStemmer()
-print(ps.stem("worked"))
+print(ps.stem("living"))
 # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
+
+# parto da move: scrivo una frase e conto quante keywords matchano. Risultato buono??
+sentence = "I've just recently moved out from living with my parents"
+sentence = sentence.lower()
+words = sentence.split()
+# find stems
+stems = []
+for word in words:
+    stems.append(ps.stem(word))
+print("stems: ", stems)
+# count the keywords
+moved = open('data/grammar/moved.grm', "r")
+keys = (moved.read().split(";")[1]).split("=")[1]
+print("Keys: ", keys)
+count = 0
+for stem in stems:
+    if stem in keys:
+        count += 1
+print("count: ", count)
+moved.close()

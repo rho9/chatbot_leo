@@ -1,8 +1,9 @@
 {topic} =
-	the patient just moved from living with parents
+	the patient moved from living with parents
 ;
 {keywords} =
-    just recently moved out from living with parents yust recently moved out of home for the first time
+    move out from live with parent home
+;
 
 {topic}	[{slot_interjection}..] Is this the first time that you've {vrb_past_move}?
 {topic}	[{slot_interjection}..] Have you {vrb_past_move} before?
