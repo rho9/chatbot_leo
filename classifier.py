@@ -21,6 +21,7 @@
 
 # proviamo ad usare il metodo per i lemmi
 
+import os
 from nltk.stem import PorterStemmer
 
 ps = PorterStemmer()
@@ -36,18 +37,23 @@ stems = []
 for word in words:
     stems.append(ps.stem(word))
 print("stems: ", stems)
-# count the keywords
-moved = open('data/grammar/moved.grm', "r")
-keys = (moved.read().split(";")[1]).split("=")[1]
-print("Keys: ", keys)
 count = 0
-for stem in stems:
-    if stem in keys:
-        count += 1
-print("count: ", count)
-moved.close()
-# now we need to read from every file nd find the one with bigger count:
-import os
-arr = os.listdir()
-print(arr)
-# https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory
+topic = ""
+grms = os.listdir("data/grammar")
+for file in grms:
+    grm = open("data/grammar/"+file, "r")
+    contents = grm.read()
+    grm.close()
+    # count the keywords
+    keys = (contents.split(";")[1]).split("=")[1]
+    print("Keys: ", keys)
+    aux_count = 0
+    for stem in stems:
+        if stem in keys:
+            aux_count += 1
+    if aux_count > count:
+        count = aux_count
+        topic = (contents.split(";")[0]).split("=")[1]
+print("Topic: ", topic)
+print("Count: ", count)
+# now we need to read from every file and find the one with bigger count:
