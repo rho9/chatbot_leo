@@ -1,6 +1,9 @@
 {topic} =
 	user talked about his/her thoughts // I found (many) keywords about thoughts
 ;
+{keywords} =
+    they think I look like stupid idiot freak weirdo can’t do my job go home wishing weren’t there
+;
 
 {topic}	[{slot_interjection}] So it {vrb_pres_third_seem} like you have quite a lot of thoughts rushing through your {slot_head} then... How does that make you feel?
 {topic}	[{slot_interjection}] I can tell you are getting kind of {slot_anxious} even just thinking about it

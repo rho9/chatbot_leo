@@ -1,6 +1,9 @@
 {topic} =
 	ask the user about specific situations that concerns him/her
 ;
+{keywords} =
+    ???
+;
 
 {topic}	[{slot_interjection}] So you said you have some {slot_problems} with your *...
 {topic}	[{slot_interjection}] Let's then {vrb_pres_focus} about your * concerns. 

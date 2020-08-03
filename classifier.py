@@ -24,7 +24,7 @@
 from nltk.stem import PorterStemmer
 
 ps = PorterStemmer()
-print(ps.stem("living"))
+print(ps.stem("shaking"))
 # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
 
 # parto da move: scrivo una frase e conto quante keywords matchano. Risultato buono??
@@ -46,3 +46,8 @@ for stem in stems:
         count += 1
 print("count: ", count)
 moved.close()
+# now we need to read from every file nd find the one with bigger count:
+import os
+arr = os.listdir()
+print(arr)
+# https://stackoverflow.com/questions/3207219/how-do-i-list-all-files-of-a-directory

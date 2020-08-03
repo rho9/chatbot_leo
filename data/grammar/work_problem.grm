@@ -1,6 +1,9 @@
 {topic} =
 	social phobia stop the user during work
 ;
+{keywords} =
+    less work be fire look like idiot prevent other people anxiety
+;
 
 {topic}	[{slot_interjection}] Your {slot_difficulties} {vrb_pres_stop} you from doing {slot_certain} things so they're {vrb_ing_stop} you from {vrb_ing_undertake} {slot_certain} types of {slot_task}
 {topic}	[{slot_interjection}] That can be kind of a problem
