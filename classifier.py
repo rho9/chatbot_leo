@@ -4,3 +4,25 @@
 # Potrebbe essere utile avere il topic per spiegare a cosa fa riferimento la risposta, ma avere anche
 # un attributo {keywords} che fa attivare la risposta andando a contare quante delle keywords di quella
 # risposta trova in ciò che ha scritto l’utente
+
+# parto da un file della grammatica specifico
+# usiamo moved il cui topic è "the patient just moved from living with parents"
+# frasi da cui nasce:
+# - I've just recently moved out from living with my parents
+# - just recently moved out of home for the first time
+# proviamo a vedere se funziona usando le keywords: un tot per ogni topic, vince il topic che match più
+# keywords
+# in futuro valutare se assegnare anche dei pesi alle parole e valutare quindi il peso finale al posto
+# del conteggio delle parole
+# e usare i sinonimi che sono in sistemi? Se nelle keywords trovi uno slot, cerchi la parola nello slot
+# però negli slot non hai i lemmi..magari hai un verbo al passato e la persona lo scrive al presente
+# e ciò vale anche per le keywords -> creare un db di lemmi? non esiste già?
+# nltk.corpus.reader.wordnet.WordNetCorpusReader.lemma (https://www.nltk.org/api/nltk.corpus.reader.html?highlight=lemma#nltk.corpus.reader.wordnet.WordNetCorpusReader.lemma)
+
+# proviamo ad usare il metodo per i lemmi
+
+from nltk.stem import PorterStemmer
+
+ps = PorterStemmer()
+print(ps.stem("worked"))
+# were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
