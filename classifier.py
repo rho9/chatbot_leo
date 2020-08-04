@@ -29,7 +29,7 @@ print(ps.stem("shaking"))
 # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
 
 # parto da move: scrivo una frase e conto quante keywords matchano. Risultato buono??
-sentence = "I've just recently moved out from living with my parents"
+sentence = "yeah yes it was the first time much the yeah um I was going to a few years ago just thought it would be easier to stay home"
 sentence = sentence.lower()
 words = sentence.split()
 # find stems
@@ -45,15 +45,18 @@ for file in grms:
     contents = grm.read()
     grm.close()
     # count the keywords
-    keys = (contents.split(";")[1]).split("=")[1]
-    print("Keys: ", keys)
+    keys_sentence = (contents.split(";")[1]).split("=")[1]
+    print("Keys: ", keys_sentence)
+    keywords = keys_sentence.split()
+    print("Keywords: ", keywords)
     aux_count = 0
     for stem in stems:
-        if stem in keys:
+        if stem in keywords:
             aux_count += 1
+            print("stem: ", stem)
     if aux_count > count:
         count = aux_count
         topic = (contents.split(";")[0]).split("=")[1]
 print("Topic: ", topic)
 print("Count: ", count)
-# now we need to read from every file and find the one with bigger count:
+# possiamo mettere gli slot nelle keyword?

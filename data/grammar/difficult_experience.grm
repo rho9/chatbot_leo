@@ -1,9 +1,9 @@
 {topic} =
-	user experiences difficulties, don't want to be in the situation, shouldn't bother
+	user experiences difficulties
 ;
 {keywords} =
     stop anxiety work opportunity interact people make thing hard friend feel alone make relationship want go home
-    scary don't do
+    scary don't do bother
 ;
 
 {topic}	[{slot_interjection}] What other kind of {slot_difficulties} have you been {vrb_ing_experiencing}?

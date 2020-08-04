@@ -2,7 +2,7 @@
 	the patient did something for the first time
 ;
 {keywords} =
-    first time
+    it's the first time it was
 ;
 
 {topic}	[{slot_interjection}..] So it's been quite a {slot_change}. How has that change things for you?

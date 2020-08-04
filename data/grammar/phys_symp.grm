@@ -2,7 +2,7 @@
 	user talked about what he/she usually does // I found (many) keywords about physical symptoms
 ;
 {keywords} =
-    hot sweat blush go red flush trembl shake can’t breathe
+    hot sweat blush go red flush trembl shake can't breathe
 ;
 
 {topic}	[{slot_interjection}] (Why | How) is this helpful?

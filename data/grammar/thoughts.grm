@@ -2,7 +2,7 @@
 	user talked about his/her thoughts // I found (many) keywords about thoughts
 ;
 {keywords} =
-    they think I look like stupid idiot freak weirdo can’t do my job go home wishing weren’t there
+    they think I look like stupid idiot freak weirdo can't do my job go home wishing weren't there
 ;
 
 {topic}	[{slot_interjection}] So it {vrb_pres_third_seem} like you have quite a lot of thoughts rushing through your {slot_head} then... How does that make you feel?
