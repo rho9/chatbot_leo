@@ -25,7 +25,7 @@ import os
 from nltk.stem import PorterStemmer
 
 ps = PorterStemmer()
-print(ps.stem("shaking"))
+print(ps.stem("weren't"))
 # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
 
 # parto da move: scrivo una frase e conto quante keywords matchano. Risultato buono??
