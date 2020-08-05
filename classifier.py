@@ -29,7 +29,7 @@ print(ps.stem("shaking"))
 # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
 
 # parto da move: scrivo una frase e conto quante keywords matchano. Risultato buono??
-sentence = "yeah yes it was the first time much the yeah um I was going to a few years ago just thought it would be easier to stay home"
+sentence = "work home anxiety"
 sentence = sentence.lower()
 words = sentence.split()
 # find stems
@@ -50,10 +50,10 @@ for file in grms:
     keywords = keys_sentence.split()
     print("Keywords: ", keywords)
     aux_count = 0
-    for stem in stems:
-        if stem in keywords:
+    for keyword in keywords:
+        if keyword in stems:
             aux_count += 1
-            print("stem: ", stem)
+            print("stem: ", keyword)
     if aux_count > count:
         count = aux_count
         topic = (contents.split(";")[0]).split("=")[1]
