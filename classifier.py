@@ -23,40 +23,41 @@
 
 import os
 from nltk.stem import PorterStemmer
+from data import keywords as kw
 
 ps = PorterStemmer()
-print(ps.stem("weren't"))
+print(ps.stem("family")) # CONTROLLA DI STAR USANDO QUELLO PER L'INGLESE
 # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
 
 # parto da move: scrivo una frase e conto quante keywords matchano. Risultato buono??
-sentence = "work home anxiety"
+sentence = "it's the first time I move out from my family"
+# USA UN METODO PER TRASFROMARE IN STEM E RICREARE LA FRASE
+##########################################
 sentence = sentence.lower()
 words = sentence.split()
 # find stems
-stems = []
+stems = ""
 for word in words:
-    stems.append(ps.stem(word))
+    stems = stems + " " + ps.stem(word)
 print("stems: ", stems)
+##########################################
 count = 0
 topic = ""
+values = []
+for keyword in kw.keywords:
+    values = kw.keywords[keyword]
+    aux_count = 0
+    for elem in values:
+        if elem in stems:
+            aux_count += 1
+    if aux_count > count:
+        count = aux_count
+        topic = keyword
+print("Final count: ", count)
+print("Final topic: ", topic)
+# possiamo mettere gli slot nelle keyword?
 grms = os.listdir("data/grammar")
 for file in grms:
     grm = open("data/grammar/"+file, "r")
     contents = grm.read()
     grm.close()
-    # count the keywords
-    keys_sentence = (contents.split(";")[1]).split("=")[1]
-    print("Keys: ", keys_sentence)
-    keywords = keys_sentence.split()
-    print("Keywords: ", keywords)
-    aux_count = 0
-    for keyword in keywords:
-        if keyword in stems:
-            aux_count += 1
-            print("stem: ", keyword)
-    if aux_count > count:
-        count = aux_count
-        topic = (contents.split(";")[0]).split("=")[1]
-print("Topic: ", topic)
-print("Count: ", count)
-# possiamo mettere gli slot nelle keyword?
