@@ -56,8 +56,7 @@ for keyword in kw.keywords:
 print("Final count: ", count)
 print("Final topic: ", topic)
 # possiamo mettere gli slot nelle keyword?
-grms = os.listdir("data/grammar")
-for file in grms:
-    grm = open("data/grammar/"+file, "r")
-    contents = grm.read()
-    grm.close()
+grm = open("data/grammar/"+topic+".grm", "r")
+contents = grm.read()
+grm.close()
+print(contents)
