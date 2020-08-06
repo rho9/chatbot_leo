@@ -19,6 +19,7 @@
 # e ciò vale anche per le keywords -> creare un db di lemmi? non esiste già?
 # nltk.corpus.reader.wordnet.WordNetCorpusReader.lemma (https://www.nltk.org/api/nltk.corpus.reader.html?highlight=lemma#nltk.corpus.reader.wordnet.WordNetCorpusReader.lemma)
 
+import re
 import random
 from nltk.stem import PorterStemmer
 from data import keywords as kw
@@ -65,11 +66,15 @@ def choose_sentence(topic):
     grm = open("data/grammar/" + topic + ".grm", "r")
     topic_file = grm.read()
     grm.close()
-    sentence = (topic_file.split(";")[2]).split("{topic}")[1]
+    sentences = (topic_file.split(";")[2])
+    sentences_list = re.findall("{topic}.+", sentences)
+    # . -> Any character (except newline character)
+    # + -> One or more occurrences
+    sentence = sentences_list[random.randint(0, len(sentences_list)-1)]
     print("choose_sentence before:", sentence)
-    # USARE SISTEMI + CONSIDERARE LE [] + NON PRENDERE SOLO LA PRIMA RISPOSTA
     sentence = choose_optional(sentence)
     print("choose_sentence after:", sentence)
+    # USARE SISTEMI
 
 
 # funziona, ma stampa degli spazi che non dovrebbero esserci
@@ -92,6 +97,7 @@ def choose_optional(sentence):
         else:
             sentence = before_bracket + after_bracket
     return sentence
+
 
 if __name__ == "__main__":
     main()
