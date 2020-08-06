@@ -68,21 +68,30 @@ def choose_sentence(topic):
     sentence = (topic_file.split(";")[2]).split("{topic}")[1]
     print("choose_sentence before:", sentence)
     # USARE SISTEMI + CONSIDERARE LE [] + NON PRENDERE SOLO LA PRIMA RISPOSTA
-    # []
-    while "[" in sentence:
-        index_left_bracket = sentence.rfind("[")
-        index_right_bracket = sentence.rfind("]")
-        before_bracket = sentence[0:index_left_bracket-1]
-        after_bracket = sentence[index_right_bracket+1:len(sentence)]
-        include = random.randint(0, 1)
-        if 1:
-            between_bracket = sentence[index_left_bracket+1:index_right_bracket]
-            sentence = before_bracket + between_bracket + after_bracket
-        else:
-            sentence = before_bracket + after_bracket
+    sentence = choose_optional(sentence)
     print("choose_sentence after:", sentence)
 
 
+# funziona, ma stampa degli spazi che non dovrebbero esserci
+def choose_optional(sentence):
+    print("sentence[0]: ", sentence[0]) #  perchè stampa due spazi invece che uno???
+    while "[" in sentence:
+        index_left_bracket = sentence.rfind("[")
+        print("index_left_bracket: ", index_left_bracket)
+        index_right_bracket = sentence.rfind("]")
+        print("index_right_bracket: ", index_right_bracket)
+        before_bracket = sentence[0:index_left_bracket]
+        print("before_bracket: ", before_bracket)
+        after_bracket = sentence[index_right_bracket+1:len(sentence)]
+        print("after_bracket: ", after_bracket)
+        include = random.randint(0, 1)
+        if 1:
+            between_bracket = sentence[index_left_bracket+1:index_right_bracket]
+            print("between_bracket: ", between_bracket)
+            sentence = before_bracket + " " + between_bracket + after_bracket
+        else:
+            sentence = before_bracket + after_bracket
+    return sentence
 
 if __name__ == "__main__":
     main()
