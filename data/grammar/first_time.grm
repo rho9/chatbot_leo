@@ -2,10 +2,10 @@
 	the patient did something for the first time
 ;
 {keywords} =
-    it's the first time it was
+    it' the first time it was
 ;
 
-{topic}	[{slot_interjection}..] So it's been quite a {slot_change}. How has that change things for you?
+{topic}[{slot_interjection}..] So it's been quite a {slot_change}. How has that changed things for you?
 
 
 #import sistemi.igrm

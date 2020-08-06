@@ -5,9 +5,9 @@
     move out from live with parent home
 ;
 
-{topic}	[{slot_interjection}..] Is this the first time that you've {vrb_past_move}?
-{topic}	[{slot_interjection}..] Have you {vrb_past_move} before?
-{topic}	[{slot_interjection}..] How did that change things?
+{topic}[{slot_interjection}..] Is this the first time that you've {vrb_past_move}?
+{topic}[{slot_interjection}..] Have you {vrb_past_move} before?
+{topic}[{slot_interjection}..] How did that change things?
 
 
 #import sistemi.igrm

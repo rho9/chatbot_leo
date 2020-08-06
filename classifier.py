@@ -25,38 +25,53 @@ import os
 from nltk.stem import PorterStemmer
 from data import keywords as kw
 
-ps = PorterStemmer()
-print(ps.stem("family")) # CONTROLLA DI STAR USANDO QUELLO PER L'INGLESE
-# were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
 
-# parto da move: scrivo una frase e conto quante keywords matchano. Risultato buono??
-sentence = "it's the first time I move out from my family"
-# USA UN METODO PER TRASFROMARE IN STEM E RICREARE LA FRASE
-##########################################
-sentence = sentence.lower()
-words = sentence.split()
-# find stems
-stems = ""
-for word in words:
-    stems = stems + " " + ps.stem(word)
-print("stems: ", stems)
-##########################################
-count = 0
-topic = ""
-values = []
-for keyword in kw.keywords:
-    values = kw.keywords[keyword]
-    aux_count = 0
-    for elem in values:
-        if elem in stems:
-            aux_count += 1
-    if aux_count > count:
-        count = aux_count
-        topic = keyword
-print("Final count: ", count)
-print("Final topic: ", topic)
-# possiamo mettere gli slot nelle keyword?
-grm = open("data/grammar/"+topic+".grm", "r")
-contents = grm.read()
-grm.close()
-print(contents)
+# def classifier():
+def main():
+    stems = find_stems("I've just recently moved out from living with my parents")
+    topic = find_topic(stems)
+    choose_sentence(topic)
+
+
+def find_stems(sentence):
+    ps = PorterStemmer()
+    # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
+    sentence = sentence.lower()
+    words = sentence.split()
+    sentence_stems = ""
+    for word in words:
+        sentence_stems = sentence_stems + " " + ps.stem(word)
+    print("find_stems: ", sentence_stems)
+    return sentence_stems
+
+
+def find_topic(stems):
+    matches = 0
+    topic = ""
+    for keyword in kw.keywords:
+        values = kw.keywords[keyword]
+        count = 0
+        for value in values:
+            if value in stems:
+                count += 1
+        if count > matches:
+            matches = count
+            topic = keyword
+    print("Final matches: ", matches)
+    print("Final topic: ", topic)
+    return topic
+    # possiamo mettere gli slot nelle keyword?
+
+
+def choose_sentence(topic):
+    grm = open("data/grammar/" + topic + ".grm", "r")
+    topic_file = grm.read()
+    grm.close()
+    sentence = (topic_file.split(";")[2]).split("{topic}")[1]
+    print("choose_sentence:", sentence)
+    # USARE SISTEMI + CONSIDERARE LE []
+
+
+if __name__ == "__main__":
+    main()
+
