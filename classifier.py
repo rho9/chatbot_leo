@@ -19,9 +19,7 @@
 # e ciò vale anche per le keywords -> creare un db di lemmi? non esiste già?
 # nltk.corpus.reader.wordnet.WordNetCorpusReader.lemma (https://www.nltk.org/api/nltk.corpus.reader.html?highlight=lemma#nltk.corpus.reader.wordnet.WordNetCorpusReader.lemma)
 
-# proviamo ad usare il metodo per i lemmi
-
-import os
+import random
 from nltk.stem import PorterStemmer
 from data import keywords as kw
 
@@ -68,8 +66,22 @@ def choose_sentence(topic):
     topic_file = grm.read()
     grm.close()
     sentence = (topic_file.split(";")[2]).split("{topic}")[1]
-    print("choose_sentence:", sentence)
-    # USARE SISTEMI + CONSIDERARE LE []
+    print("choose_sentence before:", sentence)
+    # USARE SISTEMI + CONSIDERARE LE [] + NON PRENDERE SOLO LA PRIMA RISPOSTA
+    # []
+    while "[" in sentence:
+        index_left_bracket = sentence.rfind("[")
+        index_right_bracket = sentence.rfind("]")
+        before_bracket = sentence[0:index_left_bracket-1]
+        after_bracket = sentence[index_right_bracket+1:len(sentence)]
+        include = random.randint(0, 1)
+        if 1:
+            between_bracket = sentence[index_left_bracket+1:index_right_bracket]
+            sentence = before_bracket + between_bracket + after_bracket
+        else:
+            sentence = before_bracket + after_bracket
+    print("choose_sentence after:", sentence)
+
 
 
 if __name__ == "__main__":
