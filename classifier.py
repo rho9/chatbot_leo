@@ -71,10 +71,12 @@ def choose_sentence(topic):
     # . -> Any character (except newline character)
     # + -> One or more occurrences
     sentence = sentences_list[random.randint(0, len(sentences_list)-1)]
+    sentence = sentence[7:len(sentence)]  # remove {topic}
     print("choose_sentence before:", sentence)
     sentence = choose_optional(sentence)
     print("choose_sentence after:", sentence)
     # USARE SISTEMI
+    choose_slots(sentence)
 
 
 # funziona, ma stampa degli spazi che non dovrebbero esserci
@@ -90,13 +92,17 @@ def choose_optional(sentence):
         after_bracket = sentence[index_right_bracket+1:len(sentence)]
         print("after_bracket: ", after_bracket)
         include = random.randint(0, 1)
-        if 1:
+        if include:
             between_bracket = sentence[index_left_bracket+1:index_right_bracket]
             print("between_bracket: ", between_bracket)
             sentence = before_bracket + " " + between_bracket + after_bracket
         else:
             sentence = before_bracket + after_bracket
     return sentence
+
+
+def choose_slots(sentence):
+    print("gna")
 
 
 if __name__ == "__main__":
