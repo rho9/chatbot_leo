@@ -83,7 +83,7 @@ def choose_sentence(topic):
 def choose_optional(sentence):
     print("sentence[0]: ", sentence[0]) #  perchè stampa due spazi invece che uno???
     while "[" in sentence:
-        index_left_bracket = sentence.rfind("[")
+        index_left_bracket = sentence.rfind("[") # rfind trova l'ultima occorrenza, find la prima
         print("index_left_bracket: ", index_left_bracket)
         index_right_bracket = sentence.rfind("]")
         print("index_right_bracket: ", index_right_bracket)
@@ -92,7 +92,7 @@ def choose_optional(sentence):
         after_bracket = sentence[index_right_bracket+1:len(sentence)]
         print("after_bracket: ", after_bracket)
         include = random.randint(0, 1)
-        if include:
+        if 1:  # da sostituire con include
             between_bracket = sentence[index_left_bracket+1:index_right_bracket]
             print("between_bracket: ", between_bracket)
             sentence = before_bracket + " " + between_bracket + after_bracket
@@ -102,9 +102,32 @@ def choose_optional(sentence):
 
 
 def choose_slots(sentence):
-    print("gna")
+    # dobbiamo aprire sistemi
+    # per ogni { in sentence cerchiamo il suo contenuto in sistemi
+    # usiamo replace di string per effettuare la "scelta"
+    # non ci serve fare come sopra perchè ora sostituiamo
+    # e se sopra sostituissimo con la stringa vuota? Sarebbe molto più leggibile
+    system_file = open("data/sistemi.igrm", "r")
+    system = system_file.read()
+    system_file.close()
+    while "{" in sentence:
+        index_left_bracket = sentence.find("{")
+        index_right_bracket = sentence.find("}")
+        print(sentence[index_left_bracket])
+        print(sentence[index_right_bracket])
+        slot = sentence[index_left_bracket:index_right_bracket+1]  # la prima la include, la seconda no
+        print("Slot: ", slot)
+        # per interrompre il ciclo. poi da togliere
+        #sentence = sentence.replace(sentence[index_left_bracket], "")
+        #sentence = sentence.replace(sentence[index_right_bracket-1], "")
+        synonyms = (system.split(slot+" =\n")[1]).split("\n;")[0]
+        print("synonyms: ", synonyms)
+        syn_list = (synonyms.split("\n"))
+        print("synonyms list: ", syn_list)
+        # bene così o meglio utilizzare readfile e chiudere il file dopo?
+        sentence = sentence.replace(slot, syn_list[random.randint(0, len(syn_list)-1)])
+    print(sentence)
 
 
 if __name__ == "__main__":
     main()
-
