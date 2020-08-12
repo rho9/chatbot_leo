@@ -1,14 +1,10 @@
 {topic} =
 	ask the user about what concerns him/her
 ;
-{keywords} =
-    ???
-;
 
 {topic}	[{slot_interjection}] Are there any {slot_situations} (in which you feel inappropriate | that you {adv_completely} avoid)?
 {topic}	[{slot_interjection}] What are the things that you just will not do because of your social anxiety?
 {topic}	[{slot_interjection}] If you think about your life, what is it that makes you {slot_anxious}?
-
 
 #import sistemi.igrm
  =

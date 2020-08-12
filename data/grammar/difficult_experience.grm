@@ -1,10 +1,6 @@
 {topic} =
 	user experiences difficulties
 ;
-{keywords} =
-    stop anxiety work opportunity interact people make thing hard friend feel alone make relationship want go home
-    scary don't do bother
-;
 
 {topic}[{slot_interjection}..]What other kind of {slot_difficulties} have you been {vrb_ing_experiencing}?
 {topic}[{slot_interjection}..]Can you give me an example of a recent {slot_situation} maybe we can {vrb_pres_focus}?
