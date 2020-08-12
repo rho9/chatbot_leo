@@ -1,16 +1,16 @@
 {topic} =
-	user talked about his/her thoughts // I found (many) keywords about thoughts
+	user talked about his/her thoughts, (many) keywords about thoughts are found
 ;
 
-{topic}	[{slot_interjection}] So it {vrb_pres_third_seem} like you have quite a lot of thoughts rushing through your {slot_head} then... How does that make you feel?
-{topic}	[{slot_interjection}] I can tell you are getting kind of {slot_anxious} even just thinking about it
-{topic}	[{slot_interjection}] What other thoughts (were in | crossed) your mind?
-{topic}	[{slot_interjection}] You've already {slot_described} it to me [a little bit] but if you think about how you looked in this {slot_situation}, how do you (say |think) you look?
-{topic}	[{slot_interjection}] How does your body feel when you *?
-{topic}	[{slot_interjection}] Do you usually experience any physical symptoms of anxiety? // anche in altri punti?
-{topic}	[{slot_interjection}] Do you notice anything like sweating, blushing, trembling? // se ancora non sono stati detti
-{topic}	[{slot_interjection}] Can you describe yourself? How do you think you look when you're in these situations?
-{topic}	[{slot_interjection}] How about your heart?
+{topic}[{slot_interjection}..]So it {vrb_pres_third_seem} like you have quite a lot of thoughts rushing through your {slot_head} then... How does that make you feel?
+{topic}[{slot_interjection}..]I can tell you are getting kind of {slot_anxious} even just thinking about it
+{topic}[{slot_interjection}..]What other thoughts (were in|crossed) your mind?
+{topic}[{slot_interjection}..]You've already {vrb_past_describe} it to me [a little bit ]but if you think about how you looked in this {slot_situation}, how do you (say|think) you were looking?
+{topic}[{slot_interjection}..]How does your body feel when you *?
+{topic}[{slot_interjection}..]Do you usually experience any physical symptoms of anxiety? // anche in altri punti?
+{topic}[{slot_interjection}..]Do you notice anything like sweating, blushing, trembling? // se ancora non sono stati detti
+{topic}[{slot_interjection}..]Can you describe yourself? How do you think you look when you're in these situations?
+{topic}[{slot_interjection}..]How about your heart?
 
 #import sistemi.igrm
  =                          

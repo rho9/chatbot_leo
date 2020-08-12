@@ -2,11 +2,11 @@
 	social phobia stop the user during work
 ;
 
-{topic}	[{slot_interjection}] Your {slot_difficulties} {vrb_pres_stop} you from doing {slot_certain} things so they're {vrb_ing_stop} you from {vrb_ing_undertake} {slot_certain} types of {slot_task}
-{topic}	[{slot_interjection}] That can be kind of a problem
-{topic}	[{slot_interjection}] Are your {slot_difficulties} also {vrb_ing_stop} you socially and therefore you're not able to make new friends and meet new people?
-{topic}	[{slot_interjection}] What was happening around the time you first noticed the {slot_anxiety} kicking in?
-{topic}	[{slot_interjection}] what kind of {slot_task} is the most difficult for you in your job?
+{topic}[{slot_interjection}..]Your {slot_difficulties} {vrb_pres_stop} you from doing {slot_certain} things so they're {vrb_ing_stop} you from {vrb_ing_undertake} {slot_certain} types of {slot_task}
+{topic}[{slot_interjection}..]That can be kind of a problem
+{topic}[{slot_interjection}..]Are your {slot_difficulties} also {vrb_ing_stop} you socially and therefore you're not able to make new friends and meet new people?
+{topic}[{slot_interjection}..]What was happening around the time you first noticed the {slot_anxiety} kicking in?
+{topic}[{slot_interjection}..]What kind of {slot_task} is the most difficult for you in your job?
 
 #import sistemi.igrm
  =

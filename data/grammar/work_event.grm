@@ -2,8 +2,8 @@
 	work at event with new/lot of people
 ;
 
-{topic}	[{slot_interjection}] Can you tell me a bit more about your thoughts in these {slot_situations}? 
-{topic}	[{slot_interjection}] Let's {vrb_pres_focus} {slot_invitation} to do a {slot_task} that involves a group of people and you're going to have social {slot_interaction}... what kind of thoughts go through your {slot_head}?
+{topic}[{slot_interjection}..]Can you tell me a bit more about your thoughts in these {slot_situations}?
+{topic}[{slot_interjection}..]Let's {vrb_pres_focus} {slot_invitation} to do a {slot_task} that involves a group of people and where you're going to have social {slot_interaction}..what kind of thoughts go through your mind?
 
 #import sistemi.igrm
  =

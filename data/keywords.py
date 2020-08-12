@@ -8,11 +8,11 @@ keywords = {"concerns": [],
                            ],
             "moved": ["move out", "from live with", "home", "parent"
                       ],
-            "not_want_happen": ["don't", "that happen", "loose", "everyone", "friend",
-                                "myself alone"
+            "not_want_happen": ["don't", "that happen", "loos", "everyon", "friend",
+                                "myself alon"
                                 ],
-            "phyp_symp": ["hot", "sweat", "blush", "go red", "flush", "trembl", "shake", 
-                          "can't breathe"
+            "phys_symp": ["hot", "sweat", "blush", "go red", "flush", "trembl", "shake",
+                          "can't breath"
                           ],
             "situations": [],
             "thoughts": ["they think", "peopl think", "I look like", "stupid", "idiot", "freak",
