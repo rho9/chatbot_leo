@@ -63,19 +63,14 @@ def choose_sentence(topic):
 
 def choose_optional(sentence):
     while "[" in sentence:
-        index_left_bracket = sentence.rfind("[")  # rfind trova l'ultima occorrenza, find la prima
-        index_right_bracket = sentence.rfind("]")
-        before_bracket = sentence[0:index_left_bracket]
-        after_bracket = sentence[index_right_bracket+1:len(sentence)]
+        index_left_bracket = sentence.find("[")
+        index_right_bracket = sentence.find("]")
+        in_brackets = sentence[index_left_bracket+1:index_right_bracket]
         include = random.randint(0, 1)
         if include:
-            between_bracket = sentence[index_left_bracket+1:index_right_bracket]
-            if before_bracket:
-                sentence = before_bracket + " " + between_bracket + after_bracket
-            else:
-                sentence = between_bracket + after_bracket
+            sentence = sentence.replace("[" + in_brackets + "]", in_brackets)
         else:
-            sentence = before_bracket + after_bracket
+            sentence = sentence.replace("[" + in_brackets + "]", "")
     return sentence
 
 
