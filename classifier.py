@@ -6,7 +6,7 @@ from data import keywords as kw
 
 # def classifier():
 def main():
-    stems = find_stems("I've just recently moved out from living with my parents")
+    stems = find_stems("During work I feel stopped by anxiety, specially when I have to interact with people")
     topic = find_topic(stems)
     bot_answer = choose_sentence(topic)
     print(bot_answer)
@@ -21,7 +21,7 @@ def find_stems(sentence):
     for word in words:
         if sentence_stems:
             sentence_stems = sentence_stems + " " + ps.stem(word)
-        else:  # the first time it doesn't add the white space
+        else:  # the first time the white space must not be present
             sentence_stems = sentence_stems + ps.stem(word)
     print("find_stems:", sentence_stems)
     return sentence_stems
@@ -56,7 +56,9 @@ def choose_sentence(topic):
     sentence = sentences_list[random.randint(0, len(sentences_list)-1)]
     sentence = sentence[7:len(sentence)]  # remove {topic}
     sentence = choose_optional(sentence)
-    return choose_slots(sentence)
+    sentence = choose_slots(sentence)
+    sentence = choose_pipe(sentence)
+    return sentence
 
 
 def choose_optional(sentence):
@@ -89,6 +91,17 @@ def choose_slots(sentence):
         syn_list = (synonyms.split("\n"))
         # bene così o meglio utilizzare readfile e chiudere il file dopo?
         sentence = sentence.replace(slot, syn_list[random.randint(0, len(syn_list)-1)])
+    return sentence
+
+
+def choose_pipe(sentence):
+    while "(" in sentence:
+        index_left_bracket = sentence.find("(")
+        index_right_bracket = sentence.find(")")
+        in_brackets = sentence[index_left_bracket+1:index_right_bracket]
+        in_brackets_list = in_brackets.split("|")
+        chosen = in_brackets_list[random.randint(0, len(in_brackets_list)-1)]
+        sentence = sentence.replace("("+in_brackets+")", chosen)
     return sentence
 
 
