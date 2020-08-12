@@ -4,7 +4,7 @@ keywords = {"concerns": [],
                                      "want to go home", "scary", "wish I weren’t",
                                      "don't even bother"
                                      ],
-            "first_time": ["the first time", "it'", "it was"
+            "first_time": ["the first time", "it'", "it wa"
                            ],
             "moved": ["move out", "from live with", "home", "parent"
                       ],

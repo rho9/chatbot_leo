@@ -6,7 +6,7 @@ from data import keywords as kw
 
 # def classifier():
 def main():
-    stems = find_stems("During work I feel stopped by anxiety, specially when I have to interact with people")
+    stems = find_stems("the first time it' it was")
     topic = find_topic(stems)
     bot_answer = choose_sentence(topic)
     print(bot_answer)
@@ -49,7 +49,7 @@ def choose_sentence(topic):
     grm = open("data/grammar/" + topic + ".grm", "r")
     topic_file = grm.read()
     grm.close()
-    sentences = (topic_file.split(";")[2])
+    sentences = (topic_file.split(";")[1])
     sentences_list = re.findall("{topic}.+", sentences)
     # . -> Any character (except newline character)
     # + -> One or more occurrences

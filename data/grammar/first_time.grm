@@ -2,7 +2,7 @@
 	the patient did something for the first time
 ;
 
-{topic}[{slot_interjection}..] So it's been quite a {slot_change}. How has that changed things for you?
+{topic}[{slot_interjection}..]So it's been quite a big {slot_change}. How has that changed things for you?
 
 #import sistemi.igrm
  =
