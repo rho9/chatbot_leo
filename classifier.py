@@ -8,7 +8,8 @@ from data import keywords as kw
 def main():
     stems = find_stems("I've just recently moved out from living with my parents")
     topic = find_topic(stems)
-    choose_sentence(topic)
+    bot_answer = choose_sentence(topic)
+    print(bot_answer)
 
 
 def find_stems(sentence):
@@ -54,27 +55,19 @@ def choose_sentence(topic):
     # + -> One or more occurrences
     sentence = sentences_list[random.randint(0, len(sentences_list)-1)]
     sentence = sentence[7:len(sentence)]  # remove {topic}
-    print("choose_sentence before:", sentence)
     sentence = choose_optional(sentence)
-    print("choose_sentence after:", sentence)
-    # USARE SISTEMI
-    choose_slots(sentence)
+    return choose_slots(sentence)
 
 
 def choose_optional(sentence):
     while "[" in sentence:
         index_left_bracket = sentence.rfind("[")  # rfind trova l'ultima occorrenza, find la prima
-        print("index_left_bracket:", index_left_bracket)
         index_right_bracket = sentence.rfind("]")
-        print("index_right_bracket:", index_right_bracket)
         before_bracket = sentence[0:index_left_bracket]
-        print("before_bracket:", before_bracket)
         after_bracket = sentence[index_right_bracket+1:len(sentence)]
-        print("after_bracket:", after_bracket)
         include = random.randint(0, 1)
         if include:
             between_bracket = sentence[index_left_bracket+1:index_right_bracket]
-            print("between_bracket:", between_bracket)
             if before_bracket:
                 sentence = before_bracket + " " + between_bracket + after_bracket
             else:
@@ -91,17 +84,12 @@ def choose_slots(sentence):
     while "{" in sentence:
         index_left_bracket = sentence.find("{")
         index_right_bracket = sentence.find("}")
-        print(sentence[index_left_bracket])
-        print(sentence[index_right_bracket])
         slot = sentence[index_left_bracket:index_right_bracket+1]  # la prima la include, la seconda no
-        print("Slot:", slot)
         synonyms = (system.split(slot+" =\n")[1]).split("\n;")[0]
-        print("synonyms:", synonyms)
         syn_list = (synonyms.split("\n"))
-        print("synonyms list:", syn_list)
         # bene così o meglio utilizzare readfile e chiudere il file dopo?
         sentence = sentence.replace(slot, syn_list[random.randint(0, len(syn_list)-1)])
-    print(sentence)
+    return sentence
 
 
 if __name__ == "__main__":
