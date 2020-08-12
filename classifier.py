@@ -56,16 +56,14 @@ def choose_sentence(topic):
     sentence = sentence[7:len(sentence)]  # remove {topic}
     print("choose_sentence before:", sentence)
     sentence = choose_optional(sentence)
-    print("choose_sentence after:", sentence)  # QUA SENTENCE HA UNO SPAZIO ALL'INIZIO!!!
+    print("choose_sentence after:", sentence)
     # USARE SISTEMI
     choose_slots(sentence)
 
 
-# funziona, ma stampa degli spazi che non dovrebbero esserci
 def choose_optional(sentence):
-    print("sentence[0]:", sentence[0]) #  perchè stampa due spazi invece che uno???
     while "[" in sentence:
-        index_left_bracket = sentence.rfind("[") # rfind trova l'ultima occorrenza, find la prima
+        index_left_bracket = sentence.rfind("[")  # rfind trova l'ultima occorrenza, find la prima
         print("index_left_bracket:", index_left_bracket)
         index_right_bracket = sentence.rfind("]")
         print("index_right_bracket:", index_right_bracket)
@@ -77,7 +75,10 @@ def choose_optional(sentence):
         if include:
             between_bracket = sentence[index_left_bracket+1:index_right_bracket]
             print("between_bracket:", between_bracket)
-            sentence = before_bracket + " " + between_bracket + after_bracket
+            if before_bracket:
+                sentence = before_bracket + " " + between_bracket + after_bracket
+            else:
+                sentence = between_bracket + after_bracket
         else:
             sentence = before_bracket + after_bracket
     return sentence
@@ -101,7 +102,6 @@ def choose_slots(sentence):
         # bene così o meglio utilizzare readfile e chiudere il file dopo?
         sentence = sentence.replace(slot, syn_list[random.randint(0, len(syn_list)-1)])
     print(sentence)
-    # quando mette un unterjection, mette anche uno spazio iniziale
 
 
 if __name__ == "__main__":
