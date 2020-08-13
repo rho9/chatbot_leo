@@ -6,7 +6,7 @@ from data import keywords as kw
 
 # def classifier():
 def main():
-    stems = find_stems("less work be fire look like an idiot prevent other peopl anxiety")
+    stems = find_stems("clever")
     topic = find_topic(stems)
     bot_answer = choose_sentence(topic)
     print(bot_answer)

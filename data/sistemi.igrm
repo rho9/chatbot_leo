@@ -57,6 +57,11 @@ job
 work
 ;
 
+{slot_valuation} =
+valuation
+judgment
+;
+
 {slot_worried} =
 worried
 concerned
@@ -81,15 +86,21 @@ out of place
 certain
 specific
 particular
-some
 ;
 
 {slot_usually} =
-usuallly
+usually
 normally
 generally
 ;
 
+### Pronouns ###
+
+{pron_somebody} =
+somebody
+someone
+a person
+;
 
 ### Adverbs ###
 
@@ -98,7 +109,14 @@ completely
 entirely
 absolutely
 ;
+
 ### Verbs ###
+
+{vrb_ing_esitate} =
+esitating
+hanging back
+;
+
 
 {vrb_past_describe} =
 described
@@ -126,6 +144,11 @@ left home
 moved
 ;
 
+{vrb_pres_pull_down} =
+pull you down
+bring you down
+;
+
 {vrb_pres_seem} =
 seem
 look to be
@@ -143,10 +166,22 @@ block
 prevent
 ;
 
+{vrb_pres_speak} =
+speak
+speak up
+say something
+talk
+;
+
 {vrb_ing_stop} =
 stopping
 blocking
 preventing
+;
+
+{vrb_ing_talk} =
+talking
+speaking
 ;
 
 {vrb_ing_undertake} =

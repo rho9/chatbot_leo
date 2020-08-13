@@ -11,6 +11,7 @@
 {topic}[{slot_interjection}..]Do you notice anything like sweating, blushing, trembling? // se ancora non sono stati detti
 {topic}[{slot_interjection}..]Can you describe yourself? How do you think you look when you're in these situations?
 {topic}[{slot_interjection}..]How about your heart?
+{topic}[{slot_interjection}..]Let's pretend for a second that you were talking to a friend who had exactly these same thoughts..(how would you talk to her|what would you suggest to her)?
 
 #import sistemi.igrm
- =                          
+ =
