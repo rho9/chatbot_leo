@@ -34,7 +34,8 @@ dictionary = {
                           "Do you do anything to try to avoid drawing attention to yourself?"
                           ],
     "self_focus": ["When you are afraid to start *, what happens to your attention?",
-                   "If you focus attention on yourself, what do you notice? Do you become more self-conscious?"
+                   "If you focus attention on yourself, what do you notice? Do you become more self-conscious?",
+                   "I feel like I am totally zoned out like I'm not even putting attention to what that person saying"
                    ],
     # "self_image": ["As you focused attention on yourself, do you have an image in your mind of how you are coming across to others?",
                    # "As you focused attention on yourself, what did it look like?",

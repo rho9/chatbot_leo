@@ -1,9 +1,11 @@
 {topic} =
-	work at event with new/lot of people
+	event with new/lot of people
 ;
 
 {topic}[{slot_interjection}..]Can you tell me a bit more about your thoughts in these {slot_situations}?
 {topic}[{slot_interjection}..]Let's {vrb_pres_focus} {slot_invitation} to do a {slot_task} that involves a group of people and where you're going to have social {slot_interaction}..what kind of thoughts go through your mind?
+{topic}[{slot_interjection}..]So you have some predictions (about|on) how you('re gonna| will) actually cope with that feeling..
+
 
 #import sistemi.igrm
  =

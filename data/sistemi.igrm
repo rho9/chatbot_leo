@@ -139,14 +139,31 @@ hide
 conceal
 ;
 
+{vrb_pres_manage} =
+manage
+control
+handle
+;
+
 {vrb_past_move} =
 left home
 moved
 ;
 
+{vrb_pres_notice} =
+notice
+see
+perceive
+;
+
 {vrb_pres_pull_down} =
 pull you down
 bring you down
+;
+
+{vrb_ing_remain} =
+remaining
+staying
 ;
 
 {vrb_pres_seem} =

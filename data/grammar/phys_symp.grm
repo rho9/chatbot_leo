@@ -9,6 +9,10 @@
 {topic}[{slot_interjection}..](Do you [{slot_usually} ]do anything|Is there anything you do) to try to (prevent your feared consequences from occurring|prevent people from noticing you *|control your symptoms|avoid drawing attention to yourself|ensure that you will come across well)?
 {topic}[{slot_interjection}..]When you are afraid to start *, what happens to your attention?
 {topic}[{slot_interjection}..]If you focus attention on yourself, what do you notice? Do you become more self-conscious?
+{topic}[{slot_interjection}..]Are there any other things you worry about that people will {vrb_pres_notice}?
+{topic}[{slot_interjection}..]So it {vrb_pres_third_seem} like you have quite a strong mental image of how you are when you're in these social situations..
+{topic}[{slot_interjection}..]So it's quite a negative impression of how you're coming across..
+{topic}[{slot_interjection}..]Is there anything that you do to try to (to manage these {slot_problems}|prevent these things happens)?
 
 #import sistemi.igrm
  =
