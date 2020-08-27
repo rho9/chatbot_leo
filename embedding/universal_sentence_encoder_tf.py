@@ -46,7 +46,6 @@ for i, message_embedding in enumerate(np.array(message_embeddings).tolist()):
 # of the encodings.
 def plot_similarity(labels, features, rotation):
     corr = np.inner(features, features)
-    print("corr:", corr)
     sns.set(font_scale=1.2)
     g = sns.heatmap(
       corr,
@@ -57,21 +56,22 @@ def plot_similarity(labels, features, rotation):
       cmap="YlOrRd")
     g.set_xticklabels(labels, rotation=rotation)
     g.set_title("Semantic Textual Similarity")
-    plt.show()
+    # plt.show()
     print("Best match with the last one")
-    # trova l'indice del valore più alto per l'ultimo elemento
     value = -1
     index = -1
-    for i, last_feature in enumerate(corr[len(corr)-2]):
-        if last_feature > value:
+    print("Frase con cui matchare:", labels[len(corr) - 1])
+    for pos, last_feature in enumerate(corr[len(corr) - 1]):
+        if last_feature > value and pos < len(features) - 1:
             value = last_feature
-            index = i
+            index = pos
     print("value:", value)
     print("index:", index)
     print("labels[index]:", labels[index])
 
 
-def run_and_plot(messages_):
+def run_and_plot(messages_, match_sentence):
+    messages.append(match_sentence)
     message_embeddings_ = embed(messages_)
     plot_similarity(messages_, message_embeddings_, 90)
 
@@ -97,4 +97,4 @@ messages = [
   "what is your age?",
 ]
 
-run_and_plot(messages)
+run_and_plot(messages, "I think it will snow")
