@@ -1,20 +1,24 @@
-from absl import logging
+# Code from TensorFlow notebook:
+# https://www.tensorflow.org/hub/tutorials/semantic_similarity_with_tf_hub_universal_encoder?hl=en
 
-import tensorflow as tf
+from absl import logging
 
 import tensorflow_hub as hub
 import matplotlib.pyplot as plt
 import numpy as np
-import os
-import pandas as pd
-import re
 import seaborn as sns
 
 module_url = "https://tfhub.dev/google/universal-sentence-encoder/4"
 model = hub.load(module_url)
-print ("module %s loaded" % module_url)
+print("module %s loaded" % module_url)
+
+
+# returns a trackable object with a signatures
+# attribute mapping from signature keys to functions
 def embed(input):
-  return model(input)
+    return model(input)
+
+
 word = "Elephant"
 sentence = "I am a sentence for which I would like to get its embedding."
 paragraph = (
@@ -23,36 +27,42 @@ paragraph = (
     "the more 'diluted' the embedding will be.")
 messages = [word, sentence, paragraph]
 
-# Reduce logging output.
+# Reduce logging output (log)
 logging.set_verbosity(logging.ERROR)
 
 message_embeddings = embed(messages)
 
+# print the message, the embedding length of the message and the first three values
 for i, message_embedding in enumerate(np.array(message_embeddings).tolist()):
-  print("Message: {}".format(messages[i]))
-  print("Embedding size: {}".format(len(message_embedding)))
-  message_embedding_snippet = ", ".join(
+    print("Message: {}".format(messages[i]))
+    print("Embedding size: {}".format(len(message_embedding)))
+    message_embedding_snippet = ", ".join(
       (str(x) for x in message_embedding[:3]))
-  print("Embedding: [{}, ...]\n".format(message_embedding_snippet))
+    print("Embedding: [{}, ...]\n".format(message_embedding_snippet))
+
+
+# The embeddings produced by the Universal Sentence Encoder are approximately normalized.
+# The semantic similarity of two sentences can be trivially computed as the inner product
+# of the encodings.
 def plot_similarity(labels, features, rotation):
-  corr = np.inner(features, features)
-  print("corr:", corr)
-  sns.set(font_scale=1.2)
-  g = sns.heatmap(
+    corr = np.inner(features, features)
+    print("corr:", corr)
+    sns.set(font_scale=1.2)
+    g = sns.heatmap(
       corr,
       xticklabels=labels,
       yticklabels=labels,
       vmin=0,
       vmax=1,
       cmap="YlOrRd")
-  g.set_xticklabels(labels, rotation=rotation)
-  g.set_title("Semantic Textual Similarity")
-  plt.show()
-  print("provo a stampare g:",g)
+    g.set_xticklabels(labels, rotation=rotation)
+    g.set_title("Semantic Textual Similarity")
+    plt.show()
+
 
 def run_and_plot(messages_):
-  message_embeddings_ = embed(messages_)
-  plot_similarity(messages_, message_embeddings_, 90)
+    message_embeddings_ = embed(messages_)
+    plot_similarity(messages_, message_embeddings_, 90)
 
 
 messages = [
