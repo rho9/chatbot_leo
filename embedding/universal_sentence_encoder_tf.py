@@ -57,7 +57,18 @@ def plot_similarity(labels, features, rotation):
       cmap="YlOrRd")
     g.set_xticklabels(labels, rotation=rotation)
     g.set_title("Semantic Textual Similarity")
-    plt.show()
+    # plt.show()
+    print("Best match with the last one")
+    # trova l'indice del valore più alto per l'ultimo elemento
+    value = -1
+    index = -1
+    for i, last_feature in enumerate(corr[len(corr)-1]):
+        if last_feature > value:
+            value = last_feature
+            index = i
+    print("value:", value)
+    print("index:", index)
+    print("labels[index]:", labels[index])
 
 
 def run_and_plot(messages_):
@@ -87,3 +98,4 @@ messages = [
 ]
 
 run_and_plot(messages)
+best_match(["Will it snow tomorrow?"])
