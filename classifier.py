@@ -7,7 +7,7 @@ from data import keywords as kw
 # def classifier():
 def main():
     stems = find_stems("clever")
-    topic = find_topic(stems)
+    topic = find_topic_counting_words(stems)
     bot_answer = choose_sentence(topic)
     print(bot_answer)
 
@@ -27,7 +27,7 @@ def find_stems(sentence):
     return sentence_stems
 
 
-def find_topic(stems):
+def find_topic_counting_words(stems):
     matches = 0
     topic = ""
     for keyword in kw.keywords:
