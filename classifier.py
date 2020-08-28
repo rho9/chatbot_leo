@@ -7,12 +7,13 @@ from embedding import universal_sentence_encoder_tf as use_tf
 
 # def classifier():
 def main():
+    print("### COUNTER ###")
     stems = find_stems("clever")
     topic = find_topic_counting_words(stems)
     bot_answer = choose_sentence(topic)
     print(bot_answer)
-    print("### NUOVO METODO ###")
-    find_topic_use()
+    print("\n### UNIVERSAL SENTENCE ENCODER ###")
+    find_topic_use("I'm afraid to sound stupid")
 
 
 def find_stems(sentence):
@@ -48,14 +49,13 @@ def find_topic_counting_words(stems):
     # possiamo mettere gli slot nelle keyword?
 
 
-def find_topic_use():
+def find_topic_use(sentence):
     # possiamo trascriverli la prima volta e poi tenerli salvati (non ha senso che per ogni
     # rispota io debba andare a aleggermi e scrivermi le frasi)
-    messages = use_tf.update_messages()
-    dictionary_value = use_tf.run_and_plot(messages, "I'm afraid to sound stupid")
+    messages = use_tf.update_messages([])
+    dictionary_value = use_tf.run_use(messages, sentence)
     topic = get_key(dictionary_value)
-    # non va bene perché il valore
-    print("### TOPIC ###\n", topic)
+    print("Topic:", topic)
     return " "
 
 
