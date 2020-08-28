@@ -44,6 +44,13 @@ def find_topic_counting_words(stems):
     return topic
     # possiamo mettere gli slot nelle keyword?
 
+def find_topic_use():
+    # usa universal_sentece_encoder_tf per trovare il topic
+    # messages di là deve diventare il contenuto dei valori di keywords
+    # possiamo trascriverli la prima volta e poi tenerli salvati (non ha senso che per ogni
+    # rispota io debba andare a aleggermi e scrivermi le frasi)
+    return " "
+
 
 def choose_sentence(topic):
     grm = open("data/grammar/" + topic + ".grm", "r")

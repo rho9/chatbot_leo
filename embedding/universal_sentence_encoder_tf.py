@@ -7,6 +7,7 @@ import tensorflow_hub as hub
 import matplotlib.pyplot as plt
 import numpy as np
 import seaborn as sns
+from data import keywords as kw
 
 module_url = "https://tfhub.dev/google/universal-sentence-encoder/4"
 model = hub.load(module_url)
@@ -76,25 +77,39 @@ def run_and_plot(messages_, match_sentence):
     plot_similarity(messages_, message_embeddings_, 90)
 
 
-messages = [
-  # Smartphones
-  "I like my phone",
-  "My phone is not good.",
-  "Your cellphone looks great.",
+def update_messages():
+    # quando viene chiamato vado a leggere tutti i valori presenti in keywords
+    # e li salvo dentro a messages
+    messages.clear()
+    messages_list = list(kw.keywords.values())
+    # message_list is a list of list of values from the dictionary
+    for mes_list in messages_list:
+        for elem in mes_list:
+            messages.append(elem)
+    print("### MESSAGES ###\n", messages)
+    return messages
 
-  # Weather
-  "Will it snow tomorrow?",
-  "Recently a lot of hurricanes have hit the US",
-  "Global warming is real",
 
-  # Food and health
-  "An apple a day, keeps the doctors away",
-  "Eating strawberries is healthy",
-  "Is paleo better than keto?",
+# messages = [
+#   # Smartphones
+#   "I like my phone",
+#   "My phone is not good.",
+#   "Your cellphone looks great.",
+#
+#   # Weather
+#   "Will it snow tomorrow?",
+#   "Recently a lot of hurricanes have hit the US",
+#   "Global warming is real",
+#
+#   # Food and health
+#   "An apple a day, keeps the doctors away",
+#   "Eating strawberries is healthy",
+#   "Is paleo better than keto?",
+#
+#   # Asking about age
+#   "How old are you?",
+#   "what is your age?",
+# ]
 
-  # Asking about age
-  "How old are you?",
-  "what is your age?",
-]
-
-run_and_plot(messages, "I think it will snow")
+messages = update_messages()
+run_and_plot(messages, "I'm afraid of sound stupid")
