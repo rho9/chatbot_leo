@@ -69,12 +69,13 @@ def plot_similarity(labels, features, rotation):
     print("value:", value)
     print("index:", index)
     print("labels[index]:", labels[index])
+    return labels[index]
 
 
 def run_and_plot(messages_, match_sentence):
     messages.append(match_sentence)
     message_embeddings_ = embed(messages_)
-    plot_similarity(messages_, message_embeddings_, 90)
+    return plot_similarity(messages_, message_embeddings_, 90)
 
 
 def update_messages():
@@ -89,27 +90,6 @@ def update_messages():
     print("### MESSAGES ###\n", messages)
     return messages
 
-
-# messages = [
-#   # Smartphones
-#   "I like my phone",
-#   "My phone is not good.",
-#   "Your cellphone looks great.",
-#
-#   # Weather
-#   "Will it snow tomorrow?",
-#   "Recently a lot of hurricanes have hit the US",
-#   "Global warming is real",
-#
-#   # Food and health
-#   "An apple a day, keeps the doctors away",
-#   "Eating strawberries is healthy",
-#   "Is paleo better than keto?",
-#
-#   # Asking about age
-#   "How old are you?",
-#   "what is your age?",
-# ]
 
 messages = update_messages()
 run_and_plot(messages, "I'm afraid of sound stupid")
