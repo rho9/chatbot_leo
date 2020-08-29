@@ -2,13 +2,11 @@
 	ask the user about specific situations that concerns him/her
 ;
 
-{topic}[{slot_interjection}..]So you said you have some {slot_problems} with your *...
-{topic}[{slot_interjection}..]Let's then {vrb_pres_focus} about your * concerns.
-{topic}[{slot_interjection}..]What are the {slot_situations} that {slot_worried} you when you were *?
-{topic}[{slot_interjection}..]Can you give an example of (your * {slot_problems}|a typical situation that you managed to endure)?
-{topic}[{slot_interjection}..]Are there any {slot_situations} that you {adv_completely} avoid?
-{topic}[{slot_interjection}..]What are the things that you just won’t do because of your social anxiety?
-{topic}[{slot_interjection}..]Can you think of a situation in which you experienced social anxiety, but were able to stay in the situation?
+{topic}[{slot_interjection}..](So you said you have some {slot_problems} with your *..|Let's then {vrb_pres_focus} about your * concerns..)What are the {slot_situations} that {slot_worried} you when you were *?
+{topic}[{slot_interjection}..](So you said you have some {slot_problems} with your *..|Let's then {vrb_pres_focus} about your * concerns..)Can you give an example of (your * {slot_problems}|a typical situation that you managed to endure)?
+{topic}[{slot_interjection}..](So you said you have some {slot_problems} with your *..|Let's then {vrb_pres_focus} about your * concerns..)Are there any {slot_situations} that you {adv_completely} avoid?
+{topic}[{slot_interjection}..](So you said you have some {slot_problems} with your *..|Let's then {vrb_pres_focus} about your * concerns..)What are the things that you just won’t do because of your social anxiety?
+{topic}[{slot_interjection}..](So you said you have some {slot_problems} with your *..|Let's then {vrb_pres_focus} about your * concerns..)Can you think of a situation in which you experienced social anxiety, but were able to stay in the situation?
 
 #import sistemi.igrm
  =
