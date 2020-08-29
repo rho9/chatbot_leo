@@ -1,10 +1,10 @@
 # weights in case in a sentence more keys are present?
 dictionary = {
-    "concerns": [# "Are there any situations that you completely avoid?",
+    #"concerns": [# "Are there any situations that you completely avoid?",
                  # "What are the things that you just will not do because of your social anxiety?",
-                 "Is there a context in which you feel inappropriate?",
-                 "If you think about your life, what is it that makes you anxious?"
-                 ],
+    #             "Is there a particular context in which you feel inappropriate?",
+    #             "If you think about your life, what is it that makes you anxious?"
+    #             ],
     "situations": ["You said you have some problems with your *. ",
                    "Let's then talk about your * concerns. "
                    # "Can you give an example of your * problems?",

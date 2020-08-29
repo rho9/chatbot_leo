@@ -1,6 +1,7 @@
 import random
 import kb_manager as kbm
 import strings_manager as sm
+import classifier as cl
 from concern import Concern
 from situation import Situation
 FLAG = "fast"
@@ -25,7 +26,7 @@ def s1_manager():
 
 # find what concerns the user according to its answer
 def find_concerns():
-    sm.my_print_string(kbm.find_value("concerns"), FLAG)
+    sm.my_print_string(cl.choose_sentence("concerns"), FLAG)
     answer = input()
     new_answer, concerns_list = analyze_answer(answer)
     concerns = []
