@@ -1,0 +1,218 @@
+### Nouns ###
+
+{slot_anxiety} =
+anxiety
+nervousness
+;
+
+{slot_change} =
+change
+step
+;
+
+{slot_difficulties} =
+difficulties
+anxieties
+distresses
+;
+
+{slot_head} =
+head
+mind
+;
+
+{slot_interaction} =
+interaction
+communication
+;
+
+{slot_invitation} =
+an invitation
+a bidding
+;
+
+{slot_problems} =
+problems
+difficulties
+;
+
+{slot_situation} =
+situation
+context
+cirmunstance
+event
+;
+
+{slot_situations} =
+situations
+contexts
+cirmunstances
+events
+;
+
+{slot_task} =
+task
+duty
+job
+work
+;
+
+{slot_valuation} =
+valuation
+judgment
+;
+
+{slot_worried} =
+worried
+concerned
+;
+
+
+### Adjectives ###
+
+{slot_anxious} =
+anxious
+worried
+stressed
+nervous
+;
+
+{slot_inappropriate} =
+inappropriate
+out of place
+;
+
+{slot_certain} =
+certain
+specific
+particular
+;
+
+{slot_usually} =
+usually
+normally
+generally
+;
+
+### Pronouns ###
+
+{pron_somebody} =
+somebody
+someone
+a person
+;
+
+### Adverbs ###
+
+{adv_completely} =
+completely
+entirely
+absolutely
+;
+
+### Verbs ###
+
+{vrb_ing_esitate} =
+esitating
+hanging back
+;
+
+
+{vrb_past_describe} =
+described
+expressed
+;
+
+{vrb_ing_experiencing} =
+experiencing
+living through
+;
+
+{vrb_pres_focus} =
+focus on
+concentrate on
+talk about
+;
+
+{vrb_pres_hide} =
+hide
+conceal
+;
+
+{vrb_pres_manage} =
+manage
+control
+handle
+;
+
+{vrb_past_move} =
+left home
+moved
+;
+
+{vrb_pres_notice} =
+notice
+see
+perceive
+;
+
+{vrb_pres_pull_down} =
+pull you down
+bring you down
+;
+
+{vrb_ing_remain} =
+remaining
+staying
+;
+
+{vrb_pres_seem} =
+seem
+look to be
+;
+
+{vrb_pres_third_seem} =
+seems
+sounds
+appears
+;
+
+{vrb_pres_stop} =
+stop
+block
+prevent
+;
+
+{vrb_pres_speak} =
+speak
+speak up
+say something
+talk
+;
+
+{vrb_ing_stop} =
+stopping
+blocking
+preventing
+;
+
+{vrb_ing_talk} =
+talking
+speaking
+;
+
+{vrb_ing_undertake} =
+undertaking
+taking up
+;
+
+
+### Others ###
+
+{slot_interjection} =
+Okay
+I see
+Oh
+Mm
+Mmm
+;

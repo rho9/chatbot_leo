@@ -1,0 +1,10 @@
+{topic} =
+	the user is worried about something
+;
+
+{topic}[{slot_interjection}..]What would be so bad about (that|it)?
+{topic}[{slot_interjection}..]Why does this worry you?
+{topic}[{slot_interjection}..]What does this mean to you?
+
+#import sistemi.igrm
+ =

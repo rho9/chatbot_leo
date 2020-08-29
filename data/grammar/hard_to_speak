@@ -1,0 +1,11 @@
+{topic} =
+	the user finds hard to speak
+;
+
+{topic}[{slot_interjection}..]Does this [slot_usually ]happen in small or large groups [of people]?
+{topic}[{slot_interjection}..]So in your head you probably would say "I would like to {vrb_pres_speak}" but for some reason you feel inside some {slot_anxiety} about that..
+{topic}[{slot_interjection}..]Can you maybe give me a {slot_certain} example of a group situation [as recent as you can ]where you had the feeling of {vrb_ing_esitate}[ and maybe some fear of {slot_valuation}]?
+{topic}[{slot_interjection}..]Can you give me a {slot_certain} recent example in detail? From the beginning to what happened next..
+
+#import sistemi.igrm
+ =

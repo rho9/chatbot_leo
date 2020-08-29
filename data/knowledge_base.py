@@ -34,7 +34,8 @@ dictionary = {
                           "Do you do anything to try to avoid drawing attention to yourself?"
                           ],
     "self_focus": ["When you are afraid to start *, what happens to your attention?",
-                   "If you focus attention on yourself, what do you notice? Do you become more self-conscious?"
+                   "If you focus attention on yourself, what do you notice? Do you become more self-conscious?",
+                   "I feel like I am totally zoned out like I'm not even putting attention to what that person saying"
                    ],
     # "self_image": ["As you focused attention on yourself, do you have an image in your mind of how you are coming across to others?",
                    # "As you focused attention on yourself, what did it look like?",
@@ -76,12 +77,15 @@ dictionary = {
 # In this way you don't have to write a huge dictionary
 keywords = ["work", "family", "university",  # concerns
             "have to",  # situations
-            "worried",  # thoughts
-            "sweating", "blushing", "going red", "trembling", "shaking",  # physical_symptoms
-            "avoid eye contact", "hold tight", "firm",  # safety_behaviours
-            "stop being lucid", "lose concentration", "can't think",  # self_focus
+            "worried" "(look|stare) at me", "they think I'm (stupid|an idiot|freak|a weirdo)",
+            "they think I look like (a stupid|an idiot|a freak|a weirdo)", "they think I can’t do my job",
+            "I should just go home", "wishing I weren’t there",  # thoughts
+            "hot", "sweating", "blushing", "going red",  "flushing", "trembling", "shaking", "can’t breathe",  # physical_symptoms
+            "avoid eye contact", "look down", "hold tight", "grip", "firm",# safety_behaviours
+            "stop being lucid", "lose concentration", "can't think", "hide behind", "wear black", "go/went home",    # self_focus
             "self_image123",  # self_image
             ]
+
 
 pos_emos = ["agreeable", "amazed", "amused", "animated", "appreciative", "attractive", "awe-filled", "beautiful",
             "blissful", "bold", "brave", "bright", "calm", "cheerful", "clever", "comfortable", "confident", "content",

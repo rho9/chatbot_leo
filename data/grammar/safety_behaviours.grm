@@ -1,0 +1,11 @@
+{topic} =
+	the user talked about his/hers safety behaviours
+;
+
+{topic}[{slot_interjection}..]So you * do you make eye contact with people? // * per qualcosa detto prima + controllare che avoid eye contact non l'abbia già detto l'utente (magari aserisco anche qua sostituibile con keywords ancora non dette
+{topic}[{slot_interjection}..]Is there anything else that you do to {vrb_pres_manage} the *[ for example]?
+{topic}[{slot_interjection}..]What do you think would happen if you stop doing these things? if you stopped gripping onto the camera or you know you started making eye contact and not looking down and what do you think would happen
+{topic}[{slot_interjection}..]What do you think would happen if you stop *?
+
+#import sistemi.igrm
+ =
