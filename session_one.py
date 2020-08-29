@@ -5,6 +5,7 @@ import classifier as cl
 from concern import Concern
 from situation import Situation
 FLAG = "fast"
+RATE_NEEDED = "false"
 
 
 def s1_manager():
@@ -12,15 +13,20 @@ def s1_manager():
     sm.my_print_file(intro_s1_file, FLAG)
     intro_s1_file.close()
     concerns = find_concerns()
-    concerns = find_not_avoided_situations(concerns)
-    situations = concerns[0].get_situations()
-    situations = find_reaction(situations, "thoughts")  # managed only one situation
-    situations = find_reaction(situations, "physical_symptoms")
-    situations = find_reaction(situations, "safety_behaviours")
-    situations = find_reaction(situations, "self_focus")
+    concerns, answer = find_not_avoided_situations(concerns)
+    while True:
+        call_classifier(answer)
+        answer = input()
+        if answer == "stop":
+            break
+    # situations = concerns[0].get_situations()
+    # situations = find_reaction(situations, "thoughts")  # managed only one situation
+    # situations = find_reaction(situations, "physical_symptoms")
+    # situations = find_reaction(situations, "safety_behaviours")
+    # situations = find_reaction(situations, "self_focus")
     # situations = find_reaction(situations, "self_image")
     print("DB from while we are in session one:")
-    kbm.print_db(concerns, situations)
+    # kbm.print_db(concerns, situations)
     return concerns
 
 
@@ -53,7 +59,7 @@ def find_not_avoided_situations(concerns):
         situation = sm.complete_keywords(new_answer, keyword)
         concerns[0].add_situation(Situation(situation))
     recap(situation)
-    return concerns
+    return concerns, answer
     # socratic answers
     #replacement = answer.split(keys_list[0])[1]
     #sentence = kbm.find_value(keys_list[0])
@@ -190,3 +196,15 @@ def recap(reaction):
     # Should the answer be composed by different parts?
     # Such as: "okay/I see/..." + "you said that/it sounds like/..."
     # Recap everything is in the list after a "no"?
+
+
+def call_classifier(user_sentence):
+    bot_answer = cl.choose_sentence(user_sentence)
+    print(bot_answer)
+    if RATE_NEEDED:
+        sm.my_print_string(cl.choose_sentence("rating"), FLAG)
+        # salvo la valutazione:
+        # rate = kbm.find_rate(phy_sym)
+        # situations[0].add_thought(thought, rate)  # ricordati che devi fare un salvataggio del genere anche quando trovi una keyword interessante
+        # richiamo classifier utilizzando l'input precedente a quello del rate
+    print("Serve un rate")
