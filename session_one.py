@@ -201,21 +201,27 @@ def recap(reaction):
 def call_classifier(user_sentence, situations):
     keywords_list = kbm.check_for_keywords(user_sentence)
     print("keyword_list:", keywords_list)
-    if keywords_list and keywords_list[0][1] == "thou":
-        sm.my_print_string(cl.choose_sentence("rating"), FLAG)
-        input_rate = input()
-        # salvo la valutazione:
-        rate = kbm.find_rate(input_rate)
-        print("rate:", rate)
-        situations[0].add_thought(keywords_list[0][0], rate)
-    if keywords_list and keywords_list[0][1] == "phys":
-        sm.my_print_string(cl.choose_sentence("rating"), FLAG)
-        input_rate = input()
-        # salvo la valutazione:
-        rate = kbm.find_rate(input_rate)
-        print("rate:", rate)
-        situations[0].add_physical_symptom(keywords_list[0][0], rate)  # ricordati che devi fare un salvataggio del genere anche quando trovi una keyword interessante
-        # richiamo classifier utilizzando l'input precedente a quello del rate
+    if keywords_list:
+        if keywords_list[0][1] == "thou":
+            sm.my_print_string(cl.choose_sentence("rating"), FLAG)
+            input_rate = input()
+            # salvo la valutazione:
+            rate = kbm.find_rate(input_rate)
+            print("rate:", rate)
+            situations[0].add_thought(keywords_list[0][0], rate)
+        elif keywords_list[0][1] == "phys":
+            sm.my_print_string(cl.choose_sentence("rating"), FLAG)
+            input_rate = input()
+            # salvo la valutazione:
+            rate = kbm.find_rate(input_rate)
+            print("rate:", rate)
+            situations[0].add_physical_symptom(keywords_list[0][0], rate)
+        elif keywords_list[0][1] == "sft":
+            if not keywords_list[0][0] in situations[0].get_safety_behaviours():
+                situations[0].add_safety_behaviour(keywords_list[0][0])
+        elif keywords_list[0][1] == "focus":
+            if keywords_list[0][0] in situations[0].get_self_focus():
+                situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
     topic = cl.find_topic_use(user_sentence)  # valutare se inserire un tot di frasi per tornare al discorso di prima
     bot_answer = cl.choose_sentence(topic)
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
