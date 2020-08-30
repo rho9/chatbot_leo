@@ -5,7 +5,7 @@ import classifier as cl
 from concern import Concern
 from situation import Situation
 FLAG = "fast"
-RATE_NEEDED = "false"
+RATE_NEEDED = True
 
 
 def s1_manager():
@@ -13,20 +13,20 @@ def s1_manager():
     sm.my_print_file(intro_s1_file, FLAG)
     intro_s1_file.close()
     concerns = find_concerns()
-    concerns, answer = find_not_avoided_situations(concerns)
+    concerns, answer = find_not_avoided_situations(concerns)  # cambiare nome del metodo?
+    situations = concerns[0].get_situations()
     while True:
-        call_classifier(answer)
+        call_classifier(answer, situations)
         answer = input()
         if answer == "stop":
             break
-    # situations = concerns[0].get_situations()
     # situations = find_reaction(situations, "thoughts")  # managed only one situation
     # situations = find_reaction(situations, "physical_symptoms")
     # situations = find_reaction(situations, "safety_behaviours")
     # situations = find_reaction(situations, "self_focus")
     # situations = find_reaction(situations, "self_image")
     print("DB from while we are in session one:")
-    # kbm.print_db(concerns, situations)
+    kbm.print_db(concerns, situations)
     return concerns
 
 
@@ -37,7 +37,7 @@ def find_concerns():
     new_answer, concerns_list = analyze_answer(answer)
     concerns = []
     for concern in concerns_list:
-        concerns.append(Concern(concern))
+        concerns.append(Concern(concern[0]))
     return concerns
 
 
@@ -49,14 +49,14 @@ def find_not_avoided_situations(concerns):
     intro_nas_file.close()
     # replace * in the questions with the concern it is facing now
     uncompleted_question = cl.choose_sentence("situations")
-    question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern())
+    question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern()[0])
     sm.my_print_string(question, FLAG)
     # sm.my_print_string(kbm.find_value("not_avoided_situations"), FLAG)
     # commentata perché le domande sono state inglobata nella grammatica di situations
     answer = input()
     new_answer, keywords_list = analyze_answer(answer)
     for keyword in keywords_list:
-        situation = sm.complete_keywords(new_answer, keyword)
+        situation = sm.complete_keywords(new_answer, keyword[0])
         concerns[0].add_situation(Situation(situation))
     recap(situation)
     return concerns, answer
@@ -198,13 +198,25 @@ def recap(reaction):
     # Recap everything is in the list after a "no"?
 
 
-def call_classifier(user_sentence):
-    bot_answer = cl.choose_sentence(user_sentence)
-    print(bot_answer)
-    if RATE_NEEDED:
+def call_classifier(user_sentence, situations):
+    keywords_list = kbm.check_for_keywords(user_sentence)
+    print("keyword_list:", keywords_list)
+    if keywords_list and keywords_list[0][1] == "thou":
         sm.my_print_string(cl.choose_sentence("rating"), FLAG)
+        input_rate = input()
         # salvo la valutazione:
-        # rate = kbm.find_rate(phy_sym)
-        # situations[0].add_thought(thought, rate)  # ricordati che devi fare un salvataggio del genere anche quando trovi una keyword interessante
+        rate = kbm.find_rate(input_rate)
+        print("rate:", rate)
+        situations[0].add_thought(keywords_list[0][0], rate)
+    if keywords_list and keywords_list[0][1] == "phys":
+        sm.my_print_string(cl.choose_sentence("rating"), FLAG)
+        input_rate = input()
+        # salvo la valutazione:
+        rate = kbm.find_rate(input_rate)
+        print("rate:", rate)
+        situations[0].add_physical_symptom(keywords_list[0][0], rate)  # ricordati che devi fare un salvataggio del genere anche quando trovi una keyword interessante
         # richiamo classifier utilizzando l'input precedente a quello del rate
-    print("Serve un rate")
+    topic = cl.find_topic_use(user_sentence)  # valutare se inserire un tot di frasi per tornare al discorso di prima
+    bot_answer = cl.choose_sentence(topic)
+    # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
+    print(bot_answer)

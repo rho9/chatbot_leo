@@ -15,7 +15,7 @@ def find_value(key):
 def check_for_keywords(sentence):
     keywords_list = []
     for keyword in kb.keywords:
-        if keyword in sentence:
+        if keyword[0] in sentence:
             keywords_list.append(keyword)
     return keywords_list
 
@@ -30,12 +30,12 @@ def check_for_rate(sentence):
     return final_rate
 
 
-def find_rate(reaction):  # salvare l'intero così da poter fare il confronto?
-    question = find_value("rating")
-    if "*" in question:
-        question = sm.replace_a_star(question, reaction)
-    sm.my_print_string(question, FLAG)
-    rate_answer = input()
+def find_rate(rate_answer):  # salvare l'intero così da poter fare il confronto?
+    #question = find_value("rating")
+    #if "*" in question:
+    #    question = sm.replace_a_star(question, reaction)
+    #sm.my_print_string(question, FLAG)
+    #rate_answer = input()
     rate = check_for_rate(rate_answer)
     while not rate:
         output = find_value("wrong rating")

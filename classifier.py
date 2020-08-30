@@ -55,8 +55,8 @@ def find_topic_use(sentence):
     messages = use_tf.update_messages([])
     dictionary_value = use_tf.run_use(messages, sentence)
     topic = get_key(dictionary_value)
-    print("Topic:", topic)
-    return " "
+    # print("Topic:", topic)
+    return topic
 
 
 def get_key(val):
