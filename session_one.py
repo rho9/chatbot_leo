@@ -49,7 +49,7 @@ def find_not_avoided_situations(concerns):
     intro_nas_file.close()
     # replace * in the questions with the concern it is facing now
     uncompleted_question = cl.choose_sentence("situations")
-    question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern()[0])
+    question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern())
     sm.my_print_string(question, FLAG)
     # sm.my_print_string(kbm.find_value("not_avoided_situations"), FLAG)
     # commentata perché le domande sono state inglobata nella grammatica di situations
