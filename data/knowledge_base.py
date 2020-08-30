@@ -75,15 +75,15 @@ dictionary = {
 # Have I to divide it in concerns, situations, ...?
 # Is it better to analyze what is after verbs or something like that?
 # In this way you don't have to write a huge dictionary
-keywords = ["work", "family", "university",  # concerns
-            "have to",  # situations
-            "worried" "(look|stare) at me", "they think I'm (stupid|an idiot|freak|a weirdo)",
-            "they think I look like (a stupid|an idiot|a freak|a weirdo)", "they think I can’t do my job",
-            "I should just go home", "wishing I weren’t there",  # thoughts
-            "hot", "sweating", "blushing", "going red",  "flushing", "trembling", "shaking", "can’t breathe",  # physical_symptoms
-            "avoid eye contact", "look down", "hold tight", "grip", "firm",# safety_behaviours
-            "stop being lucid", "lose concentration", "can't think", "hide behind", "wear black", "go/went home",    # self_focus
-            "self_image123",  # self_image
+keywords = [("work", "conc"), ("family", "conc"), ("university", "conc"),  # concerns
+            ("have to", "sit"),  # situations
+            ("worried", "thou"), ("look at me", "thou"), ("stare at me", "thou"), ("stupid", "thou"),
+            ("an idiot", "thou"), ("freak", "thou"), ("a weirdo", "thou"), ("I can’t do my job", "thou"),
+            ("I should just go home", "thou"), ("wishing I weren’t there", "thou"),   # thoughts
+            ("hot", "phys"), ("sweating", "phys"), ("blushing", "phys"), ("going red", "phys"),  ("flushing", "phys"),
+            ("trembling", "phys"), ("shaking", "phys"), ("can’t breathe", "phys"),  # physical_symptoms
+            ("avoid eye contact", "sft"), ("look down", "sft"), ("hold tight", "sft"), ("grip", "sft"), ("firm", "sft"),# safety_behaviours
+            ("stop being lucid", "focus"), ("lose concentration", "focus"), ("can't think", "focus"), ("hide behind", "focus"), ("wear black", "focus"), ("go/went home", "focus")    # self_focus
             ]
 
 
