@@ -1,5 +1,6 @@
 import random
 import strings_manager as sm
+import classifier as cl
 from data import knowledge_base as kb
 from situation import Situation
 FLAG = "fast"
@@ -30,12 +31,12 @@ def check_for_rate(sentence):
     return final_rate
 
 
-def find_rate(rate_answer):  # salvare l'intero così da poter fare il confronto?
-    #question = find_value("rating")
-    #if "*" in question:
-    #    question = sm.replace_a_star(question, reaction)
-    #sm.my_print_string(question, FLAG)
-    #rate_answer = input()
+def find_rate(reaction):  # salvare l'intero così da poter fare il confronto?
+    question = cl.choose_sentence("rating")
+    if "*" in question:
+        question = sm.replace_a_star(question, reaction)
+    sm.my_print_string(question, FLAG)
+    rate_answer = input()
     rate = check_for_rate(rate_answer)
     while not rate:
         output = find_value("wrong rating")
