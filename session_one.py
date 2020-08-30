@@ -203,17 +203,11 @@ def call_classifier(user_sentence, situations):
     print("keyword_list:", keywords_list)
     if keywords_list:
         if keywords_list[0][1] == "thou":
-            #sm.my_print_string(cl.choose_sentence("rating"), FLAG)
-            #input_rate = input()
-            # salvo la valutazione:
             thought = sm.complete_keywords(user_sentence, keywords_list[0][0])
             rate = kbm.find_rate(thought)
             print("rate:", rate)
             situations[0].add_thought(keywords_list[0][0], rate)
         elif keywords_list[0][1] == "phys":
-            #sm.my_print_string(cl.choose_sentence("rating"), FLAG)
-            #input_rate = input()
-            # salvo la valutazione:
             phy_sym = sm.complete_keywords(user_sentence, keywords_list[0][0])
             rate = kbm.find_rate(phy_sym)
             print("rate:", rate)
