@@ -220,7 +220,7 @@ def call_classifier(user_sentence, situations):
                 situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
     topic = cl.find_topic_use(user_sentence)  # valutare se inserire un tot di frasi per tornare al discorso di prima
     bot_answer = cl.choose_sentence(topic)
-    if keywords_list[0][1] == "sft":  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
+    if keywords_list and keywords_list[0][1] == "sft":  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
         phy_sym_list = situations[0].get_physical_symptoms()
         bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
