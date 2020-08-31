@@ -58,15 +58,16 @@ def plot_similarity(labels, corr, rotation):
 
 
 def run_use(messages_, match_sentence):
+    messages_.append(match_sentence)
     message_embeddings = embed(messages_)
     corr = np.inner(message_embeddings, message_embeddings)
-    messages_.append(match_sentence)
     value = -1
     index = -1
     for pos, last_feature in enumerate(corr[len(corr) - 1]):
         if last_feature > value and pos < len(message_embeddings) - 1:
             value = last_feature
             index = pos
+    print("########### MAX CORR:", value)
     return messages_[index]
 
 
