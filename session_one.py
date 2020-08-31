@@ -189,7 +189,7 @@ def ask_more(situations, reaction):
 def recap(reaction):
     make_summary = random.randrange(0, 2)  # second number is not included
     # print("make_summary: ", make_summary)
-    if make_summary == 1:
+    if 1:
         recap = kbm.find_value("recap")
         recap = sm.replace_a_star(recap, reaction)
         sm.my_print_string(recap, FLAG)
@@ -224,5 +224,6 @@ def call_classifier(user_sentence, situations):
         phy_sym_list = situations[0].get_physical_symptoms()
         bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
-    recap(keywords_list[0][0])
+    reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
+    recap(reaction_to_save)
     print(bot_answer)
