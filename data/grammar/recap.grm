@@ -1,0 +1,10 @@
+{topic} =
+	make a recap of what the user has just said
+;
+
+{topic}[{slot_interjection}..]So you said that you *..
+{topic}[{slot_interjection}..]So it sounds like you are *. I see...
+{topic}[{slot_interjection}..]Therefore it's like you *
+
+#import sistemi.igrm
+ =
