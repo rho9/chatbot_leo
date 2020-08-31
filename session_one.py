@@ -188,9 +188,8 @@ def ask_more(situations, reaction):
 # HOW? Like were in the Yoda exercise?
 def recap(reaction):
     make_summary = random.randrange(0, 2)  # second number is not included
-    # print("make_summary: ", make_summary)
     if 1:
-        recap = kbm.find_value("recap")
+        recap = cl.choose_sentence("recap")
         recap = sm.replace_a_star(recap, reaction)
         sm.my_print_string(recap, FLAG)
     # Should the answer be composed by different parts?
