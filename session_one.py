@@ -224,4 +224,5 @@ def call_classifier(user_sentence, situations):
         phy_sym_list = situations[0].get_physical_symptoms()
         bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
+    recap(keywords_list[0][0])
     print(bot_answer)
