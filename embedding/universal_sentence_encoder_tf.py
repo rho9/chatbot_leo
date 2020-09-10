@@ -68,6 +68,12 @@ def run_use(messages_, match_sentence):
             value = last_feature
             index = pos
     print("########### MAX CORR:", value)
+    if value >= 0.65:
+        return messages_[index]
+    else:
+        print("Ehi, la soglia è bassa, guarda:", value)
+        # qua dobbiamo valutare cosa abbiamo imparato e decidere se passare alla sessione 2
+        # o se fare una delle domande per rimpinguare cosa è scarno
     return messages_[index]
 
 

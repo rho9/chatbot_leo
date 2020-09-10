@@ -9,11 +9,13 @@ from embedding import universal_sentence_encoder_tf as use_tf
 def main():
     print("### COUNTER ###")
     stems = find_stems("clever")
-    topic = find_topic_counting_words(stems)
-    bot_answer = choose_sentence(topic)
+    topic_counter = find_topic_counting_words(stems)
+    bot_answer = choose_sentence(topic_counter)
     print(bot_answer)
     print("\n### UNIVERSAL SENTENCE ENCODER ###")
-    find_topic_use("I'm afraid to sound stupid")
+    topic_use = find_topic_use("I'm afraid to sound stupid")
+    bot_answer = choose_sentence(topic_use)
+    print(bot_answer)
 
 
 def find_stems(sentence):
@@ -55,7 +57,7 @@ def find_topic_use(sentence):
     messages = use_tf.update_messages([])
     dictionary_value = use_tf.run_use(messages, sentence)
     topic = get_key(dictionary_value)
-    # print("Topic:", topic)
+    print("######### Topic:", topic)
     return topic
 
 

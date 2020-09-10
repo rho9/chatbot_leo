@@ -223,6 +223,7 @@ def call_classifier(user_sentence, situations):
         phy_sym_list = situations[0].get_physical_symptoms()
         bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
-    reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
-    recap(reaction_to_save)
+    if keywords_list:
+        reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
+        recap(reaction_to_save)
     print(bot_answer)
