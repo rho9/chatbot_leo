@@ -1,0 +1,8 @@
+{topic} =
+	chatbot needs to know more physicl symptoms
+;
+
+{topic}[{slot_interjection}..]Ti sto chiedendo nuovi sintomi fisici
+
+#import sistemi.igrm
+ =
