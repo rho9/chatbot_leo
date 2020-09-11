@@ -13,7 +13,7 @@ def main():
     bot_answer = choose_sentence(topic_counter)
     print(bot_answer)
     print("\n### UNIVERSAL SENTENCE ENCODER ###")
-    topic_use = find_topic_use("I'm afraid to sound stupid")
+    topic_use = find_topic_use("I'm afraid to sound stupid", )
     bot_answer = choose_sentence(topic_use)
     print(bot_answer)
 
@@ -51,12 +51,15 @@ def find_topic_counting_words(stems):
     # possiamo mettere gli slot nelle keyword?
 
 
-def find_topic_use(sentence):
+def find_topic_use(sentence, situation):
     # possiamo trascriverli la prima volta e poi tenerli salvati (non ha senso che per ogni
     # rispota io debba andare a aleggermi e scrivermi le frasi)
     messages = use_tf.update_messages([])
     dictionary_value = use_tf.run_use(messages, sentence)
-    topic = get_key(dictionary_value)
+    if dictionary_value == "Threshold issue":
+        topic = under_threshold(situation)
+    else:
+        topic = get_key(dictionary_value)
     print("######### Topic:", topic)
     return topic
 
@@ -122,6 +125,32 @@ def choose_pipe(sentence):
         chosen = in_brackets_list[random.randint(0, len(in_brackets_list)-1)]
         sentence = sentence.replace("("+in_brackets+")", chosen)
     return sentence
+
+
+# non ci siamo: io voglio nuove entry, ma ora reagisco come se le avessi appena avute invece di
+# chiederle
+# vedere se abbiamo delle frasi da qualche parte che li chiedono o creare due nuove grammatiche
+def under_threshold(situation):
+    # qua dobbiamo valutare cosa abbiamo imparato e decidere se passare alla sessione 2
+    # o se fare una delle domande per rimpinguare cosa è scarno
+    # se physical symptoms length < 5
+    # domanda sui phy_sym
+    # se safety behaviours < 4
+    # domanda sui safe_behav
+    # altirmenti andiamo alla sessione 2
+    if len(situation.get_physical_symptoms()) < 5:
+        # è meglio dire a s1 di chiedere riguardo ai phy_sym perché altirmenti dobbiamo
+        # poi ritornare anche situations. se è solo per quello si può fare, ma bisogna valutare se
+        # si scombussola anche altro
+        # di là si aspettano un topic, quidni la cosa più semplice  mandargli il topic di
+        # phy_sym piuttosto che dei safe_behav e hai finito..così se la sbrigano poi di là
+        print("Threshold basso, voglio più sintomi fisici")
+        return "ask_about_phy_sym"
+    if len(situation.get_safety_behaviours()) < 4:
+        print("Threshold basso, voglio più comportamenti di difesa")
+        return "ask_about_safe_behav"
+    print("Threshold basso, ma ho tutto quello che mi serve")
+    return "enough"
 
 
 if __name__ == "__main__":

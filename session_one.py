@@ -16,10 +16,10 @@ def s1_manager():
     concerns, answer = find_not_avoided_situations(concerns)  # cambiare nome del metodo?
     situations = concerns[0].get_situations()
     while True:
-        call_classifier(answer, situations)
-        answer = input()
-        if answer == "stop":
+        state = call_classifier(answer, situations)
+        if state == "enough":
             break
+        answer = input()
     # situations = find_reaction(situations, "thoughts")  # managed only one situation
     # situations = find_reaction(situations, "physical_symptoms")
     # situations = find_reaction(situations, "safety_behaviours")
@@ -217,7 +217,9 @@ def call_classifier(user_sentence, situations):
         elif keywords_list[0][1] == "focus":
             if keywords_list[0][0] in situations[0].get_self_focus():
                 situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
-    topic = cl.find_topic_use(user_sentence)  # valutare se inserire un tot di frasi per tornare al discorso di prima
+    topic = cl.find_topic_use(user_sentence, situations[0])  # valutare se inserire un tot di frasi per tornare al discorso di prima
+    if topic == "enough":
+        return topic
     bot_answer = cl.choose_sentence(topic)
     if keywords_list and keywords_list[0][1] == "sft":  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
         phy_sym_list = situations[0].get_physical_symptoms()
@@ -227,3 +229,4 @@ def call_classifier(user_sentence, situations):
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
         recap(reaction_to_save)
     print(bot_answer)
+    return topic

@@ -72,9 +72,7 @@ def run_use(messages_, match_sentence):
         return messages_[index]
     else:
         print("Ehi, la soglia è bassa, guarda:", value)
-        # qua dobbiamo valutare cosa abbiamo imparato e decidere se passare alla sessione 2
-        # o se fare una delle domande per rimpinguare cosa è scarno
-    return messages_[index]
+        return "Threshold issue"
 
 
 def update_messages(messages):
