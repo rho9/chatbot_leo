@@ -39,7 +39,7 @@ keywords = {"concerns": [],
             "situations": [],
             "thoughts": ["they think", "peopl think", "I look like", "stupid", "idiot", "freak",
                          "weirdo", "weird", "can't do my job", "go home", "weren't there",
-                         "can't be articulate", "clever", "make peopl laugh"
+                         "can't be articulate", "clever", "make peopl laugh", "I'm afraid to sound like an idiot"
                          ],
             "work_problem": ["less work", "be fire", "look like an idiot", "prevent",
                              "other peopl", "anxieti"
