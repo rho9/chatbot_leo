@@ -1,5 +1,5 @@
 {topic} =
-	user talked about what he/she usually does // I found (many) keywords about physical symptoms
+	user talked about what he/she usually does
 ;
 
 {topic}[{slot_interjection}..](Why|How) (is this|do you think this can be) helpful?
