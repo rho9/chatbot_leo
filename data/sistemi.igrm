@@ -39,14 +39,14 @@ difficulties
 {slot_situation} =
 situation
 context
-cirmunstance
+circumstance
 event
 ;
 
 {slot_situations} =
 situations
 contexts
-cirmunstances
+circumstances
 events
 ;
 
@@ -55,11 +55,6 @@ task
 duty
 job
 work
-;
-
-{slot_valuation} =
-valuation
-judgment
 ;
 
 {slot_worried} =
@@ -75,6 +70,7 @@ anxious
 worried
 stressed
 nervous
+totally
 ;
 
 {slot_inappropriate} =
@@ -118,8 +114,8 @@ super
 
 ### Verbs ###
 
-{vrb_ing_esitate} =
-esitating
+{vrb_ing_hesitate} =
+hesitating
 hanging back
 ;
 
@@ -127,6 +123,11 @@ hanging back
 {vrb_past_describe} =
 described
 expressed
+;
+
+{vrb_past_evaluation} =
+evaluated
+judged
 ;
 
 {vrb_ing_experiencing} =

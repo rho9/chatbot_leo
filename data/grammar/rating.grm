@@ -3,7 +3,7 @@
 ;
 
 {topic}[{slot_interjection}..]How much will you be * if 10 is like * uncontrollably and 0 is not * at all?
-{topic}[{slot_interjection}..]How much are you * out of 10 if 10 is {adv_incredibly} *?
+{topic}[{slot_interjection}..]How much are you * out of 10 if 10 is {adv_incredibly} *? // con "start x" non credo che lo slot incredibily vada bene
 {topic}[{slot_interjection}..]How much would you say that you believe that out of 10 if 10 is where you believe it totally and 0 is where you don't believe it at all?
 
 #import sistemi.igrm

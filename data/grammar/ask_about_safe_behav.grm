@@ -5,7 +5,7 @@
 {topic}[{slot_interjection}..]Do you usually do anything in the situation to try to prevent your feared consequences from occurring?",
 {topic}[{slot_interjection}..]Did you do anything to try to prevent people from noticing you *?",
 {topic}[{slot_interjection}..]Is there anything you do to try to ensure that you will come across well?",
-{topic}[{slot_interjection}..]Do you do anything to try to control your symptoms?",
+{topic}[{slot_interjection}..]Do you do anything to try to {vrb_pres_manage} your symptoms?",
 {topic}[{slot_interjection}..]Do you do anything to try to avoid drawing attention to yourself?"
 
 #import sistemi.igrm
