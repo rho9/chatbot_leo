@@ -72,9 +72,7 @@ dictionary = {
              ]
 }
 
-# Have I to divide it in concerns, situations, ...?
-# Is it better to analyze what is after verbs or something like that?
-# In this way you don't have to write a huge dictionary
+
 keywords = [("work", "conc"), ("family", "conc"), ("university", "conc"),  # concerns
             ("have to", "sit"),  # situations
             ("worried", "thou"), ("look at me", "thou"), ("stare at me", "thou"), ("stupid", "thou"),
@@ -82,8 +80,10 @@ keywords = [("work", "conc"), ("family", "conc"), ("university", "conc"),  # con
             ("I should just go home", "thou"), ("wishing I weren’t there", "thou"),   # thoughts
             ("hot", "phys"), ("sweating", "phys"), ("blushing", "phys"), ("going red", "phys"),  ("flushing", "phys"),
             ("trembling", "phys"), ("shaking", "phys"), ("can’t breathe", "phys"),  # physical_symptoms
-            ("avoid eye contact", "sft"), ("look down", "sft"), ("hold tight", "sft"), ("grip", "sft"), ("firm", "sft"),# safety_behaviours
-            ("stop being lucid", "focus"), ("lose concentration", "focus"), ("can't think", "focus"), ("hide behind", "focus"), ("wear black", "focus"), ("go/went home", "focus")    # self_focus
+            ("avoid eye contact", "sft"), ("look down", "sft"), ("hold tight", "sft"), ("grip", "sft"),
+            ("firm", "sft"),  # safety_behaviours
+            ("stop being lucid", "focus"), ("lose concentration", "focus"), ("can't think", "focus"),
+            ("hide behind", "focus"), ("wear black", "focus"), ("go/went home", "focus")    # self_focus
             ]
 
 
