@@ -13,7 +13,7 @@ def s1_manager():
     sm.my_print_file(intro_s1_file, FLAG)
     intro_s1_file.close()
     concerns = find_concerns()
-    concerns, answer = find_not_avoided_situations(concerns)  # cambiare nome del metodo?
+    concerns, answer = find_situations(concerns)
     situations = concerns[0].get_situations()
     while True:
         state = call_classifier(answer, situations)
@@ -41,8 +41,8 @@ def find_concerns():
     return concerns
 
 
-# find which are the situations in which the user can remain
-def find_not_avoided_situations(concerns):
+# find which are the situations that make the user anxious
+def find_situations(concerns):
     # manage only the first concern
     intro_nas_file = open('data/intro_not_avoided_situations.txt', "r")
     sm.my_print_file(intro_nas_file, FLAG)
