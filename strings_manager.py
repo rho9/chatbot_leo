@@ -50,7 +50,7 @@ def my_print_file(file, flag):
             for char in line:
                 sys.stdout.write(char)
                 sys.stdout.flush()
-                time.sleep(0.01)
+                time.sleep(0.09)
         print("\n")
     else:
         print(file.read())
