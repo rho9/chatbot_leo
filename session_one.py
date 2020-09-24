@@ -65,6 +65,7 @@ def find_situations(concerns):
 
 
 # Note: it doesn't make the recap when it finishes the random calls
+# NON LO USIAMO PIù
 def find_reaction(situations, reaction):
     # better: first part in a method + sequential execution without elif
     sm.my_print_string(find_question(situations, reaction, None), FLAG)
@@ -189,23 +190,36 @@ def recap(reaction, keyword):
     make_summary = random.randrange(0, 2)  # second number is not included
     if 1:
         recap = cl.choose_sentence("recap")
-        if "sit" in keyword:
-            recap = sm.replace_a_star(recap, reaction)
-        elif "thoughts1" in keyword:
-            # regex su reaction
+        if "thoughts1" in keyword:
             reaction = to_second_person(reaction)
             sentence = "you are worried they " + reaction
             recap = sm.replace_a_star(recap, sentence)
         elif "thoughts2" in keyword:
-            # regex su reaction
+            reaction = to_second_person(reaction)
             sentence = "you are worried to seem " + reaction
             recap = sm.replace_a_star(recap, sentence)
         elif "thoughts3" in keyword:
-            # regex su reaction
+            reaction = to_second_person(reaction)
             sentence = "you are worried that " + reaction
             recap = sm.replace_a_star(recap, sentence)
         elif "thoughts3" in keyword:
-            # solo regex su reaction
+            reaction = to_second_person(reaction)
+            recap = sm.replace_a_star(recap, reaction)
+        elif "phys1" in keyword:
+            reaction = to_second_person(reaction)
+            sentence = "you become " + reaction
+            recap = sm.replace_a_star(recap, sentence)
+        elif "phys2" in keyword:
+            reaction = to_second_person(reaction)
+            sentence = "you start " + reaction
+            recap = sm.replace_a_star(recap, sentence)
+        elif "sft1" in keyword or "focus" in keyword or "sit" in keyword:
+            reaction = to_second_person(reaction)
+            sentence = "you " + reaction
+            recap = sm.replace_a_star(recap, sentence)
+        elif "sft2" in keyword:
+            reaction = to_second_person(reaction)
+            sentence = "you " + reaction + " something you have next to you"
             recap = sm.replace_a_star(recap, sentence)
         else:
             print("SIAMO IN UN ALTRO CASO DEL RECAP:", keyword)
@@ -231,22 +245,22 @@ def call_classifier(user_sentence, situations):
             rate = kbm.find_rate(thought)
             print("rate:", rate)
             situations[0].add_thought(keywords_list[0][0], rate)
-        elif keywords_list[0][1] == "phys":
+        elif "phys" in keywords_list[0][1]:
             phy_sym = sm.complete_keywords(user_sentence, keywords_list[0][0])
             rate = kbm.find_rate(phy_sym)
             print("rate:", rate)
             situations[0].add_physical_symptom(keywords_list[0][0], rate)
-        elif keywords_list[0][1] == "sft":
+        elif "sft" in keywords_list[0][1]:
             if not keywords_list[0][0] in situations[0].get_safety_behaviours():
                 situations[0].add_safety_behaviour(keywords_list[0][0])
-        elif keywords_list[0][1] == "focus":
+        elif "focus" in keywords_list[0][1]:
             if keywords_list[0][0] in situations[0].get_self_focus():
                 situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
     topic = cl.find_topic_use(user_sentence, situations[0])  # valutare se inserire un tot di frasi per tornare al discorso di prima
     if topic == "enough":
         return topic
     bot_answer = cl.choose_sentence(topic)
-    if keywords_list and keywords_list[0][1] == "sft":  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
+    if keywords_list and "sft" in keywords_list[0][1]:  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
         phy_sym_list = situations[0].get_physical_symptoms()
         bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
