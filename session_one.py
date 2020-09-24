@@ -51,9 +51,7 @@ def find_situations(concerns):
     uncompleted_question = cl.choose_sentence("situations")
     question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern())
     sm.my_print_string(question, FLAG)
-    # sm.my_print_string(kbm.find_value("not_avoided_situations"), FLAG)
-    # commentata perché le domande sono state inglobata nella grammatica di situations
-    answer = input() # gnap se mi faccio dire qualcosa di nuovo, qua fa casino?
+    answer = input()
     new_answer, keywords_list = analyze_answer(answer)
     for keyword in keywords_list:
         situation = sm.complete_keywords(new_answer, keyword[0])
