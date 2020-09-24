@@ -80,7 +80,6 @@ anxious
 worried
 stressed
 nervous
-totally
 ;
 
 {slot_inappropriate} =
@@ -221,6 +220,11 @@ speaking
 {vrb_ing_undertake} =
 undertaking
 taking up
+;
+
+{vrb_pres_third_worry} =
+worries
+concerns
 ;
 
 

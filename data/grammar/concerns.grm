@@ -2,7 +2,7 @@
 	ask the user about what concerns him/her
 ;
 
-{topic}Are there any {slot_environment} (in which you feel inappropriate|that you {adv_completely} avoid)?
+{topic}Are there any {slot_environments} (in which you feel inappropriate|that you {adv_completely} avoid)?
 {topic}What are the {slot_environments} you can't deal with because of your social anxiety?
 {topic}If you think about your life, what is it that makes you {slot_anxious}?
 
