@@ -21,6 +21,11 @@ environment
 milieu
 ;
 
+{slot_environments} =
+environments
+milieus
+;
+
 {slot_head} =
 head
 mind

@@ -3,7 +3,7 @@
 ;
 
 {topic}Are there any {slot_environment} (in which you feel inappropriate|that you {adv_completely} avoid)?
-{topic}What are the things that you just will not do because of your social anxiety?
+{topic}What are the {slot_environments} you can't deal with because of your social anxiety?
 {topic}If you think about your life, what is it that makes you {slot_anxious}?
 
 #import sistemi.igrm
