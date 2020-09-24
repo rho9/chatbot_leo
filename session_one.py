@@ -56,7 +56,7 @@ def find_situations(concerns):
     for keyword in keywords_list:
         situation = sm.complete_keywords(new_answer, keyword[0])
         concerns[0].add_situation(Situation(situation))
-    recap(situation)
+    recap(situation, "sit")
     return concerns, answer
     # socratic answers
     #replacement = answer.split(keys_list[0])[1]
@@ -75,14 +75,14 @@ def find_reaction(situations, reaction):
             thought = sm.complete_keywords(new_answer, keyword)
             rate = kbm.find_rate(thought)
             situations[0].add_thought(thought, rate)
-            recap(thought)
+            recap(thought, reaction)
     elif reaction == "physical_symptoms":
         for keyword in keywords_list:
             phy_sym = sm.complete_keywords(new_answer, keyword)  # ma serve?
             rate = kbm.find_rate(phy_sym)
             situations[0].add_physical_symptom(phy_sym, rate)
             while new_answer and "no" not in new_answer:
-                recap(new_answer)
+                recap(new_answer, reaction)
                 new_answer = ask_more(situations, "phy_sym")
     elif reaction == "safety_behaviours":
         for keyword in keywords_list:
@@ -90,7 +90,7 @@ def find_reaction(situations, reaction):
             situations[0].add_safety_behaviour(safe_behav)
             for i in range(random.randrange(1, 3)):
                 if new_answer and "no" not in new_answer:
-                    recap(new_answer)
+                    recap(new_answer, reaction)
                     new_answer = ask_more(situations, "safe_behav")
     elif reaction == "self_focus":
         for keyword in keywords_list:
@@ -98,13 +98,13 @@ def find_reaction(situations, reaction):
             situations[0].add_self_focus(self_focus)
             for i in range(random.randrange(1, 3)):
                 if new_answer and "no" not in new_answer:
-                    recap(new_answer)
+                    recap(new_answer, reaction)
                     new_answer = ask_more(situations, "self_focus")
     elif reaction == "self_image":
         for keyword in keywords_list:
             self_image = sm.complete_keywords(new_answer, keyword)
             situations[0].add_self_image(self_image)
-            recap(self_image)
+            recap(self_image, reaction)
     return situations
 
 
@@ -141,6 +141,7 @@ def analyze_answer(answer):
 
 
 # alternare questo metodo ad uno con "do you.." + cosa c'è in kb, ma non nella lista?
+# GNAP MA LO USIAMO ANCORA?!?!
 def ask_more(situations, reaction):
     question = find_question(situations, "more", reaction)
     sm.my_print_string(question, FLAG)
@@ -184,22 +185,48 @@ def ask_more(situations, reaction):
 # it makes a recap of what the user has just said
 # NOTE: you must link in a better way what is in reaction and the dictionary value
 # HOW? Like were in the Yoda exercise?
-def recap(reaction):
+def recap(reaction, keyword):
     make_summary = random.randrange(0, 2)  # second number is not included
     if 1:
         recap = cl.choose_sentence("recap")
-        recap = sm.replace_a_star(recap, reaction)
+        if "sit" in keyword:
+            recap = sm.replace_a_star(recap, reaction)
+        elif "thoughts1" in keyword:
+            # regex su reaction
+            reaction = to_second_person(reaction)
+            sentence = "you are worried they " + reaction
+            recap = sm.replace_a_star(recap, sentence)
+        elif "thoughts2" in keyword:
+            # regex su reaction
+            sentence = "you are worried to seem " + reaction
+            recap = sm.replace_a_star(recap, sentence)
+        elif "thoughts3" in keyword:
+            # regex su reaction
+            sentence = "you are worried that " + reaction
+            recap = sm.replace_a_star(recap, sentence)
+        elif "thoughts3" in keyword:
+            # solo regex su reaction
+            recap = sm.replace_a_star(recap, sentence)
+        else:
+            print("SIAMO IN UN ALTRO CASO DEL RECAP:", keyword)
         sm.my_print_string(recap, FLAG)
     # Should the answer be composed by different parts?
     # Such as: "okay/I see/..." + "you said that/it sounds like/..."
     # Recap everything is in the list after a "no"?
 
 
+def to_second_person(reaction):
+    reaction = reaction.replace("I ", "you ")
+    reaction = reaction.replace(" me", " you")
+    reaction = reaction.replace(" my", " your")
+    return reaction
+
+
 def call_classifier(user_sentence, situations):
     keywords_list = kbm.check_for_keywords(user_sentence)
     print("keyword_list:", keywords_list)
     if keywords_list:
-        if keywords_list[0][1] == "thou":
+        if "thou" in keywords_list[0][1]:
             thought = sm.complete_keywords(user_sentence, keywords_list[0][0])
             rate = kbm.find_rate(thought)
             print("rate:", rate)
@@ -225,6 +252,6 @@ def call_classifier(user_sentence, situations):
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
     if keywords_list:
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
-        recap(reaction_to_save)
+        recap(reaction_to_save, keywords_list[0][1])
     print(bot_answer)
     return topic

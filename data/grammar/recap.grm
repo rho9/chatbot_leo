@@ -2,9 +2,9 @@
 	make a recap of what the user has just said
 ;
 
-{topic}[{slot_interjection}..]So you said that you *..
-{topic}[{slot_interjection}..]So it sounds like you are *. I see...
-{topic}[{slot_interjection}..]Therefore it's like you *
+{topic}So you said that *..
+{topic}So it sounds like *..
+{topic}Therefore it's like *
 
 #import sistemi.igrm
  =

@@ -75,10 +75,10 @@ dictionary = {
 
 keywords = [("work", "conc"), ("family", "conc"), ("university", "conc"),  # concerns
             ("have to", "sit"),  # situations
-            ("worried", "thou"), ("look at me", "thou"), ("stare at me", "thou"), ("stupid", "thou"),
-            ("an idiot", "thou"), ("freak", "thou"), ("a weirdo", "thou"), ("I can’t do my job", "thou"),
-            ("I should just go home", "thou"), ("wishing I weren’t there", "thou"),   # thoughts
-            ("hot", "phys"), ("sweating", "phys"), ("blushing", "phys"), ("going red", "phys"),  ("flushing", "phys"),
+            ("look at me", "thoughts1"), ("stare at me", "thoughts1"), ("stupid", "thoughts2"), ("an idiot", "thoughts2"),
+            ("freak", "thoughts2"), ("a weirdo", "thoughts2"), ("I can’t do my job", "thoughts3"), ("I should just go home", "thoughts3"),
+            ("I wish I weren’t there", "thoughts4"),   # thoughts
+            ("hot", "phys"), ("sweating", "phys"), ("blushing", "phys"), ("going red", "phys"), ("flushing", "phys"),
             ("trembling", "phys"), ("shaking", "phys"), ("can’t breathe", "phys"),  # physical_symptoms
             ("avoid eye contact", "sft"), ("look down", "sft"), ("hold tight", "sft"), ("grip", "sft"),
             ("firm", "sft"),  # safety_behaviours
