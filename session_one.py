@@ -184,11 +184,9 @@ def ask_more(situations, reaction):
 
 
 # it makes a recap of what the user has just said
-# NOTE: you must link in a better way what is in reaction and the dictionary value
-# HOW? Like were in the Yoda exercise?
 def recap(reaction, keyword):
     make_summary = random.randrange(0, 2)  # second number is not included
-    if 1:
+    if 1:  # gnap: metti make_summary
         recap = cl.choose_sentence("recap")
         if "thoughts1" in keyword:
             reaction = to_second_person(reaction)
@@ -202,9 +200,6 @@ def recap(reaction, keyword):
             reaction = to_second_person(reaction)
             sentence = "you are worried that " + reaction
             recap = sm.replace_a_star(recap, sentence)
-        elif "thoughts3" in keyword:
-            reaction = to_second_person(reaction)
-            recap = sm.replace_a_star(recap, reaction)
         elif "phys1" in keyword:
             reaction = to_second_person(reaction)
             sentence = "you become " + reaction
@@ -221,11 +216,7 @@ def recap(reaction, keyword):
             reaction = to_second_person(reaction)
             sentence = "you " + reaction + " something you have next to you"
             recap = sm.replace_a_star(recap, sentence)
-        else:
-            print("SIAMO IN UN ALTRO CASO DEL RECAP:", keyword)
         sm.my_print_string(recap, FLAG)
-    # Should the answer be composed by different parts?
-    # Such as: "okay/I see/..." + "you said that/it sounds like/..."
     # Recap everything is in the list after a "no"?
 
 
@@ -239,6 +230,7 @@ def to_second_person(reaction):
 def call_classifier(user_sentence, situations):
     keywords_list = kbm.check_for_keywords(user_sentence)
     print("keyword_list:", keywords_list)
+    # save new keywords
     if keywords_list:
         if "thou" in keywords_list[0][1]:
             thought = sm.complete_keywords(user_sentence, keywords_list[0][0])
@@ -256,6 +248,7 @@ def call_classifier(user_sentence, situations):
         elif "focus" in keywords_list[0][1]:
             if keywords_list[0][0] in situations[0].get_self_focus():
                 situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
+    # elaborate an answer
     topic = cl.find_topic_use(user_sentence, situations[0])  # valutare se inserire un tot di frasi per tornare al discorso di prima
     if topic == "enough":
         return topic
@@ -267,5 +260,6 @@ def call_classifier(user_sentence, situations):
     if keywords_list:
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
         recap(reaction_to_save, keywords_list[0][1])
+    # gnap: stampare il recap qua?
     print(bot_answer)
     return topic
