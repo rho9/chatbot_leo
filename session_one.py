@@ -188,36 +188,36 @@ def recap(reaction, keyword):
     make_summary = random.randrange(0, 2)  # second number is not included
     if 1:  # gnap: metti make_summary
         recap = cl.choose_sentence("recap")
-        if "thoughts1" in keyword:
-            reaction = to_second_person(reaction)
-            sentence = "you are worried they " + reaction
-            recap = sm.replace_a_star(recap, sentence)
-        elif "thoughts2" in keyword:
-            reaction = to_second_person(reaction)
-            sentence = "you are worried to seem " + reaction
-            recap = sm.replace_a_star(recap, sentence)
-        elif "thoughts3" in keyword:
-            reaction = to_second_person(reaction)
-            sentence = "you are worried that " + reaction
-            recap = sm.replace_a_star(recap, sentence)
-        elif "phys1" in keyword:
-            reaction = to_second_person(reaction)
-            sentence = "you become " + reaction
-            recap = sm.replace_a_star(recap, sentence)
-        elif "phys2" in keyword:
-            reaction = to_second_person(reaction)
-            sentence = "you start " + reaction
-            recap = sm.replace_a_star(recap, sentence)
-        elif "sft1" in keyword or "focus" in keyword or "sit" in keyword:
-            reaction = to_second_person(reaction)
-            sentence = "you " + reaction
-            recap = sm.replace_a_star(recap, sentence)
-        elif "sft2" in keyword:
-            reaction = to_second_person(reaction)
-            sentence = "you " + reaction + " something you have next to you"
-            recap = sm.replace_a_star(recap, sentence)
+        sentence = add_particles(reaction, keyword)
+        recap = sm.replace_a_star(recap, sentence)
         sm.my_print_string(recap, FLAG)
     # Recap everything is in the list after a "no"?
+
+
+def add_particles(reaction, keyword):
+    composed_sentence = ""
+    if "thoughts1" in keyword:
+        reaction = to_second_person(reaction)
+        composed_sentence = "you are worried they " + reaction
+    elif "thoughts2" in keyword:
+        reaction = to_second_person(reaction)
+        composed_sentence = "you are worried to seem " + reaction
+    elif "thoughts3" in keyword:
+        reaction = to_second_person(reaction)
+        composed_sentence = "you are worried that " + reaction
+    elif "phys1" in keyword:
+        reaction = to_second_person(reaction)
+        composed_sentence = "you become " + reaction
+    elif "phys2" in keyword:
+        reaction = to_second_person(reaction)
+        composed_sentence = "you start " + reaction
+    elif "sft1" in keyword or "focus" in keyword or "sit" in keyword:
+        reaction = to_second_person(reaction)
+        composed_sentence = "you " + reaction
+    elif "sft2" in keyword:
+        reaction = to_second_person(reaction)
+        composed_sentence = "you " + reaction  # + " something you have next to you"
+    return composed_sentence
 
 
 def to_second_person(reaction):
@@ -234,28 +234,30 @@ def call_classifier(user_sentence, situations):
     if keywords_list:
         if "thou" in keywords_list[0][1]:
             thought = sm.complete_keywords(user_sentence, keywords_list[0][0])
-            rate = kbm.find_rate(thought)
+            complete_thought = add_particles(thought,keywords_list[0][1])
+            rate = kbm.find_rate(complete_thought)
             print("rate:", rate)
             situations[0].add_thought(keywords_list[0][0], rate)
         elif "phys" in keywords_list[0][1]:
             phy_sym = sm.complete_keywords(user_sentence, keywords_list[0][0])
-            rate = kbm.find_rate(phy_sym)
+            complete_phy_sym = add_particles(phy_sym,keywords_list[0][1])
+            rate = kbm.find_rate(complete_phy_sym)
             print("rate:", rate)
             situations[0].add_physical_symptom(keywords_list[0][0], rate)
         elif "sft" in keywords_list[0][1]:
             if not keywords_list[0][0] in situations[0].get_safety_behaviours():
                 situations[0].add_safety_behaviour(keywords_list[0][0])
         elif "focus" in keywords_list[0][1]:
-            if keywords_list[0][0] in situations[0].get_self_focus():
+            if not keywords_list[0][0] in situations[0].get_self_focus():
                 situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
     # elaborate an answer
     topic = cl.find_topic_use(user_sentence, situations[0])  # valutare se inserire un tot di frasi per tornare al discorso di prima
     if topic == "enough":
         return topic
     bot_answer = cl.choose_sentence(topic)
-    if keywords_list and "sft" in keywords_list[0][1]:  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
-        phy_sym_list = situations[0].get_physical_symptoms()
-        bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
+    #if keywords_list and "sft" in keywords_list[0][1]:  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
+    #    phy_sym_list = situations[0].get_physical_symptoms()
+    #    bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
     if keywords_list:
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
