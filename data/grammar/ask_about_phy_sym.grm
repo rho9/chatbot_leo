@@ -6,7 +6,7 @@
 {topic}[{slot_interjection}..]Can you tell me how you physically react in those situations?
 {topic}[{slot_interjection}..]Do you usually experience any physical symptoms of anxiety?
 {topic}[{slot_interjection}..]Do you notice anything like sweating, blushing, trembling?
-{topic}[{slot_interjection}..]How do you think you look when you're in the situation we talked about?
+{topic}[{slot_interjection}..]How do you think you look when you're in the situation you talked me about?
 {topic}[{slot_interjection}..]Can you describe yourself?
 
 #import sistemi.igrm
