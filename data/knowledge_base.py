@@ -79,7 +79,7 @@ keywords = [("work", "conc"), ("family", "conc"), ("university", "conc"),  # con
             ("freak", "thoughts2"), ("a weirdo", "thoughts2"), ("I can’t do my job", "thoughts3"), ("I should just go home", "thoughts3"),
             ("I wish I weren’t there", "thoughts3"),   # thoughts
             ("hot", "phys1"), ("sweating", "phys2"), ("blushing", "phys2"), ("going red", "phys2"), ("flushing", "phys2"),
-            ("trembling", "phys2"), ("shaking", "phys2"), ("can’t breathe", "phys2"),  # physical_symptoms
+            ("trembling", "phys2"), ("shaking", "phys2"), ("can’t breathe", "phys3"),  # physical_symptoms
             ("avoid eye contact", "sft1"), ("look down", "sft1"), ("hold tight", "sft2"), ("grip", "sft2"),  # safety_behaviours
             ("stop being lucid", "focus"), ("lose concentration", "focus"), ("can't think", "focus"),
             ("hide behind", "focus"), ("wear black", "focus"), ("want to go home", "focus")    # self_focus

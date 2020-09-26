@@ -6,7 +6,6 @@
 {topic}[{slot_interjection}..]I can tell you are getting kind of {slot_anxious} even just thinking about it
 {topic}[{slot_interjection}..]What other thoughts (were in|crossed) your {slot_head}?
 {topic}[{slot_interjection}..]You've already {vrb_past_describe} it to me (a little bit|a bit) but if you think about how you look in this {slot_situation}, how do you (say|think) you were looking?
-{topic}[{slot_interjection}..]How does your body feel when you *?
 {topic}[{slot_interjection}..]Do you usually experience any physical symptoms of anxiety?
 {topic}[{slot_interjection}..]Do you notice anything like sweating, blushing, trembling?
 {topic}[{slot_interjection}..]Can you describe yourself? How do you think you look when you're in these situations?

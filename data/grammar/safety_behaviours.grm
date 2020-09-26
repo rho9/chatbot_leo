@@ -2,9 +2,8 @@
 	the user talked about his/hers safety behaviours
 ;
 
-{topic}[{slot_interjection}..]Is there anything else that you do to {vrb_pres_manage} the *[ for example]?
-{topic}[{slot_interjection}..]What do you think would happen if you stop doing these things? if you stopped gripping onto the camera or you know you started making eye contact and not looking down and what do you think would happen
-{topic}[{slot_interjection}..]What do you think would happen if you stop *?
+{topic}[{slot_interjection}..]Is there anything else that you do to {vrb_pres_manage} the fact you *[ for example]?
+{topic}[{slot_interjection}..]What do you think would happen if you stop doing (these things|that)?
 
 #import sistemi.igrm
  =

@@ -211,13 +211,22 @@ def add_particles(reaction, keyword):
     elif "phys2" in keyword:
         reaction = to_second_person(reaction)
         composed_sentence = "you start " + reaction
-    elif "sft1" in keyword or "focus" in keyword or "sit" in keyword:
+    elif "phys3" in keyword or "sft" in keyword or "focus" in keyword or "sit" in keyword:
         reaction = to_second_person(reaction)
         composed_sentence = "you " + reaction
-    elif "sft2" in keyword:
-        reaction = to_second_person(reaction)
-        composed_sentence = "you " + reaction  # + " something you have next to you"
     return composed_sentence
+
+
+def add_particles_from_topic(reaction):
+    typology = kbm.find_typology(reaction)
+    replacement = ""
+    if typology == "phys1":
+        replacement = "become " + reaction
+    elif typology == "phys2":
+        replacement = "start " + reaction
+    elif typology == "phys3":
+        replacement = reaction
+    return replacement
 
 
 def to_second_person(reaction):
@@ -255,13 +264,16 @@ def call_classifier(user_sentence, situations):
     if topic == "enough":
         return topic
     bot_answer = cl.choose_sentence(topic)
-    #if keywords_list and "sft" in keywords_list[0][1]:  # fare anche per gli altri o toglierlo se lo fa già qualcun altro
-    #    phy_sym_list = situations[0].get_physical_symptoms()
-    #    bot_answer = sm.replace_a_star(bot_answer, phy_sym_list[0])
+    # replace the star with the right particle
+    replacement = ""
+    if topic == "safety_behaviours" or topic == "ask_about_safe_behav" or topic == "phys_symp":
+        # se ancora non hanno inserito phy sym devi evitare quelle con l'asterisco
+        phy_sym_list = situations[0].get_physical_symptoms()
+        replacement = add_particles_from_topic(phy_sym_list[0])
+    bot_answer = sm.replace_a_star(bot_answer, replacement)
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
     if keywords_list:
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
         recap(reaction_to_save, keywords_list[0][1])
-    # gnap: stampare il recap qua?
     print(bot_answer)
     return topic

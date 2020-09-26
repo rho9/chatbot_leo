@@ -2,7 +2,6 @@
 	chatbot needs to know more physical symptoms
 ;
 
-{topic}[{slot_interjection}..]How does your body react when *?
 {topic}[{slot_interjection}..]Can you tell me how you physically react in those situations?
 {topic}[{slot_interjection}..]Do you usually experience any physical symptoms of anxiety?
 {topic}[{slot_interjection}..]Do you notice anything like sweating, blushing, trembling?

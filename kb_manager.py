@@ -46,6 +46,15 @@ def find_rate(reaction):  # salvare l'intero così da poter fare il confronto?
     return rate
 
 
+# it finds the typology of the keyword (the number) to know which particle use
+def find_typology(keyword):
+    typology = None
+    for keyword_tuple in kb.keywords:
+        if keyword == keyword_tuple[0]:
+            typology = keyword_tuple[1]
+            break
+    return typology
+
 def update_db(situations, old_thought, new_thought, new_rate):
     # THOUGHTS
     situations[0].change_thought(old_thought, new_thought, new_rate)
