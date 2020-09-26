@@ -138,7 +138,7 @@ def under_threshold(situation):
     # se safety behaviours < 4
     # domanda sui safe_behav
     # altirmenti andiamo alla sessione 2
-    if len(situation.get_physical_symptoms()) < 5:
+    if len(situation.get_physical_symptoms()) < 4:
         # è meglio dire a s1 di chiedere riguardo ai phy_sym perché altirmenti dobbiamo
         # poi ritornare anche situations. se è solo per quello si può fare, ma bisogna valutare se
         # si scombussola anche altro
@@ -146,7 +146,7 @@ def under_threshold(situation):
         # phy_sym piuttosto che dei safe_behav e hai finito..così se la sbrigano poi di là
         print("Threshold basso, voglio più sintomi fisici")
         return "ask_about_phy_sym"
-    if len(situation.get_safety_behaviours()) < 4:
+    if len(situation.get_safety_behaviours()) < 3:
         print("Threshold basso, voglio più comportamenti di difesa")
         return "ask_about_safe_behav"
     print("Threshold basso, ma ho tutto quello che mi serve")
