@@ -36,8 +36,8 @@ def find_stems(sentence):
 def find_topic_counting_words(stems):
     matches = 0
     topic = ""
-    for keyword in kw.keywords:
-        values = kw.keywords[keyword]
+    for keyword in kw.keywords_count:
+        values = kw.keywords_count[keyword]
         count = 0
         for value in values:
             if value in stems:
@@ -65,7 +65,7 @@ def find_topic_use(sentence, situation):
 
 
 def get_key(val):
-    for key, values in kw.keywords.items():
+    for key, values in kw.keywords_use.items():
         for value in values:
             if val == value:
                 return key
