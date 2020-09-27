@@ -9,10 +9,10 @@ FLAG = "fast"
 
 def main():
     introduction()
-    concerns = s1.s1_manager()
-    #concern = create_db()
-    #concerns = [concern]
-    #s2.s2_manager(concerns)
+    #concerns = s1.s1_manager()
+    concern = create_db()
+    concerns = [concern]
+    s2.s2_manager(concerns)
 
 
 def introduction():
@@ -26,10 +26,14 @@ def create_db():
     concern = Concern("work")
     concern.add_situation(Situation("have to talk to customers"))
     situation = concern.get_situations()[0]
-    situation.add_thought("worried to sound stupid", "9")
+    situation.add_thought("stupid", "9")
     situation.add_physical_symptom("sweating", "8")
     situation.add_physical_symptom("going red", "7")
+    situation.add_physical_symptom("hot", "10")
+    situation.add_physical_symptom("blushing", "9")
     situation.add_safety_behaviour("avoid eye contact")
+    situation.add_safety_behaviour("hold tight")
+    situation.add_safety_behaviour("look down")
     situation.add_self_focus("stop being lucid")
     return concern
 # remember to test session 1

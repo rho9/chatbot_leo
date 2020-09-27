@@ -80,5 +80,5 @@ def create_string_list(list):
         while i < len(list)-1:  # all elements but the last one
             string_list = string_list + ", " + list[i]
             i += 1
-        string_list = string_list + " and " + list[i]
+        string_list = string_list + ", and " + list[i]
     return string_list
