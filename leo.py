@@ -32,7 +32,7 @@ def create_db():
     situation.add_physical_symptom("hot", "10")
     situation.add_physical_symptom("blushing", "9")
     situation.add_safety_behaviour("avoid eye contact")
-    situation.add_safety_behaviour("hold tight")
+    situation.add_safety_behaviour("hold tight your bottle")
     situation.add_safety_behaviour("look down")
     situation.add_self_focus("stop being lucid")
     return concern

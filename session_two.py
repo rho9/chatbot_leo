@@ -14,12 +14,24 @@
 import kb_manager as kbm
 import strings_manager as sm
 import session_one as s1  # add_particle è da spostare in un posto pù consono
+import strings_manager as sm
 FLAG = "fast"
 
 
 def s2_manager(concerns):
-    print("Welcome to session 2!")
+    print("Now I'd like you to focus on the situation you told me about and how you think you look..")
     recap(concerns)
+    video_setup_file = open('data/first_video_setup.txt', "r")
+    sm.my_print_file(video_setup_file, FLAG)
+    answer = input()
+    video_setup_file = open('data/second_video_setup.txt', "r")
+    sm.my_print_file(video_setup_file, FLAG)
+    answer = input()
+    video_setup_file = open('data/watch_videos.txt', "r")
+    sm.my_print_file(video_setup_file, FLAG)
+    answer = input()
+    video_setup_file = open('data/watch_videos.txt', "r")
+    sm.my_print_file(video_setup_file, FLAG)
 
 
 def recap(concerns):
