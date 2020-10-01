@@ -6,6 +6,7 @@ from concern import Concern
 from situation import Situation
 FLAG = "fast"
 RATE_NEEDED = True
+CHOOSE_TOPIC_METHOD = "use"  # counter, glove, use
 
 
 def s1_manager():
@@ -260,7 +261,7 @@ def call_classifier(user_sentence, situations):
             if not keywords_list[0][0] in situations[0].get_self_focus():
                 situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
     # elaborate an answer
-    topic = cl.find_topic_use(user_sentence, situations[0])  # valutare se inserire un tot di frasi per tornare al discorso di prima
+    topic = cl.find_topic(user_sentence, situations[0], CHOOSE_TOPIC_METHOD)  # valutare se inserire un tot di frasi per tornare al discorso di prima
     if topic == "enough":
         return topic
     bot_answer = cl.choose_sentence(topic)

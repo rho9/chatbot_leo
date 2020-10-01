@@ -79,7 +79,7 @@ def update_messages(messages):
     # quando viene chiamato vado a leggere tutti i valori presenti in keywords
     # e li salvo dentro a messages
     messages.clear()
-    messages_list = list(kw.keywords.values())
+    messages_list = list(kw.keywords_use.values())
     # message_list is a list of list of values from the dictionary
     for mes_list in messages_list:
         for elem in mes_list:

@@ -2,6 +2,7 @@ import scipy
 import numpy as np
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+# importare update_messages da use (prima o poi devi spostarlo)
 
 
 def main():
@@ -11,6 +12,10 @@ def main():
     s4 = "you user number ? "
     cosine_distance_wordembedding_method(s1, s4)
     # heat_map_matrix_between_two_sentences(s1, s2)
+
+    # ci serve il confronto tra un lista di frasi e una frase
+    # possiamo usare load_messages di use e poi confrontare la frase input con quelle
+    # prendiamo quella con similarità maggiore
 
 
 def cosine_distance_wordembedding_method(s1, s2):
