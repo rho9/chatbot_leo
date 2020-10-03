@@ -4,7 +4,7 @@ keywords_use = {"concerns": [],
                                          "I just won't talk to anyone I might even stand in a corner and look like the loner at the party",
                                          "I was kind of making things hard",
                                          "In my class each week we have an inclusion activity and generally I guess it's to let people feel like the group's more cohesive and included, but I usually experience it as the opposite",
-                                         "There's usually a task at the beginning of each class in wich you have to take off your shoes and talk about the most interesting place your shoes have been and usually I get really nervous"
+                                         "There's usually a task at the beginning of each class in which you have to take off your shoes and talk about the most interesting place your shoes have been and usually I get really nervous"
                                          ],
                 "event": ["It was a fashion event for a campaign and it was really cool but I found really hard to focus and I was really anxious",
                           "I had to work with a lot of different people",
@@ -31,7 +31,7 @@ keywords_use = {"concerns": [],
                                       "I kind of clench all my muscles",
                                       "I just find something that I can focus on",
                                       "I just look down and avoid eye contact",
-                                      "I wear only black cloths so my sweating is less obvious and you just can't tell"
+                                      "I wear only black clothes so my sweating is less obvious and you just can't tell"
                                       ],
                 "self_focus": ["I stop being lucid and I can't think",
                                "I actually tend to lose concentration",

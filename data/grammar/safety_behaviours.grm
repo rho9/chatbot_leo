@@ -1,5 +1,5 @@
 {topic} =
-	the user talked about his/hers safety behaviours
+	the user talked about his/her safety behaviours
 ;
 
 {topic}[{slot_interjection}..]Is there anything else that you do to {vrb_pres_manage} the fact you *[ for example]?

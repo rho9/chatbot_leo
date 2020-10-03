@@ -57,7 +57,7 @@ def find_situations(concerns):
     for keyword in keywords_list:
         situation = sm.complete_keywords(new_answer, keyword[0])
         concerns[0].add_situation(Situation(situation))
-    recap(situation, "sit")
+    # recap(situation, "sit")
     return concerns, answer
     # socratic answers
     #replacement = answer.split(keys_list[0])[1]
@@ -187,7 +187,7 @@ def ask_more(situations, reaction):
 # it makes a recap of what the user has just said
 def recap(reaction, keyword):
     make_summary = random.randrange(0, 2)  # second number is not included
-    if 1:  # gnap: metti make_summary
+    if make_summary and keyword != "":
         recap = cl.choose_sentence("recap")
         sentence = add_particles(reaction, keyword)
         recap = sm.replace_a_star(recap, sentence)
@@ -239,20 +239,20 @@ def to_second_person(reaction):
 
 def call_classifier(user_sentence, situations):
     keywords_list = kbm.check_for_keywords(user_sentence)
-    print("keyword_list:", keywords_list)
+    # print("keyword_list:", keywords_list)
     # save new keywords
     if keywords_list:
         if "thou" in keywords_list[0][1]:
             thought = sm.complete_keywords(user_sentence, keywords_list[0][0])
             complete_thought = add_particles(thought,keywords_list[0][1])
             rate = kbm.find_rate(complete_thought)
-            print("rate:", rate)
+            # print("rate:", rate)
             situations[0].add_thought(keywords_list[0][0], rate)
         elif "phys" in keywords_list[0][1]:
             phy_sym = sm.complete_keywords(user_sentence, keywords_list[0][0])
             complete_phy_sym = add_particles(phy_sym,keywords_list[0][1])
             rate = kbm.find_rate(complete_phy_sym)
-            print("rate:", rate)
+            # print("rate:", rate)
             situations[0].add_physical_symptom(keywords_list[0][0], rate)
         elif "sft" in keywords_list[0][1]:
             if not keywords_list[0][0] in situations[0].get_safety_behaviours():
@@ -275,6 +275,7 @@ def call_classifier(user_sentence, situations):
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
     if keywords_list:
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
-        recap(reaction_to_save, keywords_list[0][1])
+        if topic != "sit":
+            recap(reaction_to_save, keywords_list[0][1])
     print(bot_answer)
     return topic
