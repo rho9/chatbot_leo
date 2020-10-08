@@ -12,7 +12,6 @@
 # if are similar or more? Search in the document, on the internet...?
 
 import kb_manager as kbm
-import strings_manager as sm
 import session_one as s1  # add_particle è da spostare in un posto pù consono
 import strings_manager as sm
 FLAG = "fast"
@@ -81,7 +80,7 @@ def recap(concerns):
     # manage_confirmation(situations, "safe_bhv_self_focus")
     kbm.print_db(concerns, situations)
 
-
+# not used
 def manage_confirmation(situations, reaction):
     print(kbm.find_value("confirmation"))
     answer = input()

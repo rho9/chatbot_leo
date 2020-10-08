@@ -5,6 +5,7 @@ import nltk
 import re
 
 
+# not used
 # infer words from user input
 def tokenize(user_input):
     sentence = user_input.lower()
@@ -31,7 +32,7 @@ def complete_keywords(sentence, keyword):
     modified = keyword + to_add
     return modified
 
-
+# not used
 # is it necessary?
 def complete_keywords_pos(sentence, keyword):
     # usiamo i tag di nltk invece di usare questo split stupido
@@ -67,12 +68,14 @@ def my_print_string(sentence, flag):
         print(sentence)
 
 
+# used in not used
 def is_negative(sentence):
     regex = "no|isn't|didn't|wrong|un"
     negative = re.search(regex, sentence)
     return negative
 
 
+# it creates the summary that must be printed in session 2
 def create_string_list(list):
     string_list = list[0]
     if len(list) != 1:

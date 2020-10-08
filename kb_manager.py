@@ -6,6 +6,7 @@ from situation import Situation
 FLAG = "fast"
 
 
+# non dovrebbe servire più perché ora si interroga la grammatica invece di questo
 # given a key, it returns randomly one of its value
 def find_value(key):
     values = kb.dictionary[key]
@@ -55,6 +56,7 @@ def find_typology(keyword):
             break
     return typology
 
+# used in old session 2
 def update_db(situations, old_thought, new_thought, new_rate):
     # THOUGHTS
     situations[0].change_thought(old_thought, new_thought, new_rate)

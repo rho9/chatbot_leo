@@ -67,17 +67,17 @@ keywords_use = {"concerns": [],
 
 
 keywords_count = {"concerns": [],
-                  "difficult_experience": ["stop", "anxiety", "work", "opportunity", "interact with peopl",
+                  "difficult_experience": ["stop", "anxieti", "work", "opportun", "interact with peopl",
                                            "make thing hard", "feel alone", "relationship",
-                                           "want to go home", "scary", "wish I weren’t",
+                                           "want to go home", "scari", "wish i weren’t",
                                            "don't even bother"
                                            ],
                   "event": ["work with", "other peopl", "lot of peopl", "event"
                             ],
                   "first_time": ["the first time", "it'", "it wa"
                            ],
-                  "hard_to_speak": ["hang back", "observe instead of participate", "expected to speak", "freeze",
-                                    "force myself to speak up", "don't feel ready", "throat", "closing"
+                  "hard_to_speak": ["hang back", "observ instead of particip", "expect to speak", "freez",
+                                    "forc myself to speak up", "don't feel readi", "throat", "close"
                                     ],
                   "moved": ["move out", "from live with", "home", "parent"
                             ],

@@ -109,7 +109,7 @@ def find_reaction(situations, reaction):
             recap(self_image, reaction)
     return situations
 
-
+# usato da roba che non usiamo più
 def find_question(situations, key, reaction):
     question = kbm.find_value(key)
     if "*" in question:
@@ -195,6 +195,7 @@ def recap(reaction, keyword):
     # Recap everything is in the list after a "no"?
 
 
+# da spostare in string manager insieme a quello sotto
 def add_particles(reaction, keyword):
     composed_sentence = ""
     if "thoughts1" in keyword:

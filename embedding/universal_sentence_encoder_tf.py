@@ -67,14 +67,14 @@ def run_use(messages_, match_sentence):
         if last_feature > value and pos < len(message_embeddings) - 1:
             value = last_feature
             index = pos
-    print("########### MAX CORR:", value)
+    print("Similarity =", value)
     if value >= 0.65:
         return messages_[index]
     else:
-        print("Ehi, la soglia è bassa, guarda:", value)
+        # print("Ehi, la soglia è bassa, guarda:", value)
         return "Threshold issue"
 
-
+# mettere in kb manager
 def update_messages(messages):
     # quando viene chiamato vado a leggere tutti i valori presenti in keywords
     # e li salvo dentro a messages
