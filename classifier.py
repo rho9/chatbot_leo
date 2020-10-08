@@ -4,14 +4,18 @@ from nltk.stem import PorterStemmer
 from data import keywords as kw
 from embedding import universal_sentence_encoder_tf as use_tf
 from datetime import datetime
-import time
+from embedding import glove_cosine_similarity as glove
 
 
 # def classifier():
 def main():
-    sentence = "I'm afraid to sound stupid"
+    sentence = "My anxiety is been stopping me a bit from being able to get work"
     print("Sentence to be analyze:", sentence)
     now = datetime.now()
+
+    # load glove
+    glove_model = glove.load_glove_model()
+    messages = use_tf.update_messages([])
 
     print("### COUNTER ###")
     now = datetime.now()
@@ -19,7 +23,7 @@ def main():
     print("Start time =", current_time)
     stems = find_stems(sentence)
     topic_counter = find_topic_counting_words(stems)
-    print(topic_counter)
+    print("Topic counter:", topic_counter)
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S.%f")
     print("End time =", current_time)
@@ -28,8 +32,18 @@ def main():
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S.%f")
     print("Start time =", current_time)
-    topic_use = find_topic_use("I'm afraid to sound stupid", "")
-    print(topic_use)
+    topic_use = find_topic_use(sentence, "")
+    print("Topic use:", topic_use)
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S.%f")
+    print("End time =", current_time)
+
+    print("\n### GLOVE ###")
+    now = datetime.now()
+    current_time = now.strftime("%H:%M:%S.%f")
+    print("Start time =", current_time)
+    topic_glove = find_topic_glove(sentence, "", glove_model, messages)
+    print("Topic glove:", topic_glove)
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S.%f")
     print("End time =", current_time)
@@ -47,6 +61,7 @@ def find_topic(sentence, situation, method):
     return topic
 
 
+# mettere in string_manager
 def find_stems(sentence):
     ps = PorterStemmer()
     # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
@@ -74,8 +89,9 @@ def find_topic_counting_words(stems):
         if count > matches:
             matches = count
             topic = keyword
-    print("Final matches:", matches)
-    print("Final topic:", topic)
+    # print("Final matches:", matches)
+    # print("Final topic:", topic)
+    print("Number of stems found =", matches)
     return topic
     # possiamo mettere gli slot nelle keyword?
 
@@ -88,20 +104,29 @@ def find_topic_use(sentence, situation):
     topic = ""
     if dictionary_value == "Threshold issue":
         if situation == "":  # if inserito per fare il test tra i tre
-            print("Low threshold")
+            topic = "low threshold"
         else:
             topic = under_threshold(situation)
     else:
         topic = get_key(dictionary_value)
-    print("######### Topic:", topic)
+    # print("######### Topic:", topic)
     return topic
 
 
-def find_topic_glove(sentence):
-    topic = ""
+def find_topic_glove(sentence, situation, model, messages):
+    dictionary_value = glove.run_glove(sentence, model, messages)
+    if dictionary_value == "Threshold issue":
+        if situation == "":  # if inserito per fare il test tra i tre
+            topic = "low threshold"
+        else:
+            topic = under_threshold(situation)
+    else:
+        topic = get_key(dictionary_value)
+    # print("######### Topic:", topic)
     return topic
 
 
+# mettere in keyword_manager
 def get_key(val):
     for key, values in kw.keywords_use.items():
         for value in values:
