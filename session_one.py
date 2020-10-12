@@ -58,7 +58,7 @@ def find_situations(concerns):
 def analyze_answer(answer):
     keywords = kbm.check_for_keywords(answer)
     while not keywords:
-        sm.my_print_string(kbm.find_value("none"), FLAG)  # deve chiedere a grammatica
+        sm.my_print_string(cl.choose_sentence("none"), FLAG)
         answer = input()
         keywords = kbm.check_for_keywords(answer)
     return answer, keywords
