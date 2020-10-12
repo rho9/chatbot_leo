@@ -85,24 +85,24 @@ keywords_count = {"concerns": [],
                                       "myself alon"
                                       ],
                   "safety_behaviours": ["avoid eye contact", "look down", "hold tight", "grip", "firm",
-                                        "I'm holding", "black cloths"
+                                        "I'm hold", "black cloth"
                                         ],
-                  "self_focus": ["stop being lucid", "lose concentration", "can't think",
-                                 "hide behind", "wear black", "go/went home",
-                                 "mind", "different things"
+                  "self_focus": ["stop be lucid", "lose concentr", "can't think",
+                                 "hide behind", "wear black", "go home", "went home",
+                                 "mind", "differ thing"
                                  ],
                   "phys_symp": ["hot", "sweat", "blush", "go red", "flush", "trembl", "shake",
                                 "can't breath", "stutter"
                                 ],
-                  "suggest_friend": ["funny", "charming", "cool stories", "good experiences"],
+                  "suggest_friend": ["funni", "charm", "cool stori", "good experi"],
                   "situations": [],
-                  "thoughts": ["they think", "peopl think", "I look like", "stupid", "idiot", "freak",
+                  "thoughts": ["they think", "peopl think", "i look like", "stupid", "idiot", "freak",
                                "weirdo", "weird", "can't do my job", "go home", "weren't there",
-                               "can't be articulate", "clever", "make peopl laugh", "sound"
+                               "can't be articul", "clever", "make peopl laugh", "sound"
                                ],
                   "work_problem": ["less work", "be fire", "look like an idiot", "prevent",
                                    "other peopl", "anxieti"
                                    ],
-                  "worried": ["worried", "say something stupid", "look like an idiot",
+                  "worried": ["worri", "say someth stupid", "look like an idiot",
                               ]
                   }

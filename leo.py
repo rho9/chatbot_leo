@@ -1,5 +1,4 @@
 import strings_manager as sm
-import kb_manager as kbm
 import session_one as s1
 import session_two as s2
 from concern import Concern
@@ -10,11 +9,13 @@ FLAG = "fast"
 def main():
     introduction()
     concerns = s1.s1_manager()
-    #concern = create_db()
-    #concerns = [concern]
+    # use these two lines to go to session 2 without answering session 1
+    # concern = create_db()
+    # concerns = [concern]
     s2.s2_manager(concerns)
 
 
+# print the introduction file
 def introduction():
     intro_file = open('data/introduction.txt', "r")
     sm.my_print_file(intro_file, FLAG)
@@ -36,7 +37,6 @@ def create_db():
     situation.add_safety_behaviour("look down")
     situation.add_self_focus("stop being lucid")
     return concern
-# remember to test session 1
 
 
 if __name__ == "__main__":

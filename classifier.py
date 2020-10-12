@@ -1,15 +1,16 @@
 import re
 import random
-from nltk.stem import PorterStemmer
+from datetime import datetime
+import strings_manager as sm
+import kb_manager as kbm
 from data import keywords as kw
 from embedding import universal_sentence_encoder_tf as use_tf
-from datetime import datetime
 from embedding import glove_cosine_similarity as glove
 
 
 # def classifier():
 def main():
-    sentence = "My anxiety is been stopping me a bit from being able to get work"
+    sentence = "I don't like when I have to work with other people because it makes me anxious"
     print("Sentence to be analyze:", sentence)
     now = datetime.now()
 
@@ -21,7 +22,7 @@ def main():
     now = datetime.now()
     current_time = now.strftime("%H:%M:%S.%f")
     print("Start time =", current_time)
-    stems = find_stems(sentence)
+    stems = sm.find_stems(sentence)
     topic_counter = find_topic_counting_words(stems)
     print("Topic counter:", topic_counter)
     now = datetime.now()
@@ -52,29 +53,15 @@ def main():
 def find_topic(sentence, situation, method):
     topic = ""
     if method == "counter":
-        stems = find_stems("sentence")
+        stems = sm.find_stems("sentence")
         topic = find_topic_counting_words(stems)
     elif method == "glove":
-        topic = "da fare"
+        glove_model = glove.load_glove_model()
+        messages = use_tf.update_messages([])
+        topic = find_topic_glove(sentence, situation, glove_model, messages)
     elif method == "use":
         topic = find_topic_use(sentence, situation)
     return topic
-
-
-# mettere in string_manager
-def find_stems(sentence):
-    ps = PorterStemmer()
-    # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
-    sentence = sentence.lower()
-    words = sentence.split()
-    sentence_stems = ""
-    for word in words:
-        if sentence_stems:
-            sentence_stems = sentence_stems + " " + ps.stem(word)
-        else:  # the first time the white space must not be present
-            sentence_stems = sentence_stems + ps.stem(word)
-    print("find_stems:", sentence_stems)
-    return sentence_stems
 
 
 def find_topic_counting_words(stems):
@@ -108,7 +95,7 @@ def find_topic_use(sentence, situation):
         else:
             topic = under_threshold(situation)
     else:
-        topic = get_key(dictionary_value)
+        topic = kbm.get_key(dictionary_value)
     # print("######### Topic:", topic)
     return topic
 
@@ -121,20 +108,12 @@ def find_topic_glove(sentence, situation, model, messages):
         else:
             topic = under_threshold(situation)
     else:
-        topic = get_key(dictionary_value)
+        topic = kbm.get_key(dictionary_value)
     # print("######### Topic:", topic)
     return topic
 
 
-# mettere in keyword_manager
-def get_key(val):
-    for key, values in kw.keywords_use.items():
-        for value in values:
-            if val == value:
-                return key
-    return "key doesn't exist"
-
-
+# classifier è per trovare il topic. Queste andrebbero da un'altra parte
 def choose_sentence(topic):
     grm = open("data/grammar/" + topic + ".grm", "r")
     topic_file = grm.read()

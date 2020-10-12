@@ -2,7 +2,7 @@ import random
 import strings_manager as sm
 import classifier as cl
 from data import knowledge_base as kb
-from situation import Situation
+from data import keywords as kw
 FLAG = "fast"
 
 
@@ -11,6 +11,14 @@ FLAG = "fast"
 def find_value(key):
     values = kb.dictionary[key]
     return values[random.randint(0, (len(values)-1))]
+
+
+def get_key(val):
+    for key, values in kw.keywords_use.items():
+        for value in values:
+            if val == value:
+                return key
+    return "key doesn't exist"
 
 
 # given a sentence, it finds the keys present in it
@@ -56,7 +64,8 @@ def find_typology(keyword):
             break
     return typology
 
-# used in old session 2
+
+# work in progess for session 2
 def update_db(situations, old_thought, new_thought, new_rate):
     # THOUGHTS
     situations[0].change_thought(old_thought, new_thought, new_rate)
