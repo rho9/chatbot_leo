@@ -22,7 +22,7 @@ def get_key(val):
 
 
 # given a sentence, it finds the keys present in it
-def check_for_keywords(sentence):
+def find_keywords(sentence):
     keywords_list = []
     for keyword in kb.keywords:
         if keyword[0] in sentence:
@@ -31,7 +31,7 @@ def check_for_keywords(sentence):
 
 
 # given a sentence, it finds the rate present in it
-def check_for_rate(sentence):
+def find_rate(sentence):
     final_rate = None
     for rate in kb.rates:
         if rate in sentence.lower():
@@ -40,18 +40,18 @@ def check_for_rate(sentence):
     return final_rate
 
 
-def find_rate(reaction):  # salvare l'intero così da poter fare il confronto?
+def ask_for_rate(reaction):  # salvare l'intero così da poter fare il confronto?
     question = cl.choose_sentence("rating")
     if "*" in question:
         question = sm.replace_a_star(question, reaction)
     sm.my_print_string(question, FLAG)
     rate_answer = input()
-    rate = check_for_rate(rate_answer)
+    rate = find_rate(rate_answer)
     while not rate:
         output = find_value("wrong rating")
         sm.my_print_string(output, FLAG)
         rate_answer = input()
-        rate = check_for_rate(rate_answer)
+        rate = find_rate(rate_answer)
     return rate
 
 

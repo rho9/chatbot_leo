@@ -91,17 +91,17 @@ def manage_confirmation(situations, reaction):
         # altrimenti devi chiederglielo
         # partiamo dal semplice: ti dico una cosa sola e tu mi dici che questa è sbagliata
         # partiamo dal singolo pensiero
-        keywords = kbm.check_for_keywords(answer)  # non stai gestendo il rating
+        keywords = kbm.find_keywords(answer)  # non stai gestendo il rating
         if reaction == "thoughts":
             if not keywords:
                 # chiedere cosa è sbagliato
                 print(kbm.find_value("confirmation"))
                 answer = input()
-                keywords = kbm.check_for_keywords(answer)
+                keywords = kbm.find_keywords(answer)
                 # per ora ipotizzo che la inserisca correttamente
             old_thought = situations[0].get_thoughts()[0]  # for now only the first one
             new_thought = sm.complete_keywords(answer, keywords[0])  # [0]: for now we take only the first one
-            new_rate = kbm.find_rate(new_thought)  # attenzione: l'utente potrebbe già averlo inserito
+            new_rate = kbm.ask_for_rate(new_thought)  # attenzione: l'utente potrebbe già averlo inserito
             kbm.update_db(situations, old_thought, new_thought, new_rate)
         if reaction == "phy_sym":
             # se l'errore è nei physical symptoms gli fai la solita la domanda

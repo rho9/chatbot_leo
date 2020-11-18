@@ -3,7 +3,7 @@ import session_one as s1
 import session_two as s2
 from concern import Concern
 from situation import Situation
-FLAG = "fast"
+FLAG = "fast"  # accepted values: fast, slow
 
 
 def main():
@@ -15,14 +15,14 @@ def main():
     s2.s2_manager(concerns)
 
 
-# print the introduction file
+# print the file with LEO's introduction
 def introduction():
     intro_file = open('data/introduction.txt', "r")
     sm.my_print_file(intro_file, FLAG)
     intro_file.close()
 
 
-# method created in order to test s2 without answer to s1's questions
+# create db to test session 2 without answer to session 1's questions
 def create_db():
     concern = Concern("work")
     concern.add_situation(Situation("have to talk to customers"))

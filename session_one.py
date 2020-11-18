@@ -17,7 +17,7 @@ def s1_manager():
     concerns, answer = find_situations(concerns)
     situations = concerns[0].get_situations()
     while True:
-        state = call_classifier(answer, situations)
+        state = answer_to_user(answer, situations)
         if state == "enough":
             break
         answer = input()
@@ -35,7 +35,7 @@ def find_concerns():
     return concerns
 
 
-# find which are the situations that make the user anxious
+# find the situations that make the user anxious
 def find_situations(concerns):
     # manage only the first concern
     intro_sit_file = open('data/intro_situations.txt', "r")
@@ -53,18 +53,18 @@ def find_situations(concerns):
     return concerns, answer
 
 
-# if the bot doesn't find anything interesting in the user's answer,
+# if the bot doesn't find any keywords in the user's answer,
 # it ask him/her to be more specific
 def analyze_answer(answer):
-    keywords = kbm.check_for_keywords(answer)
+    keywords = kbm.find_keywords(answer)
     while not keywords:
         sm.my_print_string(cl.choose_sentence("none"), FLAG)
         answer = input()
-        keywords = kbm.check_for_keywords(answer)
+        keywords = kbm.find_keywords(answer)
     return answer, keywords
 
 
-# it makes a recap of what the user has just said
+# make a recap of what the user has just said
 def recap(reaction, keyword):
     make_summary = random.randrange(0, 2)  # second number is not included
     if make_summary and keyword != "":
@@ -74,47 +74,51 @@ def recap(reaction, keyword):
         sm.my_print_string(recap, FLAG)
 
 
-def call_classifier(user_sentence, situations):
-    keywords_list = kbm.check_for_keywords(user_sentence)
+# it finds the topic of user's input and print an appropriate answer
+# it returns the stopping condition
+def answer_to_user(user_sentence, situations):
+    keywords_list = kbm.find_keywords(user_sentence)
     situations = update_situation(user_sentence, keywords_list, situations)
-    # elaborate an answer
-    topic = cl.find_topic(user_sentence, situations[0], CHOOSE_TOPIC_METHOD)
-    if topic == "enough":
-        return topic
-    bot_answer = cl.choose_sentence(topic)
+    # elaborate an answer for the first situation
+    state = cl.find_topic(user_sentence, situations[0], CHOOSE_TOPIC_METHOD)
+    if state == "enough":
+        return state
+    bot_answer = cl.choose_sentence(state)
+    if "*" in bot_answer and not situations[0].get_physical_symptoms():
+        bot_answer = cl.choose_sentence(state)
     # replace the star with the right particle
     replacement = ""
-    if topic == "safety_behaviours" or topic == "ask_about_safe_behav" or topic == "phys_symp":
-        # se ancora non hanno inserito phy sym devi evitare quelle con l'asterisco
+    if "*" in bot_answer and (state == "safety_behaviours" or state == "ask_about_safe_behav" or state == "phys_symp"):
         phy_sym_list = situations[0].get_physical_symptoms()
         replacement = sm.add_particles_from_topic(phy_sym_list[0])
     bot_answer = sm.replace_a_star(bot_answer, replacement)
     # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
     if keywords_list:
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
-        if topic != "sit":
+        if state != "sit":
             recap(reaction_to_save, keywords_list[0][1])
     print(bot_answer)
-    return topic
+    return state
 
 
-# save new keywords in the first situation
+# it saves new keywords in the situation
+# USANDO LE KEYWORDS COSì COME SONO UTILIZZIAMO GLI STEMMI CHE FANNO SCHIFO. PROVA
 def update_situation(user_sentence, keywords_list, situations):
     if keywords_list:
         if "thou" in keywords_list[0][1]:
             thought = sm.complete_keywords(user_sentence, keywords_list[0][0])
             complete_thought = sm.add_particles(thought,keywords_list[0][1])
-            rate = kbm.find_rate(complete_thought)
+            rate = kbm.ask_for_rate(complete_thought)
             situations[0].add_thought(keywords_list[0][0], rate)
         elif "phys" in keywords_list[0][1]:
             phy_sym = sm.complete_keywords(user_sentence, keywords_list[0][0])
             complete_phy_sym = sm.add_particles(phy_sym,keywords_list[0][1])
-            rate = kbm.find_rate(complete_phy_sym)
+            rate = kbm.ask_for_rate(complete_phy_sym)
             situations[0].add_physical_symptom(keywords_list[0][0], rate)
         elif "sft" in keywords_list[0][1]:
             if not keywords_list[0][0] in situations[0].get_safety_behaviours():
                 situations[0].add_safety_behaviour(keywords_list[0][0])
         elif "focus" in keywords_list[0][1]:
             if not keywords_list[0][0] in situations[0].get_self_focus():
-                situations[0].add_self_focus(keywords_list[0][0])  # manca complete_keywords (forse anche da altre parti)
+                situations[0].add_self_focus(keywords_list[0][0])
     return situations
