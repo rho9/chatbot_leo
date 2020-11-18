@@ -6,16 +6,16 @@ FLAG = "fast"
 def s2_manager(concerns):
     print("Now I'd like you to focus on the situation you told me about and how you think you look..")
     recap(concerns)
-    video_setup_file = open('data/first_video_setup.txt', "r")
+    video_setup_file = open('data/fixed_texts/first_video_setup.txt', "r")
     sm.my_print_file(video_setup_file, FLAG)
     answer = input()
-    video_setup_file = open('data/second_video_setup.txt', "r")
+    video_setup_file = open('data/fixed_texts/second_video_setup.txt', "r")
     sm.my_print_file(video_setup_file, FLAG)
     answer = input()
-    video_setup_file = open('data/watch_videos.txt', "r")
+    video_setup_file = open('data/fixed_texts/watch_videos.txt', "r")
     sm.my_print_file(video_setup_file, FLAG)
     answer = input()
-    video_setup_file = open('data/watch_videos.txt', "r")
+    video_setup_file = open('data/fixed_texts/watch_videos.txt', "r")
     sm.my_print_file(video_setup_file, FLAG)
 
 

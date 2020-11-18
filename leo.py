@@ -17,7 +17,7 @@ def main():
 
 # it prints the file with LEO's introduction
 def introduction():
-    intro_file = open('data/introduction.txt', "r")
+    intro_file = open('data/fixed_texts/introduction.txt', "r")
     sm.my_print_file(intro_file, FLAG)
     intro_file.close()
 

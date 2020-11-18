@@ -10,7 +10,7 @@ CHOOSE_TOPIC_METHOD = "use"  # accepted values: counter, glove, use
 
 
 def s1_manager():
-    intro_s1_file = open('data/intro_session_one', "r")
+    intro_s1_file = open('data/fixed_texts/intro_session_one', "r")
     sm.my_print_file(intro_s1_file, FLAG)
     intro_s1_file.close()
     concerns = find_concerns()
@@ -38,7 +38,7 @@ def find_concerns():
 # it finds the situations that make the user anxious
 def find_situations(concerns):
     # management of the first concern
-    intro_sit_file = open('data/intro_situations.txt', "r")
+    intro_sit_file = open('data/fixed_texts/intro_situations.txt', "r")
     sm.my_print_file(intro_sit_file, FLAG)
     intro_sit_file.close()
     # replacement of * in the questions with the concern LEO is facing at the moment
