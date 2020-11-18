@@ -42,7 +42,7 @@ def find_rate(sentence):
 
 # it asks the user to give a rate and it saves it
 def ask_for_rate(reaction):
-    question = cl.choose_sentence("rating")
+    question = sm.choose_sentence("rating")
     if "*" in question:
         question = sm.replace_a_star(question, reaction)
     sm.my_print_string(question, FLAG)

@@ -23,11 +23,12 @@ def recap(concerns):
     situations = concerns[0].get_situations()
     situation = situations[0].get_situation()
     # SITUATION and THOUGHTS
-    thought = situations[0].get_thoughts()[0]
-    thought_rate = situations[0].get_thought_tuples()[0][1]  # [0] first elem of the list; [1] second item of the tuple
-    keyword = kbm.find_typology(thought)
-    thought = sm.add_particles(thought, keyword)
-    print("You said that when you", situation, thought, "and that you think that", thought_rate, "out of 10")
+    if situations[0].get_thoughts():
+        thought = situations[0].get_thoughts()[0]
+        thought_rate = situations[0].get_thought_tuples()[0][1]  # [0] first elem of the list; [1] second item of the tuple
+        keyword = kbm.find_typology(thought)
+        thought = sm.add_particles(thought, keyword)
+        print("You said that when you", situation, thought, "and that you think that", thought_rate, "out of 10")
     # PHYSICAL SYMPTOMS
     phy_syms = situations[0].get_physical_symptoms()
     phy_syms_rate = situations[0].get_phy_sym_rates()
@@ -53,5 +54,5 @@ def recap(concerns):
         i += 1
     safe_behavs_string = sm.create_string_list(safe_behavs)
     print("Finally, when we talked about safety behaviours and self focus, you said that you tend to", safe_behavs_string)
-    print("and that you also", self_focuss[0])
-    kbm.print_db(concerns, situations)
+    if self_focuss:
+        print("and that you also", self_focuss[0])

@@ -31,5 +31,5 @@ keywords = [("work", "conc"), ("family", "conc"), ("university", "conc"),  # con
             ]
 
 
-rates = ["10", "9", "8","0", "7", "6", "5", "4", "3", "2", "1", "zero", "one", "two", "three", "four", "five", "six",
+rates = ["10", "9", "8", "7", "6", "5", "4", "3", "2", "1", "0", "zero", "one", "two", "three", "four", "five", "six",
          "seven", "eight", "nine", "ten"]
