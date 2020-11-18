@@ -6,7 +6,7 @@ from nltk.stem import PorterStemmer
 import kb_manager as kbm
 
 
-# infer words from user input
+# it infers tokens from user input
 def tokenize(sentence):
     sentence = sentence.lower()
     word_tokens = word_tokenize(sentence)
@@ -14,11 +14,12 @@ def tokenize(sentence):
     return tokenized_sentence
 
 
+# it replaces the star * with the string in replacement
 def replace_a_star(sentence, replacement):
     return sentence.replace("*", replacement)
 
 
-# take the string next to the keyword until it finds a dot, a comma or an "and"
+# it takes the words next to the keyword until it finds an "and", a comma, or a dot
 def complete_keywords(sentence, keyword):
     to_add = (sentence.split(keyword)[1]).split("and")[0]
     to_add = to_add.split(",")[0]
@@ -27,6 +28,8 @@ def complete_keywords(sentence, keyword):
     return modified
 
 
+# if the flag is slow, it prints the sentences as if someone was typing
+# otherwise it prints the file normally
 def my_print_file(file, flag):
     if flag == "slow":
         lines = file.readlines()
@@ -40,6 +43,8 @@ def my_print_file(file, flag):
         print(file.read())
 
 
+# if the flag is slow, it prints the sentences as if someone was typing
+# otherwise it prints the string normally
 def my_print_string(sentence, flag):
     if flag == "slow":
         for char in sentence:
@@ -63,6 +68,7 @@ def create_string_list(list):
     return string_list
 
 
+# it adds the needed particles to the given reactions
 def add_particles(reaction, keyword):
     composed_sentence = ""
     if "thoughts1" in keyword:
@@ -98,6 +104,7 @@ def add_particles_from_topic(reaction):
     return replacement
 
 
+# it changes the first person in user's sentence to the second person
 def to_second_person(reaction):
     reaction = reaction.replace("I ", "you ")
     reaction = reaction.replace(" me", " you")
@@ -105,9 +112,9 @@ def to_second_person(reaction):
     return reaction
 
 
+# it returns sentence stems
 def find_stems(sentence):
     ps = PorterStemmer()
-    # were e was non li rende is, ma chissene..non sono keywords..magari fai un check sulle keywords
     sentence = sentence.lower()
     words = sentence.split()
     sentence_stems = ""
