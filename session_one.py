@@ -26,7 +26,7 @@ def s1_manager():
 
 # it finds what concerns the user according to his/her answer
 def find_concerns():
-    sm.my_print_string(cl.choose_sentence("concerns"), FLAG)
+    sm.my_print_string(sm.choose_sentence("concerns"), FLAG)
     answer = input()
     new_answer, concerns_list = analyze_answer(answer)
     concerns = []
@@ -42,7 +42,7 @@ def find_situations(concerns):
     sm.my_print_file(intro_sit_file, FLAG)
     intro_sit_file.close()
     # replacement of * in the questions with the concern LEO is facing at the moment
-    uncompleted_question = cl.choose_sentence("situations")
+    uncompleted_question = sm.choose_sentence("situations")
     question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern())
     sm.my_print_string(question, FLAG)
     answer = input()
@@ -58,7 +58,7 @@ def find_situations(concerns):
 def analyze_answer(answer):
     keywords = kbm.find_keywords(answer)
     while not keywords:
-        sm.my_print_string(cl.choose_sentence("none"), FLAG)
+        sm.my_print_string(sm.choose_sentence("none"), FLAG)
         answer = input()
         keywords = kbm.find_keywords(answer)
     return answer, keywords
@@ -68,7 +68,7 @@ def analyze_answer(answer):
 def recap(reaction, keyword):
     make_summary = random.randrange(0, 2)
     if make_summary and keyword != "":
-        recap = cl.choose_sentence("recap")
+        recap = sm.choose_sentence("recap")
         sentence = sm.add_particles(reaction, keyword)
         recap = sm.replace_a_star(recap, sentence)
         sm.my_print_string(recap, FLAG)
@@ -83,9 +83,9 @@ def answer_to_user(user_sentence, situations):
     state = cl.find_topic(user_sentence, situations[0], CHOOSE_TOPIC_METHOD)
     if state == "enough":
         return state
-    bot_answer = cl.choose_sentence(state)
+    bot_answer = sm.choose_sentence(state)
     if "*" in bot_answer and not situations[0].get_physical_symptoms():
-        bot_answer = cl.choose_sentence(state)
+        bot_answer = sm.choose_sentence(state)
     # replace the star with the right particle
     replacement = ""
     if "*" in bot_answer and (state == "safety_behaviours" or state == "ask_about_safe_behav" or state == "phys_symp"):

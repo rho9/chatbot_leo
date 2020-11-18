@@ -1,5 +1,7 @@
 import time
 import sys
+import re
+import random
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import PorterStemmer
@@ -125,3 +127,61 @@ def find_stems(sentence):
             sentence_stems = sentence_stems + ps.stem(word)
     print("find_stems:", sentence_stems)
     return sentence_stems
+
+
+# it takes a sentence from the given topic
+def choose_sentence(topic):
+    grm = open("data/grammar/" + topic + ".grm", "r")
+    topic_file = grm.read()
+    grm.close()
+    sentences = (topic_file.split(";")[1])
+    sentences_list = re.findall("{topic}.+", sentences)
+    # . -> Any character (except newline character)
+    # + -> One or more occurrences
+    sentence = sentences_list[random.randint(0, len(sentences_list)-1)]
+    sentence = sentence[7:len(sentence)]  # remove {topic}
+    sentence = choose_optional(sentence)
+    sentence = choose_slots(sentence)
+    sentence = choose_pipe(sentence)
+    return sentence
+
+
+# it decides whether to keep the string between the brackets
+def choose_optional(sentence):
+    while "[" in sentence:
+        index_left_bracket = sentence.find("[")
+        index_right_bracket = sentence.find("]")
+        in_brackets = sentence[index_left_bracket+1:index_right_bracket]
+        include = random.randint(0, 1)
+        if include:
+            sentence = sentence.replace("[" + in_brackets + "]", in_brackets)
+        else:
+            sentence = sentence.replace("[" + in_brackets + "]", "")
+    return sentence
+
+
+# it chooses an appropriate slot to be replaced
+def choose_slots(sentence):
+    system_file = open("data/sistemi.igrm", "r")
+    system = system_file.read()
+    system_file.close()
+    while "{" in sentence:
+        index_left_bracket = sentence.find("{")
+        index_right_bracket = sentence.find("}")
+        slot = sentence[index_left_bracket:index_right_bracket+1]
+        synonyms = (system.split(slot+" =\n")[1]).split("\n;")[0]
+        syn_list = (synonyms.split("\n"))
+        sentence = sentence.replace(slot, syn_list[random.randint(0, len(syn_list)-1)])
+    return sentence
+
+
+# it chooses which part of the string in brackets to keep
+def choose_pipe(sentence):
+    while "(" in sentence:
+        index_left_bracket = sentence.find("(")
+        index_right_bracket = sentence.find(")")
+        in_brackets = sentence[index_left_bracket+1:index_right_bracket]
+        in_brackets_list = in_brackets.split("|")
+        chosen = in_brackets_list[random.randint(0, len(in_brackets_list)-1)]
+        sentence = sentence.replace("("+in_brackets+")", chosen)
+    return sentence

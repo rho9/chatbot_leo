@@ -1,5 +1,3 @@
-import re
-import random
 from datetime import datetime
 import strings_manager as sm
 import kb_manager as kbm
@@ -79,103 +77,39 @@ def find_topic_counting_words(stems):
     # print("Final topic:", topic)
     print("Number of stems found =", matches)
     return topic
-    # possiamo mettere gli slot nelle keyword?
 
 
 def find_topic_use(sentence, situation):
-    # possiamo trascriverli la prima volta e poi tenerli salvati (non ha senso che per ogni
-    # rispota io debba andare a aleggermi e scrivermi le frasi)
     messages = kbm.update_messages([])
     dictionary_value = use_tf.run_use(messages, sentence)
     topic = ""
     if dictionary_value == "Threshold issue":
-        if situation == "":  # if inserito per fare il test tra i tre
+        if situation == "":  # if useful to test the 3 methods
             topic = "low threshold"
         else:
             topic = under_threshold(situation)
     else:
         topic = kbm.get_key(dictionary_value)
-    # print("######### Topic:", topic)
     return topic
 
 
 def find_topic_glove(sentence, situation, model, messages):
     dictionary_value = glove.run_glove(sentence, model, messages)
     if dictionary_value == "Threshold issue":
-        if situation == "":  # if inserito per fare il test tra i tre
+        if situation == "":  # if useful to test the 3 methods
             topic = "low threshold"
         else:
             topic = under_threshold(situation)
     else:
         topic = kbm.get_key(dictionary_value)
-    # print("######### Topic:", topic)
     return topic
-
-
-# classifier è per trovare il topic. Queste andrebbero da un'altra parte
-def choose_sentence(topic):
-    grm = open("data/grammar/" + topic + ".grm", "r")
-    topic_file = grm.read()
-    grm.close()
-    sentences = (topic_file.split(";")[1])
-    sentences_list = re.findall("{topic}.+", sentences)
-    # . -> Any character (except newline character)
-    # + -> One or more occurrences
-    sentence = sentences_list[random.randint(0, len(sentences_list)-1)]
-    sentence = sentence[7:len(sentence)]  # remove {topic}
-    sentence = choose_optional(sentence)
-    sentence = choose_slots(sentence)
-    sentence = choose_pipe(sentence)
-    return sentence
-
-
-def choose_optional(sentence):
-    while "[" in sentence:
-        index_left_bracket = sentence.find("[")
-        index_right_bracket = sentence.find("]")
-        in_brackets = sentence[index_left_bracket+1:index_right_bracket]
-        include = random.randint(0, 1)
-        if include:
-            sentence = sentence.replace("[" + in_brackets + "]", in_brackets)
-        else:
-            sentence = sentence.replace("[" + in_brackets + "]", "")
-    return sentence
-
-
-def choose_slots(sentence):
-    system_file = open("data/sistemi.igrm", "r")
-    system = system_file.read()
-    system_file.close()
-    while "{" in sentence:
-        index_left_bracket = sentence.find("{")
-        index_right_bracket = sentence.find("}")
-        slot = sentence[index_left_bracket:index_right_bracket+1]  # la prima la include, la seconda no
-        synonyms = (system.split(slot+" =\n")[1]).split("\n;")[0]
-        syn_list = (synonyms.split("\n"))
-        # bene così o meglio utilizzare readfile e chiudere il file dopo?
-        sentence = sentence.replace(slot, syn_list[random.randint(0, len(syn_list)-1)])
-    return sentence
-
-
-def choose_pipe(sentence):
-    while "(" in sentence:
-        index_left_bracket = sentence.find("(")
-        index_right_bracket = sentence.find(")")
-        in_brackets = sentence[index_left_bracket+1:index_right_bracket]
-        in_brackets_list = in_brackets.split("|")
-        chosen = in_brackets_list[random.randint(0, len(in_brackets_list)-1)]
-        sentence = sentence.replace("("+in_brackets+")", chosen)
-    return sentence
 
 
 def under_threshold(situation):
     if len(situation.get_physical_symptoms()) < 4:
-        print("Threshold basso, voglio più sintomi fisici")
         return "ask_about_phy_sym"
     if len(situation.get_safety_behaviours()) < 3:
-        print("Threshold basso, voglio più comportamenti di difesa")
         return "ask_about_safe_behav"
-    print("Threshold basso, ma ho tutto quello che mi serve")
     return "enough"
 
 
