@@ -66,6 +66,17 @@ def find_typology(keyword):
     return typology
 
 
+# it saves all the keywords in the argument messages
+def update_messages(messages):
+    messages.clear()
+    messages_list = list(kw.keywords_use.values())
+    # message_list is a list of list of values from the dictionary
+    for mes_list in messages_list:
+        for elem in mes_list:
+            messages.append(elem)
+    return messages
+
+
 # it prints what has been saved from user's answers
 def print_db(concerns, situations):
     print("Concern: ", concerns[0].get_concern())

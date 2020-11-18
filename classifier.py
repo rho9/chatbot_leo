@@ -8,7 +8,6 @@ from embedding import universal_sentence_encoder_tf as use_tf
 from embedding import glove_cosine_similarity as glove
 
 
-# def classifier():
 def main():
     sentence = "I don't like when I have to work with other people because it makes me anxious"
     print("Sentence to be analyze:", sentence)
@@ -16,7 +15,7 @@ def main():
 
     # load glove
     glove_model = glove.load_glove_model()
-    messages = use_tf.update_messages([])
+    messages = kbm.update_messages([])
 
     print("### COUNTER ###")
     now = datetime.now()
@@ -57,7 +56,7 @@ def find_topic(sentence, situation, method):
         topic = find_topic_counting_words(stems)
     elif method == "glove":
         glove_model = glove.load_glove_model()
-        messages = use_tf.update_messages([])
+        messages = kbm.update_messages([])
         topic = find_topic_glove(sentence, situation, glove_model, messages)
     elif method == "use":
         topic = find_topic_use(sentence, situation)
@@ -86,7 +85,7 @@ def find_topic_counting_words(stems):
 def find_topic_use(sentence, situation):
     # possiamo trascriverli la prima volta e poi tenerli salvati (non ha senso che per ogni
     # rispota io debba andare a aleggermi e scrivermi le frasi)
-    messages = use_tf.update_messages([])
+    messages = kbm.update_messages([])
     dictionary_value = use_tf.run_use(messages, sentence)
     topic = ""
     if dictionary_value == "Threshold issue":

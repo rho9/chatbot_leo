@@ -45,9 +45,8 @@ def cosine_distance_wordembedding_method(s1, s2, model):
             if elem[0] == word:
                 v2.append(elem[1:])
     vector_2 = np.mean(v2,axis=0)
-    # attenzione: se la parola non è presente si rompe DA VERIFICARE
-    # vector_n saranno vettori con la stessa dimensione di prima,
-    # ma con un nuovo valore: la media dei vettori di tutte le parole della frase
+    # vector_n has the same dimension as before with a new value:
+    # the vectors mean of all the words in the sentence
     cosine = scipy.spatial.distance.cosine(vector_1, vector_2)
     return round((1-cosine)*100,2)
 
@@ -57,7 +56,7 @@ def load_glove_model():
     with open("embedding/glove.twitter.27B/glove.twitter.27B.25d.txt", "r", encoding="utf8") as myfile:
         for line in myfile:
             line2 = bytes(line, 'utf-8').decode('utf-8', 'ignore')
-            model.append(line2.strip("\n").split(" ")) # attenzione: l'ultimo valore ha anche l'a capo
+            model.append(line2.strip("\n").split(" "))
     for elem in model:
         i = 1
         while i < len(elem):
