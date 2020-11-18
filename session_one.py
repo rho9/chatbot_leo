@@ -24,7 +24,7 @@ def s1_manager():
     return concerns
 
 
-# find what concerns the user according to its answer
+# it finds what concerns the user according to his/her answer
 def find_concerns():
     sm.my_print_string(cl.choose_sentence("concerns"), FLAG)
     answer = input()
@@ -35,13 +35,13 @@ def find_concerns():
     return concerns
 
 
-# find the situations that make the user anxious
+# it finds the situations that make the user anxious
 def find_situations(concerns):
-    # manage only the first concern
+    # management of the first concern
     intro_sit_file = open('data/intro_situations.txt', "r")
     sm.my_print_file(intro_sit_file, FLAG)
     intro_sit_file.close()
-    # replace * in the questions with the concern it is facing now
+    # replacement of * in the questions with the concern LEO is facing at the moment
     uncompleted_question = cl.choose_sentence("situations")
     question = sm.replace_a_star(uncompleted_question, concerns[0].get_concern())
     sm.my_print_string(question, FLAG)
@@ -64,9 +64,9 @@ def analyze_answer(answer):
     return answer, keywords
 
 
-# make a recap of what the user has just said
+# it makes a recap of what the user has just said
 def recap(reaction, keyword):
-    make_summary = random.randrange(0, 2)  # second number is not included
+    make_summary = random.randrange(0, 2)
     if make_summary and keyword != "":
         recap = cl.choose_sentence("recap")
         sentence = sm.add_particles(reaction, keyword)
@@ -92,7 +92,6 @@ def answer_to_user(user_sentence, situations):
         phy_sym_list = situations[0].get_physical_symptoms()
         replacement = sm.add_particles_from_topic(phy_sym_list[0])
     bot_answer = sm.replace_a_star(bot_answer, replacement)
-    # gestire il "non ho capito, puoi ripetere?" perché ora non ti arriva la risposta aggiornata
     if keywords_list:
         reaction_to_save = sm.complete_keywords(user_sentence, keywords_list[0][0])
         if state != "sit":
@@ -102,7 +101,6 @@ def answer_to_user(user_sentence, situations):
 
 
 # it saves new keywords in the situation
-# USANDO LE KEYWORDS COSì COME SONO UTILIZZIAMO GLI STEMMI CHE FANNO SCHIFO. PROVA
 def update_situation(user_sentence, keywords_list, situations):
     if keywords_list:
         if "thou" in keywords_list[0][1]:

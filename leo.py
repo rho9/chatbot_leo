@@ -15,14 +15,14 @@ def main():
     s2.s2_manager(concerns)
 
 
-# print the file with LEO's introduction
+# it prints the file with LEO's introduction
 def introduction():
     intro_file = open('data/introduction.txt', "r")
     sm.my_print_file(intro_file, FLAG)
     intro_file.close()
 
 
-# create db to test session 2 without answer to session 1's questions
+# it creates a db to test session 2 without answer to session 1's questions
 def create_db():
     concern = Concern("work")
     concern.add_situation(Situation("have to talk to customers"))
