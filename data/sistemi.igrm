@@ -16,6 +16,16 @@ anxieties
 distresses
 ;
 
+{slot_environment} =
+environment
+milieu
+;
+
+{slot_environments} =
+environments
+milieus
+;
+
 {slot_head} =
 head
 mind
@@ -39,14 +49,14 @@ difficulties
 {slot_situation} =
 situation
 context
-cirmunstance
+circumstance
 event
 ;
 
 {slot_situations} =
 situations
 contexts
-cirmunstances
+circumstances
 events
 ;
 
@@ -55,11 +65,6 @@ task
 duty
 job
 work
-;
-
-{slot_valuation} =
-valuation
-judgment
 ;
 
 {slot_worried} =
@@ -110,10 +115,16 @@ entirely
 absolutely
 ;
 
+{adv_incredibly} =
+incredibly
+extremely
+very much
+;
+
 ### Verbs ###
 
-{vrb_ing_esitate} =
-esitating
+{vrb_ing_hesitate} =
+hesitating
 hanging back
 ;
 
@@ -121,6 +132,11 @@ hanging back
 {vrb_past_describe} =
 described
 expressed
+;
+
+{vrb_past_evaluation} =
+evaluated
+judged
 ;
 
 {vrb_ing_experiencing} =
@@ -204,6 +220,11 @@ speaking
 {vrb_ing_undertake} =
 undertaking
 taking up
+;
+
+{vrb_pres_third_worry} =
+worries
+concerns
 ;
 
 

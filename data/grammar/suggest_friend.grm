@@ -1,8 +1,7 @@
 {topic} =
-	the user says what he/she would suggest to a friend with the same fears
+	the user said what he/she would suggest to a friend with the same fears
 ;
 
-{topic}[{slot_interjection}..]How it feels like when you imagine yourself saying those words to yourself[ in this kind of situation]?
 {topic}[{slot_interjection}..]How it feels like when you imagine yourself saying those words to yourself[ in this kind of situation]?
 {topic}[{slot_interjection}..]In the same situation, you're kind of {vrb_ing_talk} to yourself more like {pron_somebody} who wants to {vrb_pres_pull_down}..can you be a good friend to yourself in those moments and say something more supportive like the things you just said?
 
