@@ -5,7 +5,7 @@ Huppert outline a treatment program designed for patients with social phobia.
 In this work we follow the treatment manual to implement LEO, a chat-bot which purpose is to help people with socialization
 problems or that suffer from social phobia using AI. The structure of LEO
 is a rules-based model enriched by a machine readable corpus inferred from
-real psychological sessions. At this stage the implemented psychological sessions are the firts and the second.
+real psychological sessions. At this stage the implemented psychological sessions are the first and the second one.
 
 
 ## Structure:
